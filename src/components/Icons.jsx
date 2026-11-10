@@ -1,0 +1,35 @@
+export function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
+  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', className, 'aria-hidden': true };
+  const paths = {
+    search: <><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></>,
+    cart: <><path d="M3 4h2l2 11h10l2-7H7"/><circle cx="9" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></>,
+    user: <><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 4.1-6.5 8-6.5S18.5 16.5 20 21"/></>,
+    menu: <><path d="M4 7h16M4 12h16M4 17h16"/></>,
+    close: <><path d="m6 6 12 12M18 6 6 18"/></>,
+    heart: <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>,
+    arrow: <><path d="M5 12h14"/><path d="m14 7 5 5-5 5"/></>,
+    chevron: <path d="m8 10 4 4 4-4"/>,
+    filter: <><path d="M4 5h16M7 12h10M10 19h4"/></>,
+    grid: <><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></>,
+    check: <path d="m5 12 4 4L19 6"/>,
+    truck: <><path d="M3 6h11v10H3zM14 9h4l3 4v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></>,
+    shield: <path d="M12 3 5 6v5c0 4.8 2.9 8.2 7 10 4.1-1.8 7-5.2 7-10V6l-7-3Z"/>,
+    plus: <path d="M12 5v14M5 12h14"/>,
+    minus: <path d="M5 12h14"/>,
+    trash: <><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13"/><path d="M10 11v5M14 11v5"/></>,
+    info: <><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></>,
+    phone: <path d="M6.7 3.5 9 8l-2 1.5c1.2 2.8 2.7 4.3 5.5 5.5l1.5-2 4.5 2.3-.6 3.3c-.2 1-1.1 1.8-2.1 1.7C8.7 19.6 4.4 15.3 3.7 8.2c-.1-1 .7-1.9 1.7-2.1l1.3-2.6Z"/>,
+    mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,
+    location: <><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></>,
+    clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></>,
+    package: <><path d="m4 8 8-4 8 4-8 4-8-4Z"/><path d="M4 8v8l8 4 8-4V8M12 12v8"/></>,
+    lock: <><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></>,
+    eye: <><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></>,
+    edit: <><path d="M4 20h4l11-11-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></>,
+    logout: <><path d="M10 4H5v16h5M14 8l4 4-4 4M9 12h9"/></>,
+    home: <><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></>,
+    spark: <><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></>,
+    building: <><path d="M4 21V6l8-3v18M12 8h8v13M7 9h2M7 13h2M7 17h2M15 11h2M15 15h2"/></>,
+  };
+  return <svg {...common}>{paths[name] || paths.info}</svg>;
+}

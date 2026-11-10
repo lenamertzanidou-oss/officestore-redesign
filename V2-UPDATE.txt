@@ -1,0 +1,28 @@
+OfficeStore Redesign V2 — 2027 Attraction Refresh
+
+Ի՞նչ է փոխվել
+- Գլխավոր էջը դարձել է ավելի արտահայտիչ, premium և վաճառք ուղղորդող։
+- Hero հատվածը ամբողջությամբ վերակառուցվել է՝ արագ CTA-ներով, վստահության բլոկներով և micro-interaction-ներով։
+- Ապրանքների նկարների փոխարեն placeholder emoji-ները փոխարինվել են CSS-ով կառուցված ավելի մաքուր product illustrations-ով։
+- Կատեգորիաների քարտերը դարձել են ավելի դինամիկ և տեսողական։
+- Product cards, header, footer, forms, checkout, product page և այլ ներքին էջերը ստացել են միասնական նոր visual language։
+- Mobile տարբերակի համար առանձին responsive կարգավորումներ են ավելացվել։
+
+Եթե արդեն ունեք աշխատող հին նախագիծը
+1. Կանգնեցրեք dev server-ը՝ Ctrl + C։
+2. Update-only archive-ից փոխարինեք այս 3 ֆայլերը՝
+   src/pages/HomePage.jsx
+   src/components/ProductVisual.jsx
+   src/styles/main.css
+3. Նորից աշխատեցրեք՝ npm.cmd run dev
+
+Եթե օգտագործում եք ամբողջ V2 նախագիծը
+1. Բացեք officestore-redesign-v2 պանակը VS Code-ում։
+2. Terminal-ում աշխատեցրեք npm.cmd install
+3. Հետո՝ npm.cmd run dev
+4. Բացեք http://localhost:5173/
+
+Տեխնիկական ստուգում
+- Բոլոր JS/JSX source ֆայլերը անցել են syntax parsing ստուգում՝ 0 syntax error։
+- CSS braces-ը ստուգվել է և balanced է։
+- Այս միջավայրում npm install/build-ը ամբողջությամբ չի ավարտվել registry/network timeout-ի պատճառով, ուստի վերջնական runtime build-ը կատարեք ձեր համակարգչում։

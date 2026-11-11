@@ -1221,3 +1221,292 @@ a.eyebrow:hover{
     height:43px;
   }
 }
+
+
+/* =========================================================
+   V8.3 — Premium site-wide micro UI
+   Semantic badges, icon actions, focus and interaction states
+   ========================================================= */
+:root{
+  --micro-sale:#FF5F3D;
+  --micro-sale-dark:#E94D2D;
+  --micro-new:#148C7C;
+  --micro-new-dark:#0F7568;
+  --micro-info:#2757A5;
+  --micro-stock:#6F7774;
+
+  --micro-control-bg:rgba(255,255,255,.96);
+  --micro-control-border:#DEE4E2;
+  --micro-control-icon:#394440;
+  --micro-control-shadow:0 6px 18px rgba(20,31,28,.07);
+  --micro-control-shadow-hover:0 10px 26px rgba(39,87,165,.13);
+}
+
+/* Semantic product/status badges */
+.badge,
+.limited-deal-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  min-width:34px;
+  min-height:24px;
+  padding:0 9px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:7px;
+  box-shadow:0 5px 14px rgba(19,28,25,.08);
+  font-size:.62rem;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.005em;
+  text-transform:none;
+  white-space:nowrap;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.badge-sale,
+.limited-deal-badge.badge-sale{
+  background:linear-gradient(135deg,#FF6A44 0%,var(--micro-sale) 100%)!important;
+  color:#fff!important;
+}
+
+.badge-new,
+.limited-deal-badge.badge-new{
+  background:linear-gradient(135deg,#1AA391 0%,var(--micro-new) 100%)!important;
+  color:#fff!important;
+}
+
+.badge-info,
+.limited-deal-badge.badge-info{
+  background:linear-gradient(135deg,#3569BC 0%,var(--micro-info) 100%)!important;
+  color:#fff!important;
+}
+
+.badge-stockout{
+  background:#F0F2F1!important;
+  color:#666F6C!important;
+  border-color:#E2E6E4!important;
+  box-shadow:none;
+}
+
+.product-badges{
+  top:11px;
+  left:11px;
+  gap:6px;
+}
+
+/* Wishlist/favorite — one premium control across every product surface */
+.wishlist-btn{
+  width:36px!important;
+  height:36px!important;
+  top:11px!important;
+  right:11px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  border:1px solid var(--micro-control-border)!important;
+  border-radius:50%!important;
+  background:var(--micro-control-bg)!important;
+  color:var(--micro-control-icon)!important;
+  box-shadow:var(--micro-control-shadow)!important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:
+    transform .18s ease,
+    color .18s ease,
+    background .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease!important;
+}
+
+.wishlist-btn svg{
+  width:18px!important;
+  height:18px!important;
+  stroke-width:1.8;
+}
+
+.wishlist-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  color:var(--ref-blue)!important;
+  border-color:#B8C9E3!important;
+  background:#fff!important;
+  box-shadow:var(--micro-control-shadow-hover)!important;
+}
+
+.wishlist-btn.is-active{
+  color:#fff!important;
+  background:var(--ref-blue)!important;
+  border-color:var(--ref-blue)!important;
+  box-shadow:0 9px 22px rgba(39,87,165,.22)!important;
+}
+
+.wishlist-btn.is-active svg{
+  fill:currentColor;
+}
+
+/* General circular icon buttons */
+.icon-btn,
+.limited-nav,
+.text-link span,
+.header-round-btn{
+  border-radius:50%!important;
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    border-color .18s ease,
+    color .18s ease,
+    box-shadow .18s ease!important;
+}
+
+.icon-btn,
+.header-round-btn{
+  border:1px solid var(--micro-control-border)!important;
+  background:#fff!important;
+  color:var(--micro-control-icon)!important;
+  box-shadow:0 4px 14px rgba(19,28,25,.05)!important;
+}
+
+.icon-btn:hover,
+.header-round-btn:hover{
+  transform:translateY(-1px);
+  color:var(--ref-blue)!important;
+  border-color:#B8C9E3!important;
+  box-shadow:0 8px 20px rgba(39,87,165,.10)!important;
+}
+
+.text-link span,
+.limited-nav-next{
+  background:var(--ref-blue)!important;
+  color:#fff!important;
+  border:0!important;
+  box-shadow:0 6px 16px rgba(39,87,165,.18)!important;
+}
+
+.text-link:hover span,
+.limited-nav-next:hover{
+  transform:translateX(2px);
+  background:var(--ref-blue-dark)!important;
+  box-shadow:0 9px 22px rgba(39,87,165,.24)!important;
+}
+
+.limited-nav-prev{
+  background:#F5F6F6!important;
+  color:#909895!important;
+  border:1px solid #ECEEEE!important;
+  box-shadow:none!important;
+}
+
+.limited-nav-prev:hover{
+  transform:translateX(-1px);
+  color:var(--ref-blue)!important;
+  border-color:#C9D5E8!important;
+  background:#fff!important;
+}
+
+/* Header action icons */
+.market-search button{
+  box-shadow:0 5px 14px rgba(39,87,165,.17)!important;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease!important;
+}
+.market-search button:hover{
+  transform:translateX(1px);
+  background:var(--ref-blue-dark)!important;
+  box-shadow:0 8px 19px rgba(39,87,165,.22)!important;
+}
+
+.market-action-link svg,
+.market-category-trigger svg,
+.market-service-link svg,
+.mobile-bottom-nav svg{
+  stroke-width:1.8;
+}
+
+/* Cart buttons get refined icon/text rhythm */
+.market-add-btn,
+.limited-deal-add,
+.buy-btn,
+.checkout-btn{
+  gap:8px!important;
+  letter-spacing:0;
+  box-shadow:0 6px 15px rgba(39,87,165,.13)!important;
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease!important;
+}
+.market-add-btn:hover,
+.limited-deal-add:hover,
+.buy-btn:hover,
+.checkout-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 9px 22px rgba(39,87,165,.19)!important;
+}
+.market-add-btn svg,
+.limited-deal-add svg,
+.buy-btn svg,
+.checkout-btn svg{
+  stroke-width:1.8;
+}
+
+/* Accessible keyboard states across the site */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:3px solid rgba(39,87,165,.22)!important;
+  outline-offset:3px;
+}
+
+/* Avoid interaction motion for users who prefer reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .wishlist-btn,
+  .icon-btn,
+  .header-round-btn,
+  .limited-nav,
+  .text-link span,
+  .market-search button,
+  .market-add-btn,
+  .limited-deal-add,
+  .buy-btn,
+  .checkout-btn{
+    transition:none!important;
+  }
+}
+
+/* Responsive micro UI */
+@media (max-width:760px){
+  .badge,
+  .limited-deal-badge{
+    min-height:22px;
+    padding:0 8px;
+    border-radius:7px;
+    font-size:.58rem;
+  }
+  .wishlist-btn{
+    width:34px!important;
+    height:34px!important;
+  }
+  .wishlist-btn svg{
+    width:17px!important;
+    height:17px!important;
+  }
+}
+
+@media (max-width:520px){
+  .product-badges{
+    top:8px;
+    left:8px;
+  }
+  .wishlist-btn{
+    width:32px!important;
+    height:32px!important;
+    top:8px!important;
+    right:8px!important;
+  }
+  .wishlist-btn svg{
+    width:16px!important;
+    height:16px!important;
+  }
+}

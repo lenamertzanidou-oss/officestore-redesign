@@ -15,8 +15,13 @@ function CategoryCard({ category }) {
       <div className="fig-category-image">
         <img src={siteAssets.category[category.slug]} alt={category.name} loading="lazy"/>
       </div>
-      <strong>{category.short}</strong>
-      <span>{category.count} ապրանք</span>
+      <div className="fig-category-content">
+        <div>
+          <strong>{category.short}</strong>
+          <span>{category.count} ապրանք</span>
+        </div>
+        <span className="fig-category-arrow" aria-hidden="true"><Icon name="arrow" size={14}/></span>
+      </div>
     </Link>
   );
 }

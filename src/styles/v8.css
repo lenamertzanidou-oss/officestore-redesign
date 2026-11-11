@@ -1516,3 +1516,73 @@ textarea:focus-visible{
 .stock-meter{
   display:none !important;
 }
+
+
+/* V8.5 — refined Categories trigger */
+.market-category-trigger{
+  height:34px !important;
+  min-height:34px;
+  padding:0 13px 0 11px !important;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid #D9E2F0 !important;
+  border-radius:999px !important;
+  background:#F7F9FD !important;
+  color:#1B2730 !important;
+  font-size:.72rem !important;
+  font-weight:720;
+  line-height:1;
+  box-shadow:none !important;
+  transition:
+    background .18s ease,
+    border-color .18s ease,
+    color .18s ease,
+    transform .18s ease,
+    box-shadow .18s ease !important;
+}
+
+.market-category-trigger svg{
+  width:16px !important;
+  height:16px !important;
+  stroke-width:1.8;
+  flex:0 0 auto;
+}
+
+.market-category-trigger:hover{
+  background:#EEF3FB !important;
+  border-color:#B9CAE5 !important;
+  color:#2757A5 !important;
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(39,87,165,.08) !important;
+}
+
+.market-category-trigger:active{
+  transform:translateY(0);
+  background:#E7EEF9 !important;
+  box-shadow:none !important;
+}
+
+.market-category-trigger:focus-visible{
+  outline:3px solid rgba(39,87,165,.18) !important;
+  outline-offset:2px;
+}
+
+@media (max-width:1100px){
+  .market-category-trigger{
+    height:32px !important;
+    min-height:32px;
+    padding:0 11px 0 10px !important;
+    gap:7px;
+    font-size:.69rem !important;
+  }
+}
+
+@media (max-width:900px){
+  .market-category-trigger{
+    height:31px !important;
+    min-height:31px;
+    padding:0 10px !important;
+  }
+}

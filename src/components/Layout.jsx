@@ -6,6 +6,18 @@ import { useStore } from '../context/StoreContext';
 import { siteAssets } from '../data/siteAssets';
 import { brandLogo, footerBrandLogo } from '../data/brand';
 
+const categoryIconBySlug = {
+  bulk: 'grid',
+  water: 'droplet',
+  dispenser: 'dispenser',
+  coffee: 'coffee',
+  tea: 'tea',
+  sweets: 'cookie',
+  stationery: 'edit',
+  household: 'cleaning',
+  disposable: 'cup',
+};
+
 const nav = [
   ['/shop', 'Բոլոր ապրանքները'],
   ['/category/water', 'Ջուր'],
@@ -162,9 +174,46 @@ export default function Layout({ children }) {
       {menuOpen && <div className="drawer-layer" role="dialog" aria-modal="true" aria-label="Կատեգորիաներ">
         <button className="drawer-backdrop" onClick={() => setMenuOpen(false)} aria-label="Փակել"/>
         <aside className="drawer market-drawer">
-          <div className="drawer-head"><div><img className="drawer-brand-logo" src={brandLogo} alt="OfficeStore"/><h2>Կատեգորիաներ</h2></div><button className="icon-btn" onClick={() => setMenuOpen(false)}><Icon name="close"/></button></div>
-          <div className="drawer-categories">{categories.map((c, index) => <Link key={c.slug} to={`/category/${c.slug}`} onClick={() => setMenuOpen(false)}><span className={`drawer-category-icon tone-${c.tone}`}>{c.icon}</span><span><strong>{c.name}</strong><small>{c.count} ապրանք</small></span><Icon name="arrow" size={18}/></Link>)}</div>
-          <div className="drawer-footer"><Link to="/about" onClick={() => setMenuOpen(false)}>Մեր մասին</Link><Link to="/contact" onClick={() => setMenuOpen(false)}>Կապ</Link><Link to="/delivery" onClick={() => setMenuOpen(false)}>Առաքում</Link><div className="language-switch">{['HY','EN','RU'].map((l) => <button className={language === l ? 'is-active' : ''} onClick={() => setLanguage(l)} key={l}>{l}</button>)}</div></div>
+          <div className="drawer-head">
+            <div className="drawer-head-copy">
+              <img className="drawer-brand-logo" src={brandLogo} alt="OfficeStore"/>
+              <div>
+                <h2>Կատեգորիաներ</h2>
+                <p>Գտեք անհրաժեշտ բաժինը</p>
+              </div>
+            </div>
+            <button className="icon-btn drawer-close" onClick={() => setMenuOpen(false)} aria-label="Փակել"><Icon name="close"/></button>
+          </div>
+
+          <div className="drawer-categories">
+            <NavLink to="/shop" onClick={() => setMenuOpen(false)} className={({ isActive }) => `drawer-category-row ${isActive ? 'is-active' : ''}`}>
+              <span className="drawer-category-icon"><Icon name="grid" size={19}/></span>
+              <span className="drawer-category-copy"><strong>Բոլոր ապրանքները</strong><small>{products.length} ապրանք</small></span>
+              <span className="drawer-category-arrow"><Icon name="arrow" size={17}/></span>
+            </NavLink>
+
+            {categories.map((c) => (
+              <NavLink
+                key={c.slug}
+                to={`/category/${c.slug}`}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) => `drawer-category-row ${isActive ? 'is-active' : ''}`}
+              >
+                <span className="drawer-category-icon"><Icon name={categoryIconBySlug[c.slug] || 'grid'} size={19}/></span>
+                <span className="drawer-category-copy"><strong>{c.name}</strong><small>{c.count} ապրանք</small></span>
+                <span className="drawer-category-arrow"><Icon name="arrow" size={17}/></span>
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="drawer-footer">
+            <div className="drawer-footer-links">
+              <Link to="/delivery" onClick={() => setMenuOpen(false)}>Առաքում</Link>
+              <Link to="/contact" onClick={() => setMenuOpen(false)}>Կապ</Link>
+              <Link to="/about" onClick={() => setMenuOpen(false)}>Մեր մասին</Link>
+            </div>
+            <div className="language-switch">{['HY','EN','RU'].map((l) => <button className={language === l ? 'is-active' : ''} onClick={() => setLanguage(l)} key={l}>{l}</button>)}</div>
+          </div>
         </aside>
       </div>}
 

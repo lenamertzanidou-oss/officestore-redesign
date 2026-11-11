@@ -1,0 +1,418 @@
+/* OfficeStore V9 — final site-wide master design system
+   Homepage is the visual source of truth.
+   Structural UI uses brand blue + white + neutral gray only. */
+
+:root{
+  --master-blue:#2757A5;
+  --master-blue-dark:#1F4B92;
+  --master-blue-700:#183E7C;
+  --master-blue-100:#E8F0FF;
+  --master-blue-050:#F5F8FD;
+  --master-blue-border:#D7E2F1;
+  --master-ink:#17201E;
+  --master-muted:#7C8582;
+  --master-line:#E8ECEB;
+  --master-surface:#FFFFFF;
+  --master-bg:#F7F7F7;
+
+  --os-brand:var(--master-blue);
+  --os-brand-2:var(--master-blue-dark);
+  --os-brand-dark:var(--master-blue-dark);
+  --os-brand-soft:var(--master-blue-100);
+
+  --blue:var(--master-blue);
+  --blue-2:var(--master-blue-dark);
+  --blue-soft:var(--master-blue-100);
+  --green:var(--master-blue);
+  --green-soft:var(--master-blue-100);
+}
+
+/* ---------- Global interaction language ---------- */
+a:hover{color:var(--master-blue)}
+button,input,select,textarea{accent-color:var(--master-blue)}
+
+.btn-primary,
+.market-add-btn,
+.buy-btn,
+.checkout-btn,
+.search-submit{
+  background:var(--master-blue)!important;
+  border-color:var(--master-blue)!important;
+  color:#fff!important;
+}
+.btn-primary:hover,
+.market-add-btn:hover,
+.buy-btn:hover,
+.checkout-btn:hover,
+.search-submit:hover{
+  background:var(--master-blue-dark)!important;
+  border-color:var(--master-blue-dark)!important;
+}
+
+.eyebrow,
+.filter-label strong,
+.auth-options button,
+.demo-login{
+  color:var(--master-blue)!important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--master-blue)!important;
+  box-shadow:0 0 0 3px rgba(39,87,165,.09)!important;
+}
+
+/* ---------- Category drawer: no green/teal states ---------- */
+.drawer-categories>a:hover,
+.drawer-category-row:hover{
+  background:var(--master-blue-050)!important;
+  border-color:var(--master-blue-border)!important;
+  color:var(--master-blue-dark)!important;
+}
+
+.drawer-category-row.is-active,
+.drawer-categories>a.is-active{
+  background:var(--master-blue-100)!important;
+  border-color:#C8D7ED!important;
+  color:var(--master-blue-dark)!important;
+  box-shadow:none!important;
+}
+
+.drawer-category-row.is-active::before{
+  background:var(--master-blue)!important;
+}
+
+.drawer-category-icon,
+.drawer-category-row:hover .drawer-category-icon,
+.drawer-category-row.is-active .drawer-category-icon{
+  background:#EDF3FC!important;
+  border-color:#D6E1F1!important;
+  color:var(--master-blue)!important;
+}
+
+.drawer-category-row.is-active .drawer-category-icon{
+  background:#DDE8F8!important;
+  border-color:#BDD0E9!important;
+}
+
+.drawer-category-row:hover .drawer-category-arrow{
+  background:#E7EFFB!important;
+  color:var(--master-blue)!important;
+}
+
+.drawer-category-row.is-active .drawer-category-arrow{
+  background:var(--master-blue)!important;
+  color:#fff!important;
+}
+
+.drawer-category-row.is-active .drawer-category-copy small{
+  color:#7183A0!important;
+}
+
+.drawer-footer-links a:hover{
+  background:var(--master-blue-100)!important;
+  border-color:#CEDBF0!important;
+  color:var(--master-blue)!important;
+}
+
+/* ---------- Header / nav ---------- */
+.market-nav-row nav a.is-active,
+.market-nav-row nav a:hover,
+.market-service-link:hover{
+  color:var(--master-blue)!important;
+}
+.market-nav-row nav a.is-active:after{
+  background:var(--master-blue)!important;
+}
+.market-category-trigger:hover{
+  background:var(--master-blue-050)!important;
+  border-color:#C9D8EC!important;
+  color:var(--master-blue)!important;
+}
+
+/* ---------- Shop / filters ---------- */
+.filter-panel{
+  border-color:var(--master-line)!important;
+  background:#fff!important;
+}
+.filter-group button:hover{
+  background:var(--master-blue-050)!important;
+  color:var(--master-blue)!important;
+}
+.filter-group button.is-active{
+  background:var(--master-blue-100)!important;
+  color:var(--master-blue-dark)!important;
+}
+.price-range{accent-color:var(--master-blue)!important}
+.shop-search:focus-within{
+  border-color:#B9CAE4!important;
+  box-shadow:0 0 0 3px rgba(39,87,165,.08)!important;
+}
+.no-results .empty-icon{
+  background:var(--master-blue-100)!important;
+  color:var(--master-blue)!important;
+}
+
+/* ---------- Category pages ---------- */
+.category-hero-blue,
+.category-hero-aqua,
+.category-hero-violet,
+.category-hero-amber,
+.category-hero-green,
+.category-hero-rose,
+.category-hero-indigo,
+.category-hero-mint,
+.category-hero-orange{
+  background:#fff!important;
+}
+
+.category-hero-inner{
+  background:linear-gradient(135deg,#F8FAFD 0%,#EEF3FB 100%)!important;
+  border:1px solid #E3EAF4!important;
+  color:var(--master-ink)!important;
+}
+
+.category-hero h1{color:var(--master-ink)!important}
+.category-hero p{color:#687570!important}
+.category-symbol{
+  background:#fff!important;
+  color:var(--master-blue)!important;
+  border:1px solid #DCE5F2!important;
+  box-shadow:0 12px 30px rgba(39,87,165,.07)!important;
+}
+.category-hero-stats span{
+  background:#fff!important;
+  border-color:#E0E7F1!important;
+  color:#5F6B67!important;
+}
+.subcategory-strip a:hover{
+  background:var(--master-blue-050)!important;
+  border-color:#C9D7EA!important;
+  color:var(--master-blue)!important;
+}
+.category-callout{
+  background:var(--master-blue-050)!important;
+  border:1px solid var(--master-blue-border)!important;
+  color:var(--master-ink)!important;
+}
+.callout-icon{
+  background:#fff!important;
+  color:var(--master-blue)!important;
+  border:1px solid #DCE5F2;
+}
+.category-callout p{color:#66736F!important}
+
+/* ---------- Product page ---------- */
+.gallery-thumbs button.is-active{
+  border-color:var(--master-blue)!important;
+  box-shadow:0 0 0 2px rgba(39,87,165,.08)!important;
+}
+.detail-price strong{color:var(--master-ink)!important}
+.stock-dot{background:var(--master-blue)!important}
+.notice,
+.delivery-card{
+  background:var(--master-blue-050)!important;
+  border-color:var(--master-blue-border)!important;
+}
+.product-tabs button.is-active,
+.tabs button.is-active{
+  color:var(--master-blue)!important;
+  border-color:var(--master-blue)!important;
+}
+.product-info-tabs{
+  border-color:var(--master-line)!important;
+}
+
+/* ---------- Cart ---------- */
+.checkout-progress .is-active,
+.checkout-progress .is-done,
+.step-chip.is-active,
+.step-chip.is-done{
+  background:var(--master-blue-100)!important;
+  border-color:#C8D7ED!important;
+  color:var(--master-blue-dark)!important;
+}
+.free-delivery-banner{
+  background:var(--master-blue-050)!important;
+  border-color:var(--master-blue-border)!important;
+  color:var(--master-blue-dark)!important;
+}
+.coupon-box input:focus{
+  border-color:var(--master-blue)!important;
+}
+
+/* ---------- Checkout ---------- */
+.delivery-choice:hover,
+.payment-list label:hover{
+  border-color:#C9D7EA!important;
+  background:#FAFBFD!important;
+}
+.delivery-choice.is-active,
+.delivery-choice button.is-active,
+.payment-list label:has(input:checked),
+.payment-list button.is-active{
+  border-color:#B9CAE4!important;
+  background:var(--master-blue-050)!important;
+  color:var(--master-blue-dark)!important;
+}
+.radio-dot:after{background:var(--master-blue)!important}
+.card-security-note{
+  background:var(--master-blue-050)!important;
+  color:#5B6D86!important;
+}
+
+/* ---------- Account / authentication ---------- */
+.account-benefit{
+  background:
+    radial-gradient(circle at 80% 18%,rgba(255,255,255,.10),transparent 32%),
+    linear-gradient(135deg,#2757A5 0%,#1F4B92 100%)!important;
+}
+.auth-tabs{
+  background:#F3F5F8!important;
+}
+.auth-tabs button.is-active{
+  background:#fff!important;
+  color:var(--master-blue)!important;
+  box-shadow:0 3px 12px rgba(39,87,165,.08)!important;
+}
+.account-nav button:hover,
+.account-nav a:hover{
+  background:var(--master-blue-050)!important;
+  color:var(--master-blue)!important;
+}
+.account-nav button.is-active,
+.account-nav a.is-active{
+  background:var(--master-blue-100)!important;
+  color:var(--master-blue-dark)!important;
+}
+.status-pill{
+  background:var(--master-blue-100)!important;
+  color:var(--master-blue-dark)!important;
+}
+.quick-actions a:hover{
+  background:var(--master-blue-050)!important;
+  border-color:#CFDBED!important;
+}
+
+/* ---------- Service page ---------- */
+.service-option:hover{
+  background:var(--master-blue-050)!important;
+  border-color:#D4DFEF!important;
+}
+.service-option.is-active{
+  background:var(--master-blue-100)!important;
+  border-color:#BFD0E8!important;
+  color:var(--master-blue-dark)!important;
+}
+.service-option-icon{
+  background:#EFF4FB!important;
+  color:var(--master-blue)!important;
+}
+.booking-card,
+.specialist-card,
+.service-process{
+  border-color:var(--master-line)!important;
+}
+
+/* ---------- Delivery / contact / about / legal ---------- */
+.delivery-highlight,
+.region-card,
+.faq-section,
+.contact-card,
+.contact-form-card,
+.about-intro,
+.about-story,
+.legal-content{
+  border-color:var(--master-line)!important;
+}
+.delivery-highlight-icon,
+.contact-icon,
+.value-icon,
+.step-icon,
+.success-icon{
+  background:var(--master-blue-100)!important;
+  color:var(--master-blue)!important;
+}
+.region-card:hover,
+.contact-card:hover{
+  border-color:#C9D7EA!important;
+  box-shadow:0 10px 25px rgba(39,87,165,.06)!important;
+}
+.legal-note{
+  background:var(--master-blue-050)!important;
+  border-color:var(--master-blue-border)!important;
+}
+.legal-section-number{
+  color:var(--master-blue)!important;
+}
+
+/* ---------- Discounts ---------- */
+.discount-note{
+  background:var(--master-blue-050)!important;
+  border-color:var(--master-blue-border)!important;
+  color:var(--master-blue-dark)!important;
+}
+.discount-hero-badge{
+  background:var(--master-blue)!important;
+  color:#fff!important;
+}
+
+/* ---------- Generic cards / focus ---------- */
+.shop-toolbar,
+.filter-panel,
+.product-detail-grid,
+.cart-items,
+.order-summary,
+.checkout-form,
+.auth-card,
+.account-nav,
+.account-main>section,
+.contact-form-card,
+.faq-section,
+.service-option,
+.booking-card,
+.specialist-card,
+.service-process,
+.about-intro,
+.about-story,
+.legal-content{
+  border-color:var(--master-line)!important;
+  box-shadow:none!important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:3px solid rgba(39,87,165,.20)!important;
+  outline-offset:3px!important;
+}
+
+/* ---------- Semantic badges: still coherent, but no structural green ---------- */
+.badge-new,
+.limited-deal-badge.badge-new{
+  background:linear-gradient(135deg,#3569BC 0%,#2757A5 100%)!important;
+  color:#fff!important;
+}
+
+/* ---------- Mobile bottom nav ---------- */
+.mobile-bottom-nav a.active,
+.mobile-bottom-nav a[aria-current="page"]{
+  color:var(--master-blue)!important;
+}
+.mobile-cart b{
+  background:var(--master-blue)!important;
+  color:#fff!important;
+}
+
+/* ---------- Responsive consistency ---------- */
+@media (max-width:760px){
+  .category-hero-inner{
+    background:linear-gradient(180deg,#F8FAFD 0%,#EEF3FB 100%)!important;
+  }
+  .drawer-category-row:hover{
+    transform:none;
+  }
+}

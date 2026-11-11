@@ -4,6 +4,7 @@ import { Icon } from './Icons';
 import { categories, products } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 import { siteAssets } from '../data/siteAssets';
+import { brandLogo } from '../data/brand';
 
 const nav = [
   ['/shop', 'Բոլոր ապրանքները'],
@@ -57,8 +58,7 @@ export default function Layout({ children }) {
           <button className="icon-btn mobile-only market-mobile-menu" onClick={() => setMenuOpen(true)} aria-label="Բացել մենյուն"><Icon name="menu"/></button>
 
           <Link to="/" className="brand market-brand" aria-label="OfficeStore գլխավոր էջ">
-            <span className="market-brand-mark">OS</span>
-            <span className="market-brand-word">Office<span>Store</span></span>
+            <img className="market-brand-logo" src={brandLogo} alt="OfficeStore"/>
           </Link>
 
           <div className="market-search-wrap desktop-only">
@@ -92,7 +92,7 @@ export default function Layout({ children }) {
         <div className="container market-footer-word">OfficeStore</div>
         <div className="container footer-grid market-footer-grid">
           <div className="footer-brand-col">
-            <Link to="/" className="brand market-brand market-brand-footer"><span className="market-brand-mark">OS</span><span className="market-brand-word">Office<span>Store</span></span></Link>
+            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={brandLogo} alt="OfficeStore"/></Link>
             <p>Ամենօրյա գրասենյակային գնումներ՝ պարզ, արագ և կանխատեսելի փորձով։</p>
             <div className="footer-social-pills"><span>Instagram</span><span>Facebook</span><span>LinkedIn</span></div>
           </div>
@@ -113,7 +113,7 @@ export default function Layout({ children }) {
       {menuOpen && <div className="drawer-layer" role="dialog" aria-modal="true" aria-label="Կատեգորիաներ">
         <button className="drawer-backdrop" onClick={() => setMenuOpen(false)} aria-label="Փակել"/>
         <aside className="drawer market-drawer">
-          <div className="drawer-head"><div><span className="drawer-kicker">OFFICESTORE</span><h2>Կատեգորիաներ</h2></div><button className="icon-btn" onClick={() => setMenuOpen(false)}><Icon name="close"/></button></div>
+          <div className="drawer-head"><div><img className="drawer-brand-logo" src={brandLogo} alt="OfficeStore"/><h2>Կատեգորիաներ</h2></div><button className="icon-btn" onClick={() => setMenuOpen(false)}><Icon name="close"/></button></div>
           <div className="drawer-categories">{categories.map((c, index) => <Link key={c.slug} to={`/category/${c.slug}`} onClick={() => setMenuOpen(false)}><span className={`drawer-category-icon tone-${c.tone}`}>{c.icon}</span><span><strong>{c.name}</strong><small>{c.count} ապրանք</small></span><Icon name="arrow" size={18}/></Link>)}</div>
           <div className="drawer-footer"><Link to="/about" onClick={() => setMenuOpen(false)}>Մեր մասին</Link><Link to="/contact" onClick={() => setMenuOpen(false)}>Կապ</Link><Link to="/delivery" onClick={() => setMenuOpen(false)}>Առաքում</Link><div className="language-switch">{['HY','EN','RU'].map((l) => <button className={language === l ? 'is-active' : ''} onClick={() => setLanguage(l)} key={l}>{l}</button>)}</div></div>
         </aside>

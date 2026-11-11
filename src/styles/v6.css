@@ -56,7 +56,7 @@ body{
   background:var(--fig-bg);
   color:var(--fig-ink);
   font-family:"Noto Sans Armenian",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  font-size:14px;
+  font-size:16px;
   line-height:1.45;
 }
 .container{width:min(calc(100% - 36px),var(--container))}
@@ -123,7 +123,7 @@ input,select,textarea{accent-color:var(--fig-green)}
   border-radius:999px;
   padding-left:14px;
 }
-.market-search input{font-size:.72rem}
+.market-search input{font-size:.88rem}
 .market-search button{
   width:29px;height:29px;
   background:var(--fig-green);
@@ -152,14 +152,14 @@ input,select,textarea{accent-color:var(--fig-green)}
 }
 .market-nav-row nav{gap:18px}
 .market-nav-row nav a{
-  font-size:.64rem;
+  font-size:.82rem;
   padding:10px 0;
   color:#35413d;
 }
 .market-nav-row nav a.is-active,
 .market-nav-row nav a:hover{color:var(--fig-green)}
 .market-nav-row nav a.is-active:after{background:var(--fig-green);bottom:2px}
-.market-service-link{font-size:.63rem;color:var(--fig-green)}
+.market-service-link{font-size:.78rem;color:var(--fig-green)}
 
 /* HOME — Figma hero */
 .v5-home{background:var(--fig-bg)}
@@ -226,15 +226,15 @@ input,select,textarea{accent-color:var(--fig-green)}
 .v5-btn{
   height:31px;
   padding:0 13px;
-  font-size:.61rem;
+  font-size:.76rem;
 }
 .v5-btn-light{background:var(--fig-green);color:#fff}
-.v5-hero-link{font-size:.6rem;color:var(--fig-deep)}
+.v5-hero-link{font-size:.76rem;color:var(--fig-deep)}
 .v5-hero-meta{
   margin-top:13px;
   gap:12px;
   color:#557169;
-  font-size:.54rem;
+  font-size:.68rem;
 }
 .v5-hero-media{
   min-height:390px;
@@ -296,14 +296,14 @@ input,select,textarea{accent-color:var(--fig-green)}
   margin-bottom:14px;
 }
 .section-heading h2{
-  font-size:1.18rem;
+  font-size:1.5rem;
   font-weight:720;
   margin:0 0 2px;
 }
-.section-heading p{font-size:.65rem}
+.section-heading p{font-size:.82rem}
 .text-link{
   color:var(--fig-green);
-  font-size:.61rem;
+  font-size:.76rem;
   gap:6px;
 }
 .text-link span{width:24px;height:24px;background:var(--fig-green)}
@@ -327,14 +327,14 @@ input,select,textarea{accent-color:var(--fig-green)}
   background:#f7f8f5;
 }
 .v5-category-image img{width:82%;height:82%}
-.v5-category-card strong{font-size:.66rem}
-.v5-category-card span{font-size:.5rem}
+.v5-category-card strong{font-size:.84rem}
+.v5-category-card span{font-size:.68rem}
 
 .market-filter-pills{margin:-2px 0 13px;gap:5px}
 .market-filter-pills button{
   height:24px;
   padding:0 10px;
-  font-size:.52rem;
+  font-size:.7rem;
   border-color:#dfe5e1;
 }
 .market-filter-pills button.is-active{
@@ -379,20 +379,20 @@ input,select,textarea{accent-color:var(--fig-green)}
 }
 .product-card-body{padding:8px 9px 9px}
 .product-rating-row{height:14px;margin:0}
-.product-rating-row span{font-size:.51rem}
-.product-rating-row small{font-size:.47rem}
+.product-rating-row span{font-size:.66rem}
+.product-rating-row small{font-size:.62rem}
 .product-title{
   min-height:34px;
-  font-size:.64rem;
+  font-size:.82rem;
   line-height:1.32;
 }
 .product-meta{font-size:.5rem;min-height:13px;margin-top:2px}
 .price-row{margin:5px 0 7px}
-.price-row strong{font-size:.7rem;color:var(--fig-deep)}
-.price-row del{font-size:.52rem}
+.price-row strong{font-size:.95rem;color:var(--fig-deep)}
+.price-row del{font-size:.7rem}
 .market-add-btn{
   height:27px;
-  font-size:.52rem;
+  font-size:.7rem;
   border-radius:999px;
 }
 .market-add-btn svg{width:12px;height:12px}
@@ -436,7 +436,7 @@ input,select,textarea{accent-color:var(--fig-green)}
 .v5-mini-banner{min-height:128px;padding:15px}
 .v5-mini-banner h3{font-size:.94rem;margin:4px 0 9px}
 .v5-mini-banner span,.v5-wide-banner span,.v5-service-banner>div>span,.v5-duo span{font-size:.46rem}
-.v5-mini-banner b,.v5-wide-banner b{font-size:.52rem}
+.v5-mini-banner b,.v5-wide-banner b{font-size:.7rem}
 .v5-mini-banner-purple{background:linear-gradient(135deg,#6a54ef,#7f64ff)}
 .v5-mini-banner-sand{background:linear-gradient(135deg,#e1a672,#edbd8c)}
 .v5-wide-banner{
@@ -454,12 +454,12 @@ input,select,textarea{accent-color:var(--fig-green)}
   background:linear-gradient(120deg,#d8f1f7,#edf8fa);
 }
 .v5-service-banner h2{font-size:1.65rem}
-.v5-service-banner p{font-size:.65rem}
-.v5-service-banner a{font-size:.52rem;padding:7px 11px}
+.v5-service-banner p{font-size:.82rem}
+.v5-service-banner a{font-size:.7rem;padding:7px 11px}
 .v5-duo-grid{gap:9px}
 .v5-duo{min-height:145px;padding:20px 22px}
 .v5-duo h3{font-size:1.05rem;margin:5px 0 12px}
-.v5-duo b{font-size:.52rem}
+.v5-duo b{font-size:.7rem}
 .v5-duo-mint{background:linear-gradient(135deg,#31cfbd,#5ddccc)}
 .v5-duo-pink{background:linear-gradient(135deg,#cc5b9f,#db70ae)}
 .v5-last-section{padding-bottom:45px}
@@ -584,7 +584,7 @@ input,select,textarea{accent-color:var(--fig-green)}
 .market-footer-grid h3{font-size:.66rem;color:#fff}
 .market-footer-grid a,
 .market-footer-grid span,
-.footer-brand-col p{font-size:.61rem;color:#9fb7b0}
+.footer-brand-col p{font-size:.76rem;color:#9fb7b0}
 .footer-social-pills span{
   border:1px solid rgba(255,255,255,.13);
   border-radius:999px;
@@ -592,7 +592,7 @@ input,select,textarea{accent-color:var(--fig-green)}
 }
 .footer-bottom{
   border-color:rgba(255,255,255,.1);
-  font-size:.56rem;
+  font-size:.72rem;
   padding-bottom:22px;
 }
 
@@ -665,4 +665,70 @@ input,select,textarea{accent-color:var(--fig-green)}
   .v6-deal-grid .market-product-card{grid-template-columns:36% 64%;min-height:126px}
   .v6-deal-grid .product-media{min-height:126px}
   .market-footer-word{font-size:18vw}
+}
+
+
+/* 2026 readability scale */
+body{font-size:16px}
+.market-brand-word{font-size:1.35rem}
+.market-nav-row nav a{font-size:.82rem}
+.market-category-trigger,.market-service-link{font-size:.8rem}
+.market-action-link{font-size:.82rem}
+.market-search input{font-size:.9rem}
+.v5-eyebrow{font-size:.72rem}
+.v5-hero h1{font-size:clamp(2.05rem,3.4vw,3.35rem)}
+.v5-hero-copy>p{font-size:.95rem;line-height:1.65}
+.v5-btn{font-size:.82rem}
+.v5-hero-link{font-size:.8rem}
+.v5-hero-meta{font-size:.72rem}
+.section-heading h2{font-size:1.55rem}
+.section-heading p{font-size:.88rem}
+.text-link{font-size:.8rem}
+.v5-category-card strong{font-size:.86rem}
+.v5-category-card span{font-size:.7rem}
+.market-filter-pills button{font-size:.72rem}
+.product-title{font-size:.86rem;line-height:1.4;min-height:40px}
+.product-meta{font-size:.7rem}
+.product-rating-row span{font-size:.66rem}
+.product-rating-row small{font-size:.64rem}
+.price-row strong{font-size:1rem}
+.price-row del{font-size:.72rem}
+.market-add-btn{font-size:.72rem;min-height:32px}
+.badge{font-size:.62rem}
+.v5-mini-banner h3{font-size:1.12rem}
+.v5-mini-banner span,.v5-wide-banner span,.v5-service-banner>div>span,.v5-duo span{font-size:.62rem}
+.v5-mini-banner b,.v5-wide-banner b,.v5-duo b{font-size:.7rem}
+.v5-wide-banner h2,.v5-service-banner h2{font-size:2rem}
+.v5-wide-banner p,.v5-service-banner p{font-size:.86rem}
+.page-hero h1{font-size:clamp(2.15rem,3.3vw,3.3rem)}
+.page-hero p{font-size:.92rem}
+.breadcrumbs{font-size:.72rem}
+.category-hero h1{font-size:2.3rem}
+.category-hero p{font-size:.9rem}
+.category-hero-stats span{font-size:.74rem}
+.subcategory-strip a{font-size:.78rem}
+.category-content-head h2{font-size:1.55rem}
+.category-callout,.free-delivery-banner,.discount-note{font-size:.86rem}
+input,select,textarea,button{font-size:inherit}
+
+@media (max-width:760px){
+  body{font-size:15px}
+  .market-brand-word{font-size:1.1rem}
+  .v5-hero h1{font-size:2.35rem}
+  .v5-hero-copy>p{font-size:.9rem}
+  .section-heading h2{font-size:1.3rem}
+  .product-title{font-size:.8rem}
+  .price-row strong{font-size:.92rem}
+  .market-add-btn{font-size:.68rem}
+}
+
+@media (max-width:520px){
+  body{font-size:15px}
+  .v5-hero h1{font-size:2.15rem}
+  .v5-hero-copy>p{font-size:.86rem}
+  .section-heading h2{font-size:1.2rem}
+  .product-title{font-size:.76rem}
+  .product-meta{font-size:.66rem}
+  .price-row strong{font-size:.88rem}
+  .market-add-btn{font-size:.64rem}
 }

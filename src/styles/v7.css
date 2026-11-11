@@ -743,3 +743,41 @@ a:hover,
     height:82px;
   }
 }
+
+
+/* Brand logo */
+.market-brand{
+  display:inline-flex;
+  align-items:center;
+  flex:0 0 auto;
+}
+.market-brand-logo{
+  display:block;
+  width:auto;
+  height:26px;
+  max-width:142px;
+  object-fit:contain;
+}
+.market-brand-logo-footer{
+  height:36px;
+  max-width:190px;
+}
+.drawer-brand-logo{
+  display:block;
+  width:auto;
+  height:28px;
+  max-width:150px;
+  object-fit:contain;
+  margin-bottom:8px;
+}
+
+@media (max-width:760px){
+  .market-brand-logo{
+    height:23px;
+    max-width:124px;
+  }
+  .market-brand-logo-footer{
+    height:31px;
+    max-width:165px;
+  }
+}

@@ -819,3 +819,72 @@ main{background:var(--ref-bg)}
   .market-product-card .price-row strong{font-size:.8rem}
   .fig-promo-stack{grid-template-columns:1fr}
 }
+
+
+/* V8.1 — top bar, action text, footer logo */
+.market-announcement{
+  background:#2757A5 !important;
+  color:#fff !important;
+}
+
+.text-link{
+  color:var(--ref-ink) !important;
+}
+.text-link:hover{
+  color:var(--ref-blue) !important;
+}
+.text-link span{
+  background:var(--ref-blue) !important;
+  color:#fff !important;
+}
+
+.market-service-link,
+.eyebrow{
+  color:var(--ref-ink) !important;
+}
+.market-service-link:hover,
+a.eyebrow:hover{
+  color:var(--ref-blue) !important;
+}
+
+.filter-panel button.is-active,
+.account-nav button.is-active,
+.account-nav a.is-active,
+.product-tabs button.is-active,
+.checkout-step.is-active,
+.subcategory-strip a:hover{
+  color:var(--ref-blue) !important;
+}
+
+/* remove leftover teal/green action text from old layers */
+.section-heading .text-link,
+.category-content-head .text-link,
+.product-info-tabs .text-link,
+.cart-title .text-link{
+  color:var(--ref-ink) !important;
+}
+.section-heading .text-link:hover,
+.category-content-head .text-link:hover,
+.product-info-tabs .text-link:hover,
+.cart-title .text-link:hover{
+  color:var(--ref-blue) !important;
+}
+
+.market-brand-logo-footer{
+  width:auto;
+  height:34px;
+  max-width:205px;
+  object-fit:contain;
+}
+.market-brand-footer{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+}
+
+@media (max-width:760px){
+  .market-brand-logo-footer{
+    height:30px;
+    max-width:180px;
+  }
+}

@@ -89,18 +89,67 @@ export default function Layout({ children }) {
       <main id="main">{children}</main>
 
       <footer className="site-footer market-footer">
-        <div className="container market-footer-word">OfficeStore</div>
+        <div className="footer-trust-wrap">
+          <div className="container footer-trust-grid">
+            <div className="footer-trust-item"><span><Icon name="truck" size={19}/></span><div><strong>Արագ առաքում</strong><small>Հարմար պայմաններով Երևանում</small></div></div>
+            <div className="footer-trust-item"><span><Icon name="lock" size={18}/></span><div><strong>Անվտանգ վճարում</strong><small>Վստահելի վճարային եղանակներ</small></div></div>
+            <div className="footer-trust-item"><span><Icon name="building" size={19}/></span><div><strong>Կորպորատիվ սպասարկում</strong><small>Լուծումներ բիզնես հաճախորդների համար</small></div></div>
+            <div className="footer-trust-item"><span><Icon name="phone" size={18}/></span><div><strong>Աջակցություն</strong><small>Երկ–Շաբ · 09:00–18:00</small></div></div>
+          </div>
+        </div>
+
         <div className="container footer-grid market-footer-grid">
           <div className="footer-brand-col">
             <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={footerBrandLogo} alt="OfficeStore"/></Link>
-            <p>Ամենօրյա գրասենյակային գնումներ՝ պարզ, արագ և կանխատեսելի փորձով։</p>
-            <div className="footer-social-pills"><span>Instagram</span><span>Facebook</span><span>LinkedIn</span></div>
+            <p>Գրասենյակի ամենօրյա գնումները՝ մեկ վստահելի վայրում։ Ջուր, սուրճ, գրենական և անհրաժեշտ պարագաներ՝ արագ և պարզ պատվերով։</p>
+            <div className="footer-social-icons" aria-label="Սոցիալական ցանցեր">
+              <a href="#" aria-label="Instagram"><Icon name="instagram" size={18}/></a>
+              <a href="#" aria-label="Facebook"><Icon name="facebook" size={17}/></a>
+              <a href="#" aria-label="LinkedIn"><Icon name="linkedin" size={17}/></a>
+            </div>
           </div>
-          <div><h3>Խանութ</h3><Link to="/shop">Բոլոր ապրանքները</Link><Link to="/category/water">Ջուր</Link><Link to="/category/coffee">Սուրճ</Link><Link to="/discounts">Զեղչեր</Link></div>
-          <div><h3>Օգնություն</h3><Link to="/delivery">Առաքում</Link><Link to="/services/dispenser-maintenance">Սպասարկում</Link><Link to="/contact">Կապ մեզ հետ</Link><Link to="/blog">Բլոգ</Link></div>
-          <div><h3>Կապ</h3><a href="tel:+37410338833">010 33 88 33</a><span>Երկ–Շաբ · 09:00–18:00</span><span>Երևան, Հայաստան</span><div className="footer-payments v5-payment-logos"><img src={siteAssets.payments.idram} alt="Idram"/><img src={siteAssets.payments.telcell} alt="Telcell"/><img src={siteAssets.payments.arca} alt="ArCa"/><img src={siteAssets.payments.visa} alt="Visa"/><img src={siteAssets.payments.mastercard} alt="Mastercard"/></div></div>
+
+          <div className="footer-column">
+            <h3>Կատեգորիաներ</h3>
+            <Link to="/category/water">Ջուր</Link>
+            <Link to="/category/coffee">Սուրճ</Link>
+            <Link to="/category/stationery">Գրենական</Link>
+            <Link to="/category/household">Տնտեսական</Link>
+            <Link to="/category/sweets">Քաղցրավենիք</Link>
+          </div>
+
+          <div className="footer-column">
+            <h3>Օգնություն</h3>
+            <Link to="/delivery">Առաքում և վճարում</Link>
+            <Link to="/services/dispenser-maintenance">Դիսպենսերի սպասարկում</Link>
+            <Link to="/contact">Կապ մեզ հետ</Link>
+            <Link to="/blog">Օգտակար նյութեր</Link>
+            <Link to="/terms">Օգտագործման պայմաններ</Link>
+          </div>
+
+          <div className="footer-contact-col">
+            <h3>Կապ և վճարում</h3>
+            <a className="footer-contact-row" href="tel:+37410338833"><span><Icon name="phone" size={17}/></span><div><small>Հեռախոս</small><strong>010 33 88 33</strong></div></a>
+            <a className="footer-contact-row" href="mailto:info@officestore.am"><span><Icon name="mail" size={17}/></span><div><small>Էլ․ հասցե</small><strong>info@officestore.am</strong></div></a>
+            <div className="footer-contact-row"><span><Icon name="clock" size={17}/></span><div><small>Աշխատանքային ժամեր</small><strong>Երկ–Շաբ · 09:00–18:00</strong></div></div>
+
+            <div className="footer-payment-block">
+              <span>Ընդունվող վճարումներ</span>
+              <div className="footer-payments">
+                <span><img src={siteAssets.payments.visa} alt="Visa"/></span>
+                <span><img src={siteAssets.payments.mastercard} alt="Mastercard"/></span>
+                <span><img src={siteAssets.payments.arca} alt="ArCa"/></span>
+                <span><img src={siteAssets.payments.idram} alt="Idram"/></span>
+                <span><img src={siteAssets.payments.telcell} alt="Telcell"/></span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="container footer-bottom"><span>© 2026 OfficeStore</span><div><Link to="/privacy">Գաղտնիություն</Link><Link to="/terms">Պայմաններ</Link></div></div>
+
+        <div className="container footer-bottom">
+          <span>© 2026 OfficeStore. Բոլոր իրավունքները պաշտպանված են։</span>
+          <div><Link to="/privacy">Գաղտնիության քաղաքականություն</Link><Link to="/terms">Պայմաններ</Link></div>
+        </div>
       </footer>
 
       <nav className="mobile-bottom-nav mobile-only" aria-label="Mobile navigation">

@@ -5,15 +5,16 @@ import { Icon } from '../components/Icons';
 import { SectionHeading } from '../components/Common';
 import { siteAssets } from '../data/siteAssets';
 
-const categoryOrder = ['water', 'coffee', 'stationery', 'household', 'sweets', 'dispenser'];
+const categoryOrder = ['water', 'coffee', 'stationery', 'household', 'sweets'];
 
 function CategoryCard({ category }) {
   return (
-    <Link className="v5-category-card" to={`/category/${category.slug}`}>
-      <div className="v5-category-image">
+    <Link className="fig-category-card" to={`/category/${category.slug}`}>
+      <div className="fig-category-image">
         <img src={siteAssets.category[category.slug]} alt={category.name} loading="lazy"/>
       </div>
-      <div><strong>{category.short}</strong><span>{category.count} ապրանք</span></div>
+      <strong>{category.short}</strong>
+      <span>{category.count} ապրանք</span>
     </Link>
   );
 }
@@ -23,120 +24,133 @@ export default function HomePage() {
   const featured = [products[0], products[10], products[4], products[13], products[14], products[6], products[8], products[17]].filter(Boolean);
   const discounted = [products[12], products[6], products[7], products[14]].filter(Boolean);
   const weekly = [products[0], products[10], products[4], products[13]].filter(Boolean);
-  const limited = [products[6], products[12], products[14], products[18]].filter(Boolean);
+  const limited = [products[6], products[12]].filter(Boolean);
 
   return (
-    <div className="v5-home">
-      <section className="v5-hero-wrap">
+    <div className="fig-home">
+      <section className="fig-hero-section">
         <div className="container">
-          <div className="v5-hero">
-            <div className="v6-hero-word" aria-hidden="true">OFFICESTORE</div>
-            <div className="v5-hero-copy">
-              <span className="v5-eyebrow">OFFICE ESSENTIALS · EVERY DAY</span>
-              <h1>Գրասենյակի գնումները՝ <em>հեշտ ու արագ</em></h1>
-              <p>Ջուր, սուրճ, գրենական և ամենօրյա անհրաժեշտ ապրանքներ՝ մեկ հարմար պատվերով։</p>
-              <div className="v5-hero-actions">
-                <Link className="v5-btn v5-btn-light" to="/shop">Գնել հիմա <Icon name="arrow" size={14}/></Link>
-                <Link className="v5-hero-link" to="/delivery">Առաքման պայմաններ <Icon name="arrow" size={13}/></Link>
-              </div>
-              <div className="v5-hero-meta">
-                <span><Icon name="truck" size={14}/> 18,9 լ Ապարան ջրով՝ անվճար առաքում</span>
-                <span><Icon name="check" size={13}/> Հաջորդ աշխատանքային օրը</span>
-              </div>
+          <div className="fig-hero">
+            <div className="fig-hero-info">
+              <small>ԱՌԱՔՈՒՄ · ԳՐԱՍԵՆՅԱԿ · ԱՄԵՆ ՕՐ</small>
+              <strong>Ամեն ինչ գրասենյակի համար՝ մեկ պատվերով</strong>
+              <Link to="/shop">Գնել հիմա <Icon name="arrow" size={13}/></Link>
             </div>
 
-            <div className="v5-hero-media">
-              <img className="v6-hero-main-image" src={siteAssets.promo.office} alt="OfficeStore գրասենյակային տեսականի" />
-              <div className="v5-hero-badge">
-                <div className="v6-badge-img"><img src={siteAssets.category.water} alt="Ապարան ջուր"/></div>
-                <div className="v6-badge-copy"><small>Հատուկ առաջարկ</small><strong>Ապարան 18,9 լ</strong><span>1,800 ֏</span></div>
+            <Link to="/product/aparan-water-18-9" className="fig-hero-product">
+              <div className="fig-hero-product-image">
+                <img src={siteAssets.category.water} alt="Ապարան ջուր 18,9 լ"/>
               </div>
-            </div>
+              <strong>Ապարան ջուր 18,9 լ</strong>
+              <span>1,800 ֏</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="v5-section v5-categories-section">
+      <section className="fig-section fig-categories-section">
         <div className="container">
           <SectionHeading title="Բացահայտեք կատեգորիաները" action="Բոլորը" actionTo="/shop" />
-          <div className="v5-category-grid">{categoryItems.map((c) => <CategoryCard category={c} key={c.slug}/>)}</div>
+          <div className="fig-category-grid">{categoryItems.map((c) => <CategoryCard category={c} key={c.slug}/>)}</div>
         </div>
       </section>
 
-      <section className="v5-section">
+      <section className="fig-section fig-deals-section">
         <div className="container">
           <SectionHeading title="Լավագույն առաջարկները ձեզ համար" action="Դիտել բոլորը" actionTo="/shop" />
           <div className="market-filter-pills">
-            <button className="is-active">Բոլորը</button><button>Ջուր</button><button>Սուրճ</button><button>Գրենական</button><button>Տնտեսական</button>
+            <button className="is-active">Բոլորը</button>
+            <button>Ջուր</button>
+            <button>Սուրճ</button>
+            <button>Գրենական</button>
+            <button>Տնտեսական</button>
           </div>
-          <div className="product-grid market-product-grid">{featured.map((p) => <ProductCard key={p.id} product={p}/>)}</div>
+          <div className="product-grid fig-product-grid">{featured.map((p) => <ProductCard key={p.id} product={p}/>)}</div>
         </div>
       </section>
 
-      <section className="v5-section v5-promo-section">
-        <div className="container v5-promo-grid">
-          <div className="v5-promo-stack">
-            <Link to="/category/coffee" className="v5-mini-banner v5-mini-banner-purple">
-              <div><span>CLICK. SHOP. SMILE.</span><h3>Սուրճ ու քաղցրավենիք</h3><b>Գնել հիմա <Icon name="arrow" size={13}/></b></div>
-              <img src={siteAssets.category.coffee} alt="Սուրճ" />
+      <section className="fig-section fig-promo-section">
+        <div className="container fig-promo-grid">
+          <div className="fig-promo-stack">
+            <Link to="/category/coffee" className="fig-promo-card fig-promo-teal">
+              <div>
+                <h3>Click. Shop. Smile</h3>
+                <p>Սուրճ, քաղցրավենիք և փոքր հաճույքներ։</p>
+                <span>Գնել հիմա <Icon name="arrow" size={12}/></span>
+              </div>
             </Link>
-            <Link to="/category/stationery" className="v5-mini-banner v5-mini-banner-sand">
-              <div><span>YOUR DAILY OFFICE</span><h3>Գրենական ամեն օրվա համար</h3><b>Դիտել <Icon name="arrow" size={13}/></b></div>
-              <img src={siteAssets.promo.stationery} alt="Գրենական" />
+            <Link to="/category/stationery" className="fig-promo-card fig-promo-sand">
+              <div>
+                <h3>Your Daily Store</h3>
+                <p>Գրենական և ամենօրյա անհրաժեշտ ապրանքներ։</p>
+                <span>Գնել հիմա <Icon name="arrow" size={12}/></span>
+              </div>
             </Link>
           </div>
-          <Link to="/category/water" className="v5-wide-banner">
-            <div><span>OFFICESTORE DELIVERY</span><h2>Թարմ ջուր՝ ձեր գրասենյակ</h2><p>18,9 լ Ապարան ջուրը պատվիրելիս առաքումն անվճար է։</p><b>Պատվիրել հիմա <Icon name="arrow" size={14}/></b></div>
-            <img src={siteAssets.promo.water} alt="Ապարան ջուր" />
+
+          <Link to="/category/water" className="fig-promo-card fig-promo-sky fig-promo-large">
+            <div>
+              <small>ԱՆՎՃԱՐ ԱՌԱՔՈՒՄ՝ 18,9 Լ ՋՐՈՎ</small>
+              <h2>Թարմ ջուր՝ ձեր գրասենյակ</h2>
+              <p>Պարզ պատվեր, հստակ պայմաններ և արագ սպասարկում։</p>
+              <span>Պատվիրել <Icon name="arrow" size={12}/></span>
+            </div>
           </Link>
         </div>
       </section>
 
-      <section className="v5-section">
+      <section className="fig-section fig-discount-section">
         <div className="container">
           <SectionHeading title="Զեղչված ապրանքներ" action="Բոլոր զեղչերը" actionTo="/discounts" />
-          <div className="v6-deal-grid">{discounted.map((p) => <ProductCard key={p.id} product={p} compact/>)}</div>
+          <div className="fig-horizontal-grid">{discounted.map((p) => <ProductCard key={p.id} product={p} compact/>)}</div>
         </div>
       </section>
 
-      <section className="v5-section">
+      <section className="fig-section fig-banner-section">
         <div className="container">
-          <div className="v5-service-banner">
+          <div className="fig-fresh-banner">
             <div>
-              <span>READY FOR THE WEEK?</span>
-              <h2>Լցրեք զամբյուղը շաբաթվա անհրաժեշտ ամեն ինչով</h2>
+              <h2>Պատրա՞ստ եք լցնել զամբյուղը թարմ առաջարկներով</h2>
               <p>Ջուր, թուղթ, սուրճ և մաքրության ապրանքներ՝ մեկ պատվերում։</p>
-              <div><Link to="/shop">Գնել հիմա</Link><Link to="/category/stationery">Գրենական</Link></div>
+              <Link to="/shop">Գնել հիմա</Link>
             </div>
-            <img src={siteAssets.promo.office} alt="OfficeStore տեսականի" />
+            <img src={siteAssets.promo.office} alt="OfficeStore ապրանքներ"/>
           </div>
         </div>
       </section>
 
-      <section className="v5-section">
+      <section className="fig-section fig-weekly-section">
         <div className="container">
           <SectionHeading title="Շաբաթվա ամենաշատ վաճառվողները" action="Դիտել բոլորը" actionTo="/shop" />
-          <div className="product-grid product-grid-4 market-product-grid">{weekly.map((p) => <ProductCard key={p.id} product={p}/>)}</div>
+          <div className="market-filter-pills">
+            <button className="is-active">Բոլորը</button>
+            <button>Ջուր</button>
+            <button>Սուրճ</button>
+            <button>Գրենական</button>
+          </div>
+          <div className="product-grid fig-product-grid fig-product-grid-4">{weekly.map((p) => <ProductCard key={p.id} product={p}/>)}</div>
         </div>
       </section>
 
-      <section className="v5-section">
-        <div className="container v5-duo-grid">
-          <Link to="/category/household" className="v5-duo v5-duo-mint">
-            <div><span>MAKE YOUR OFFICE BETTER</span><h3>Մաքրության ապրանքներ գրասենյակի համար</h3><b>Տեսնել առաջարկները</b></div>
-            <img src={siteAssets.category.household} alt="Տնտեսական ապրանքներ" />
+      <section className="fig-section fig-duo-section">
+        <div className="container fig-duo-grid">
+          <Link to="/category/household" className="fig-duo-card fig-duo-teal">
+            <small>QUALITY OFFICE</small>
+            <h3>Մաքրության և հիգիենայի ապրանքներ</h3>
+            <span>Դիտել <Icon name="arrow" size={12}/></span>
           </Link>
-          <Link to="/services/dispenser-maintenance" className="v5-duo v5-duo-pink">
-            <div><span>SERVICE</span><h3>Դիսպենսերի սպասարկում՝ առանց ավելորդ հոգսի</h3><b>Պատվիրել այց</b></div>
-            <img src={siteAssets.promo.service} alt="Դիսպենսերի սպասարկում" />
+          <Link to="/category/coffee" className="fig-duo-card fig-duo-sky">
+            <small>DAILY BREAK</small>
+            <h3>Սուրճ և քաղցրավենիք՝ ամեն օրվա համար</h3>
+            <span>Դիտել <Icon name="arrow" size={12}/></span>
           </Link>
         </div>
       </section>
 
-      <section className="v5-section v5-last-section">
+      <section className="fig-section fig-limited-section">
         <div className="container">
           <SectionHeading title="Սահմանափակ առաջարկներ" action="Գնել հիմա" actionTo="/shop" />
-          <div className="v6-deal-grid">{limited.map((p) => <ProductCard key={p.id} product={p} compact/>)}</div>
+          <div className="fig-horizontal-grid">{limited.map((p) => <ProductCard key={p.id} product={p} compact/>)}</div>
         </div>
       </section>
     </div>

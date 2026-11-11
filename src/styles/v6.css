@@ -732,3 +732,121 @@ input,select,textarea,button{font-size:inherit}
   .price-row strong{font-size:.88rem}
   .market-add-btn{font-size:.64rem}
 }
+
+
+/* Premium typography refinement */
+h1,h2,h3,
+.section-heading h2,
+.category-content-head h2,
+.page-hero h1,
+.category-hero h1,
+.v5-mini-banner h3,
+.v5-wide-banner h2,
+.v5-service-banner h2,
+.v5-duo h3{
+  font-weight:800;
+  letter-spacing:-.055em;
+  text-wrap:balance;
+}
+
+.section-heading h2{
+  font-size:1.7rem;
+  line-height:1.12;
+}
+
+.page-hero h1{
+  font-size:clamp(2.35rem,3.6vw,3.6rem);
+  line-height:1.02;
+}
+
+.category-hero h1{
+  font-size:2.45rem;
+  line-height:1.03;
+}
+
+.v5-hero h1{
+  font-weight:820;
+  letter-spacing:-.065em;
+  line-height:.98;
+}
+
+.v5-wide-banner h2,
+.v5-service-banner h2{
+  font-size:2.15rem;
+  line-height:1.02;
+}
+
+.v5-mini-banner h3,
+.v5-duo h3{
+  font-weight:760;
+  line-height:1.08;
+}
+
+.product-card-body{
+  padding:12px 13px 13px;
+}
+
+.product-title{
+  font-size:.9rem;
+  font-weight:700;
+  line-height:1.5;
+  min-height:46px;
+  letter-spacing:-.01em;
+}
+
+.product-meta{
+  font-size:.72rem;
+  line-height:1.5;
+  margin-top:5px;
+  color:#7a857f;
+}
+
+.product-rating-row{
+  margin-bottom:5px;
+}
+
+.price-row{
+  margin:9px 0 10px;
+}
+
+.price-row strong{
+  font-size:1.04rem;
+  font-weight:800;
+  letter-spacing:-.025em;
+}
+
+.price-row del{
+  font-size:.74rem;
+}
+
+.market-add-btn{
+  min-height:34px;
+  font-weight:780;
+  letter-spacing:-.005em;
+}
+
+.v5-category-card strong{
+  font-weight:760;
+  line-height:1.35;
+}
+
+.v5-category-card span{
+  line-height:1.45;
+}
+
+@media (max-width:760px){
+  .section-heading h2{font-size:1.42rem}
+  .page-hero h1{font-size:2.55rem}
+  .category-hero h1{font-size:2.15rem}
+  .product-card-body{padding:10px}
+  .product-title{font-size:.84rem;line-height:1.42;min-height:40px}
+  .product-meta{font-size:.68rem}
+  .price-row strong{font-size:.96rem}
+}
+
+@media (max-width:520px){
+  .section-heading h2{font-size:1.28rem}
+  .page-hero h1{font-size:2.25rem}
+  .product-title{font-size:.8rem}
+  .product-card-body{padding:9px}
+}

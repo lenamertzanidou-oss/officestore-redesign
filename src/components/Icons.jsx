@@ -33,6 +33,13 @@ export function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
     instagram: <><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></>,
     facebook: <path d="M14 8h3V4.5A15 15 0 0 0 14.3 4C11.6 4 10 5.6 10 8.5V11H7v4h3v6h4v-6h3.2l.8-4H14V8.7c0-.5.2-.7.7-.7Z"/>,
     linkedin: <><rect x="4" y="9" width="3" height="11" rx="1"/><circle cx="5.5" cy="5.5" r="1.5"/><path d="M11 20V9h3v1.8c1-1.5 2.3-2.2 4-2.2 2.8 0 4 1.8 4 5V20h-3v-5.8c0-1.6-.7-2.6-2.2-2.6-1.6 0-2.8 1.1-2.8 3.2V20h-3Z"/></>,
+    droplet: <path d="M12 3s5.5 6 5.5 10A5.5 5.5 0 0 1 6.5 13C6.5 9 12 3 12 3Z"/>,
+    coffee: <><path d="M5 8h11v7a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z"/><path d="M16 10h2a3 3 0 0 1 0 6h-2M8 4v2M12 4v2"/></>,
+    tea: <><path d="M6 9h10v6a5 5 0 0 1-5 5 5 5 0 0 1-5-5V9Z"/><path d="M16 11h2a3 3 0 0 1 0 6h-2M11 9c0-3 2-4 4-5"/></>,
+    cookie: <><circle cx="12" cy="12" r="8"/><circle cx="9" cy="9" r=".8" fill="currentColor" stroke="none"/><circle cx="14.5" cy="8.5" r=".8" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r=".8" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r=".8" fill="currentColor" stroke="none"/></>,
+    dispenser: <><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M9 7h6M10 12h4M12 12v3M10 18h4"/></>,
+    cup: <><path d="M6 5h12l-1 15H7L6 5Z"/><path d="M8 9h8"/></>,
+    cleaning: <><path d="M5 18h14"/><path d="m8 18 2-9h4l2 9"/><path d="M12 4v5"/></>,
   };
   return <svg {...common}>{paths[name] || paths.info}</svg>;
 }

@@ -850,3 +850,47 @@ h1,h2,h3,
   .product-title{font-size:.8rem}
   .product-card-body{padding:9px}
 }
+
+
+/* Promo mosaic colors matched to the supplied Figma reference */
+.v5-mini-banner-purple{
+  background:linear-gradient(135deg,#138f86 0%,#6fb8b3 52%,#bfe0dd 100%);
+  color:#ffffff;
+}
+.v5-mini-banner-purple h3,
+.v5-mini-banner-purple span,
+.v5-mini-banner-purple b{color:#ffffff}
+
+.v5-mini-banner-sand{
+  background:linear-gradient(135deg,#e9b575 0%,#f4d3a6 55%,#fdebcf 100%);
+  color:#14201d;
+}
+.v5-mini-banner-sand h3,
+.v5-mini-banner-sand span,
+.v5-mini-banner-sand b{color:#14201d}
+
+.v5-wide-banner{
+  background:linear-gradient(135deg,#2b9ac0 0%,#75c2de 52%,#c2ecfc 100%);
+  color:#14201d;
+}
+.v5-wide-banner:after{
+  background:linear-gradient(90deg,rgba(43,154,192,.10) 0%,rgba(117,194,222,.04) 48%,rgba(194,236,252,0) 78%);
+}
+.v5-wide-banner h2,
+.v5-wide-banner span,
+.v5-wide-banner p,
+.v5-wide-banner b{color:#14201d}
+
+.v5-mini-banner b,
+.v5-wide-banner b{
+  width:max-content;
+  min-height:28px;
+  padding:0 10px 0 12px;
+  border-radius:999px;
+  background:#0b7499;
+  color:#fff!important;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+}

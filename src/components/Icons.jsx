@@ -30,6 +30,9 @@ export function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
     home: <><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></>,
     spark: <><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></>,
     building: <><path d="M4 21V6l8-3v18M12 8h8v13M7 9h2M7 13h2M7 17h2M15 11h2M15 15h2"/></>,
+    instagram: <><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></>,
+    facebook: <path d="M14 8h3V4.5A15 15 0 0 0 14.3 4C11.6 4 10 5.6 10 8.5V11H7v4h3v6h4v-6h3.2l.8-4H14V8.7c0-.5.2-.7.7-.7Z"/>,
+    linkedin: <><rect x="4" y="9" width="3" height="11" rx="1"/><circle cx="5.5" cy="5.5" r="1.5"/><path d="M11 20V9h3v1.8c1-1.5 2.3-2.2 4-2.2 2.8 0 4 1.8 4 5V20h-3v-5.8c0-1.6-.7-2.6-2.2-2.6-1.6 0-2.8 1.1-2.8 3.2V20h-3Z"/></>,
   };
   return <svg {...common}>{paths[name] || paths.info}</svg>;
 }

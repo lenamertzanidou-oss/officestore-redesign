@@ -7,6 +7,13 @@ import { useStore } from '../context/StoreContext';
 export default function LimitedDealCard({ product, time }) {
   const { addToCart } = useStore();
   const available = Math.max(1, Math.min(product.stock || 1, 99));
+  const badgeLabel = product.badge || '';
+  const normalizedBadge = badgeLabel.toLocaleLowerCase('hy-AM');
+  const badgeTone = badgeLabel.includes('%') || normalizedBadge.includes('զեղչ') || normalizedBadge.includes('sale')
+    ? 'badge-sale'
+    : normalizedBadge.includes('նոր') || normalizedBadge.includes('new')
+      ? 'badge-new'
+      : 'badge-info';
 
   return (
     <article className="limited-deal-card">
@@ -14,7 +21,7 @@ export default function LimitedDealCard({ product, time }) {
         <Link to={`/product/${product.slug}`} aria-label={product.name}>
           <ProductVisual type={product.visual} alt={product.name}/>
         </Link>
-        {product.badge && <span className="limited-deal-badge">{product.badge}</span>}
+        {product.badge && <span className={`limited-deal-badge ${badgeTone}`}>{product.badge}</span>}
       </div>
 
       <div className="limited-deal-body">

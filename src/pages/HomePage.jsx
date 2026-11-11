@@ -155,6 +155,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="fig-section fig-limited-section">
+        <div className="container">
+          <div className="limited-deals-heading">
+            <h2>Սահմանափակ առաջարկներ</h2>
+            <div className="limited-deals-controls">
+              <div className="limited-deals-end">Ավարտին՝ <strong>{dealTime.hours} : {dealTime.minutes} : {dealTime.seconds}</strong></div>
+              <button className="limited-nav limited-nav-prev" aria-label="Նախորդ առաջարկ"><Icon name="chevron" size={17}/></button>
+              <Link className="limited-nav limited-nav-next" to="/shop" aria-label="Բոլոր առաջարկները"><Icon name="arrow" size={17}/></Link>
+            </div>
+          </div>
+          <div className="limited-deals-grid">{limited.map((p) => <LimitedDealCard key={p.id} product={p} time={dealTime}/>)}</div>
+        </div>
+      </section>
+
       <section className="fig-section fig-duo-section">
         <div className="container fig-duo-grid">
           <Link to="/category/household" className="fig-duo-card fig-duo-teal">
@@ -167,20 +181,6 @@ export default function HomePage() {
             <h3>Սուրճ և քաղցրավենիք՝ ամեն օրվա համար</h3>
             <span>Դիտել <Icon name="arrow" size={12}/></span>
           </Link>
-        </div>
-      </section>
-
-      <section className="fig-section fig-limited-section">
-        <div className="container">
-          <div className="limited-deals-heading">
-            <h2>Սահմանափակ առաջարկներ</h2>
-            <div className="limited-deals-controls">
-              <div className="limited-deals-end">Ավարտին՝ <strong>{dealTime.hours} : {dealTime.minutes} : {dealTime.seconds}</strong></div>
-              <button className="limited-nav limited-nav-prev" aria-label="Նախորդ առաջարկ"><Icon name="chevron" size={17}/></button>
-              <Link className="limited-nav limited-nav-next" to="/shop" aria-label="Բոլոր առաջարկները"><Icon name="arrow" size={17}/></Link>
-            </div>
-          </div>
-          <div className="limited-deals-grid">{limited.map((p) => <LimitedDealCard key={p.id} product={p} time={dealTime}/>)}</div>
         </div>
       </section>
     </div>

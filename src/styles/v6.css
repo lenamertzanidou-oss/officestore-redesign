@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800;900&display=swap');
+
 /* OfficeStore — Figma/Farmora visual system
    Reference direction: airy grocery-commerce layout, emerald brand, pale mint hero,
    rounded product cards, compact pill CTAs, editorial promo blocks. */
@@ -53,12 +55,14 @@ html{background:var(--fig-bg)}
 body{
   background:var(--fig-bg);
   color:var(--fig-ink);
+  font-family:"Noto Sans Armenian",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   font-size:14px;
   line-height:1.45;
 }
 .container{width:min(calc(100% - 36px),var(--container))}
-h1,h2,h3{letter-spacing:-.045em}
+h1,h2,h3{font-family:"Noto Sans Armenian",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:-.045em}
 main{background:var(--fig-bg)}
+button,input,select,textarea{font-family:"Noto Sans Armenian",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 
 /* Base controls */
 .btn,
@@ -159,7 +163,7 @@ input,select,textarea{accent-color:var(--fig-green)}
 
 /* HOME — Figma hero */
 .v5-home{background:var(--fig-bg)}
-.v5-hero-wrap{padding:16px 0 6px}
+.v5-hero-wrap{padding:36px 0 6px}
 .v5-hero{
   min-height:390px;
   border-radius:17px;

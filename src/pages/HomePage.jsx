@@ -1,6 +1,8 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categories, products } from '../data/catalog';
 import ProductCard from '../components/ProductCard';
+import LimitedDealCard from '../components/LimitedDealCard';
 import { Icon } from '../components/Icons';
 import { SectionHeading } from '../components/Common';
 import { siteAssets } from '../data/siteAssets';
@@ -19,7 +21,28 @@ function CategoryCard({ category }) {
   );
 }
 
+function pad(value) {
+  return String(value).padStart(2, '0');
+}
+
 export default function HomePage() {
+  const [dealSeconds, setDealSeconds] = useState((20 * 24 * 60 * 60) + (17 * 60 * 60) + (29 * 60) + 57);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setDealSeconds((current) => current > 0 ? current - 1 : (20 * 24 * 60 * 60) + (17 * 60 * 60) + (29 * 60) + 57);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const dealTime = useMemo(() => {
+    const days = Math.floor(dealSeconds / 86400);
+    const hours = Math.floor((dealSeconds % 86400) / 3600);
+    const minutes = Math.floor((dealSeconds % 3600) / 60);
+    const seconds = dealSeconds % 60;
+    return { days: pad(days), hours: pad(hours), minutes: pad(minutes), seconds: pad(seconds) };
+  }, [dealSeconds]);
+
   const categoryItems = categoryOrder.map((slug) => categories.find((c) => c.slug === slug)).filter(Boolean);
   const featured = [products[0], products[10], products[4], products[13], products[14], products[6], products[8], products[17]].filter(Boolean);
   const discounted = [products[12], products[6], products[7], products[14]].filter(Boolean);
@@ -149,8 +172,15 @@ export default function HomePage() {
 
       <section className="fig-section fig-limited-section">
         <div className="container">
-          <SectionHeading title="Սահմանափակ առաջարկներ" action="Գնել հիմա" actionTo="/shop" />
-          <div className="fig-horizontal-grid">{limited.map((p) => <ProductCard key={p.id} product={p} compact/>)}</div>
+          <div className="limited-deals-heading">
+            <h2>Սահմանափակ առաջարկներ</h2>
+            <div className="limited-deals-controls">
+              <div className="limited-deals-end">Ավարտին՝ <strong>{dealTime.hours} : {dealTime.minutes} : {dealTime.seconds}</strong></div>
+              <button className="limited-nav limited-nav-prev" aria-label="Նախորդ առաջարկ"><Icon name="chevron" size={17}/></button>
+              <Link className="limited-nav limited-nav-next" to="/shop" aria-label="Բոլոր առաջարկները"><Icon name="arrow" size={17}/></Link>
+            </div>
+          </div>
+          <div className="limited-deals-grid">{limited.map((p) => <LimitedDealCard key={p.id} product={p} time={dealTime}/>)}</div>
         </div>
       </section>
     </div>

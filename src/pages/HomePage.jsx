@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { categories, products } from '../data/catalog';
+import { categories, products, formatPrice } from '../data/catalog';
 import ProductCard from '../components/ProductCard';
+import ProductVisual from '../components/ProductVisual';
 import LimitedDealCard from '../components/LimitedDealCard';
 import { Icon } from '../components/Icons';
 import { SectionHeading } from '../components/Common';
 import { siteAssets } from '../data/siteAssets';
+import { useStore } from '../context/StoreContext';
 
 const categoryOrder = ['water', 'coffee', 'stationery', 'household', 'sweets'];
 
@@ -31,6 +33,10 @@ function pad(value) {
 }
 
 export default function HomePage() {
+  const { addToCart } = useStore();
+  const heroProducts = useMemo(() => [products[0], products[10], products[4], products[13], products[6]].filter(Boolean), []);
+  const [heroSlide, setHeroSlide] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
   const [dealSeconds, setDealSeconds] = useState((20 * 24 * 60 * 60) + (17 * 60 * 60) + (29 * 60) + 57);
 
   useEffect(() => {
@@ -40,6 +46,14 @@ export default function HomePage() {
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (heroPaused || heroProducts.length < 2) return undefined;
+    const slider = window.setInterval(() => {
+      setHeroSlide((current) => (current + 1) % heroProducts.length);
+    }, 4500);
+    return () => window.clearInterval(slider);
+  }, [heroPaused, heroProducts.length]);
+
   const dealTime = useMemo(() => {
     const days = Math.floor(dealSeconds / 86400);
     const hours = Math.floor((dealSeconds % 86400) / 3600);
@@ -47,6 +61,14 @@ export default function HomePage() {
     const seconds = dealSeconds % 60;
     return { days: pad(days), hours: pad(hours), minutes: pad(minutes), seconds: pad(seconds) };
   }, [dealSeconds]);
+
+  const activeHeroProduct = heroProducts[heroSlide] || heroProducts[0];
+
+  const goToHeroSlide = (index) => {
+    const total = heroProducts.length;
+    if (!total) return;
+    setHeroSlide((index + total) % total);
+  };
 
   const categoryItems = categoryOrder.map((slug) => categories.find((c) => c.slug === slug)).filter(Boolean);
   const featured = [products[0], products[10], products[4], products[13], products[14], products[6], products[8], products[17]].filter(Boolean);
@@ -58,20 +80,77 @@ export default function HomePage() {
     <div className="fig-home">
       <section className="fig-hero-section">
         <div className="container">
-          <div className="fig-hero">
-            <div className="fig-hero-info">
+          <div
+            className="fig-hero fig-hero-premium"
+            onMouseEnter={() => setHeroPaused(true)}
+            onMouseLeave={() => setHeroPaused(false)}
+          >
+            <div className="fig-hero-copy-premium">
               <small>ԱՌԱՔՈՒՄ · ԳՐԱՍԵՆՅԱԿ · ԱՄԵՆ ՕՐ</small>
-              <strong>Ամեն ինչ գրասենյակի համար՝ մեկ պատվերով</strong>
-              <Link to="/shop">Գնել հիմա <Icon name="arrow" size={13}/></Link>
+              <h1>Ամեն ինչ գրասենյակի համար՝ մեկ պատվերով</h1>
+              <p>Ջուր, սուրճ, գրենական և ամենօրյա անհրաժեշտ ապրանքներ՝ արագ, հարմար և վստահելի առաքմամբ։</p>
+
+              <div className="fig-hero-actions-premium">
+                <Link className="fig-hero-primary" to="/shop">Գնել հիմա <Icon name="arrow" size={15}/></Link>
+                <Link className="fig-hero-secondary" to="/shop">Տեսնել կատեգորիաները</Link>
+              </div>
+
+              <div className="fig-hero-trust">
+                <span><Icon name="check" size={14}/> Արագ առաքում</span>
+                <span><Icon name="check" size={14}/> Կորպորատիվ պատվերներ</span>
+                <span><Icon name="check" size={14}/> Հուսալի սպասարկում</span>
+              </div>
             </div>
 
-            <Link to="/product/aparan-water-18-9" className="fig-hero-product">
-              <div className="fig-hero-product-image">
-                <img src={siteAssets.category.water} alt="Ապարան ջուր 18,9 լ"/>
+            {activeHeroProduct && (
+              <div className="fig-hero-slider" aria-roledescription="carousel" aria-label="Առաջարկվող ապրանքներ">
+                <div className="fig-hero-slider-top">
+                  <span className="fig-hero-slider-badge">Առաջարկվող</span>
+                  <div className="fig-hero-slider-nav">
+                    <button type="button" onClick={() => goToHeroSlide(heroSlide - 1)} aria-label="Նախորդ ապրանքը">
+                      <Icon name="arrow" size={16}/>
+                    </button>
+                    <button type="button" onClick={() => goToHeroSlide(heroSlide + 1)} aria-label="Հաջորդ ապրանքը">
+                      <Icon name="arrow" size={16}/>
+                    </button>
+                  </div>
+                </div>
+
+                <Link className="fig-hero-slider-image" to={`/product/${activeHeroProduct.slug}`}>
+                  <ProductVisual type={activeHeroProduct.visual} alt={activeHeroProduct.name}/>
+                </Link>
+
+                <div className="fig-hero-slider-copy">
+                  <Link className="fig-hero-slider-title" to={`/product/${activeHeroProduct.slug}`}>{activeHeroProduct.name}</Link>
+                  <div className="fig-hero-slider-price">
+                    <strong>{formatPrice(activeHeroProduct.price)}</strong>
+                    {activeHeroProduct.oldPrice && <del>{formatPrice(activeHeroProduct.oldPrice)}</del>}
+                  </div>
+                  <button
+                    type="button"
+                    className="fig-hero-slider-add"
+                    disabled={activeHeroProduct.stock === 0}
+                    onClick={() => addToCart(activeHeroProduct, activeHeroProduct.minQty || 1)}
+                  >
+                    <Icon name="cart" size={15}/>
+                    {activeHeroProduct.stock === 0 ? 'Սպառված է' : 'Ավելացնել զամբյուղ'}
+                  </button>
+                </div>
+
+                <div className="fig-hero-slider-dots" role="tablist" aria-label="Սլայդերի էջեր">
+                  {heroProducts.map((product, index) => (
+                    <button
+                      key={product.id}
+                      type="button"
+                      className={index === heroSlide ? 'is-active' : ''}
+                      onClick={() => goToHeroSlide(index)}
+                      aria-label={`${index + 1}-րդ ապրանքը`}
+                      aria-current={index === heroSlide ? 'true' : undefined}
+                    />
+                  ))}
+                </div>
               </div>
-              <strong>Ապարան ջուր 18,9 լ</strong>
-              <span>1,800 ֏</span>
-            </Link>
+            )}
           </div>
         </div>
       </section>

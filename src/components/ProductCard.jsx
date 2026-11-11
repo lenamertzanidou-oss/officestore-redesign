@@ -8,14 +8,21 @@ export default function ProductCard({ product, compact = false }) {
   const { addToCart, wishlist, toggleWishlist } = useStore();
   const wished = wishlist.includes(product.id);
   const stockLevel = Math.max(2, Math.min(8, Math.ceil(product.stock / 8)));
+  const badgeLabel = product.badge || '';
+  const normalizedBadge = badgeLabel.toLocaleLowerCase('hy-AM');
+  const badgeTone = badgeLabel.includes('%') || normalizedBadge.includes('զեղչ') || normalizedBadge.includes('sale')
+    ? 'badge-sale'
+    : normalizedBadge.includes('նոր') || normalizedBadge.includes('new')
+      ? 'badge-new'
+      : 'badge-info';
 
   return (
     <article className={`product-card market-product-card ${compact ? 'product-card-compact' : ''}`}>
       <div className="product-media">
         <Link to={`/product/${product.slug}`} aria-label={product.name}><ProductVisual type={product.visual} alt={product.name}/></Link>
         <div className="product-badges">
-          {product.badge && <span className={`badge ${product.badge.includes('%') ? 'badge-sale' : ''}`}>{product.badge}</span>}
-          {product.stock === 0 && <span className="badge badge-muted">Առկա չէ</span>}
+          {product.badge && <span className={`badge ${badgeTone}`}>{product.badge}</span>}
+          {product.stock === 0 && <span className="badge badge-stockout">Առկա չէ</span>}
         </div>
         <button className={`wishlist-btn ${wished ? 'is-active' : ''}`} onClick={() => toggleWishlist(product.id)} aria-label={wished ? 'Հեռացնել ցանկից' : 'Ավելացնել ցանկին'}><Icon name="heart" size={16}/></button>
       </div>

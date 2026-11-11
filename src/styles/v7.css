@@ -336,3 +336,410 @@ main{background:var(--f7-bg)}
   .market-footer-grid{grid-template-columns:1fr}
   .footer-brand-col{grid-column:auto}
 }
+
+
+/* =========================================================
+   V7.1 — unified buttons, screenshot product cards, categories
+   ========================================================= */
+
+/* One CTA color across the commerce UI */
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.market-add-btn,
+.buy-btn,
+.checkout-btn,
+.search-submit,
+.market-search button,
+.market-category-trigger,
+.coupon-box button,
+.fig-hero-info a,
+.fig-promo-card span,
+.fig-duo-card span,
+.fig-fresh-banner a,
+.text-link span,
+.category-callout .btn,
+.order-summary .btn,
+.checkout-summary .btn,
+.auth-card .btn,
+.empty-state .btn,
+.no-results .btn,
+.recent-order-bottom .btn,
+.quick-actions .btn{
+  background:#0B7499 !important;
+  border-color:#0B7499 !important;
+  color:#fff !important;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-ghost:hover,
+.market-add-btn:hover,
+.buy-btn:hover,
+.checkout-btn:hover,
+.search-submit:hover,
+.market-search button:hover,
+.market-category-trigger:hover,
+.coupon-box button:hover,
+.fig-hero-info a:hover,
+.fig-promo-card span:hover,
+.fig-duo-card span:hover,
+.fig-fresh-banner a:hover{
+  background:#096889 !important;
+  border-color:#096889 !important;
+  color:#fff !important;
+}
+
+/* Keep icon-only / selection controls visually light */
+.icon-btn,
+.wishlist-btn,
+.market-filter-pills button,
+.delivery-choice button,
+.payment-list button,
+.account-nav button,
+.quantity button,
+.auth-tabs button{
+  background:#fff;
+  color:var(--f7-ink);
+}
+.market-filter-pills button.is-active,
+.auth-tabs button.is-active{
+  color:#0B7499;
+  border-color:#0B7499;
+}
+
+/* Product cards — proportions matched to the supplied screenshot */
+.fig-product-grid,
+.product-grid-shop,
+.product-grid-4{
+  gap:14px;
+}
+
+.market-product-card{
+  border:0;
+  border-radius:16px;
+  background:#fff;
+  overflow:hidden;
+  min-height:410px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 1px 0 rgba(17,25,24,.02);
+}
+
+.market-product-card:hover{
+  transform:translateY(-3px);
+  border-color:transparent;
+  box-shadow:0 12px 30px rgba(11,116,153,.08);
+}
+
+.market-product-card .product-media{
+  height:265px;
+  flex:0 0 265px;
+  background:#fbfbfb;
+  border-radius:16px 16px 0 0;
+}
+
+.market-product-card .product-visual{
+  height:100%;
+}
+
+.market-product-card .product-visual img{
+  width:76%;
+  height:76%;
+  object-fit:contain;
+  object-position:center;
+  mix-blend-mode:multiply;
+}
+
+.market-product-card .wishlist-btn{
+  width:30px;
+  height:30px;
+  top:10px;
+  right:10px;
+  border:1px solid #dfe3e2;
+  background:#fff;
+  color:#35423f;
+}
+
+.market-product-card .product-card-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:13px 12px 12px;
+}
+
+.market-product-card .product-title{
+  font-size:.84rem;
+  line-height:1.38;
+  min-height:38px;
+  font-weight:650;
+  color:#161d1b;
+}
+
+.market-product-card .product-rating-row{
+  order:2;
+  margin:5px 0 0;
+  height:18px;
+}
+
+.market-product-card .product-title{order:1}
+.market-product-card .product-meta{order:3}
+.market-product-card .price-row{order:4}
+.market-product-card .stock-meter{order:5}
+.market-product-card .market-add-btn{order:6}
+
+.market-product-card .product-rating-row span{
+  color:#f1b900;
+  font-size:.68rem;
+  letter-spacing:.04em;
+}
+
+.market-product-card .product-rating-row small{
+  color:#727b78;
+  font-size:.62rem;
+}
+
+.market-product-card .product-meta{
+  margin-top:2px;
+  font-size:.65rem;
+  color:#7f8784;
+}
+
+.market-product-card .price-row{
+  margin:6px 0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.market-product-card .price-row strong{
+  color:#18211f;
+  font-size:.88rem;
+  font-weight:780;
+}
+
+.market-product-card .price-row del{
+  margin-left:auto;
+  color:#a5adaa;
+  font-size:.64rem;
+}
+
+.market-product-card .market-add-btn{
+  width:100%;
+  min-height:34px;
+  height:34px;
+  margin-top:auto;
+  border-radius:999px;
+  font-size:.67rem;
+  font-weight:700;
+  letter-spacing:0;
+}
+
+/* Compact horizontal cards keep their horizontal layout */
+.fig-horizontal-grid .market-product-card{
+  min-height:170px;
+  display:grid;
+  grid-template-columns:36% 64%;
+  border-radius:12px;
+}
+.fig-horizontal-grid .market-product-card .product-media{
+  height:100%;
+  min-height:170px;
+  flex:auto;
+  border-radius:12px 0 0 12px;
+}
+.fig-horizontal-grid .market-product-card .product-card-body{
+  padding:12px 13px;
+}
+.fig-horizontal-grid .market-product-card .product-title{
+  min-height:auto;
+}
+
+/* Category block — cleaner and more cohesive with the site */
+.fig-categories-section{
+  background:#fff;
+  padding-top:36px;
+  padding-bottom:42px;
+}
+
+.fig-category-grid{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+}
+
+.fig-category-card{
+  display:block;
+  min-width:0;
+  text-align:center;
+  padding:0 0 6px;
+  border-radius:12px;
+  transition:transform .18s ease;
+}
+
+.fig-category-card:hover{
+  transform:translateY(-3px);
+}
+
+.fig-category-image{
+  position:relative;
+  height:182px;
+  margin-bottom:12px;
+  border-radius:9px;
+  background:#eeeeee;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.fig-category-image::before{
+  content:"";
+  position:absolute;
+  width:132px;
+  height:132px;
+  border-radius:50%;
+  background:#f8f6f2;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+.fig-category-image img{
+  position:relative;
+  z-index:1;
+  width:76%;
+  height:76%;
+  object-fit:contain;
+  object-position:center;
+  mix-blend-mode:multiply;
+  transition:transform .22s ease;
+}
+
+.fig-category-card:hover .fig-category-image img{
+  transform:scale(1.035);
+}
+
+.fig-category-card strong{
+  display:block;
+  font-size:.85rem;
+  font-weight:750;
+  line-height:1.35;
+  color:#17201e;
+  margin-bottom:3px;
+}
+
+.fig-category-card span{
+  display:block;
+  margin:0;
+  font-size:.68rem;
+  color:#8a918f;
+  line-height:1.4;
+}
+
+/* Section spacing around cards */
+.fig-deals-section,
+.fig-weekly-section{
+  padding-top:42px;
+  padding-bottom:46px;
+  background:#f6f6f6;
+}
+
+/* Consistent blue focus/active accents */
+a:hover,
+.text-link:hover{
+  color:#0B7499;
+}
+.price-range{accent-color:#0B7499}
+.filter-panel button.is-active,
+.account-nav button.is-active{
+  color:#0B7499;
+}
+.product-tabs button.is-active,
+.checkout-step.is-active,
+.account-nav a.is-active{
+  color:#0B7499;
+  border-color:#0B7499;
+}
+
+/* Responsive card proportions */
+@media (max-width:1000px){
+  .market-product-card{
+    min-height:380px;
+  }
+  .market-product-card .product-media{
+    height:235px;
+    flex-basis:235px;
+  }
+  .fig-category-image{
+    height:160px;
+  }
+  .fig-category-image::before{
+    width:116px;
+    height:116px;
+  }
+}
+
+@media (max-width:760px){
+  .fig-product-grid,
+  .product-grid-shop,
+  .product-grid-4{
+    gap:8px;
+  }
+  .market-product-card{
+    min-height:330px;
+    border-radius:13px;
+  }
+  .market-product-card .product-media{
+    height:195px;
+    flex-basis:195px;
+    border-radius:13px 13px 0 0;
+  }
+  .market-product-card .product-card-body{
+    padding:9px;
+  }
+  .market-product-card .product-title{
+    font-size:.76rem;
+    min-height:36px;
+  }
+  .market-product-card .market-add-btn{
+    min-height:31px;
+    height:31px;
+    font-size:.61rem;
+  }
+  .fig-category-card{
+    min-width:145px;
+  }
+  .fig-category-image{
+    height:128px;
+  }
+  .fig-category-image::before{
+    width:92px;
+    height:92px;
+  }
+}
+
+@media (max-width:520px){
+  .market-product-card{
+    min-height:302px;
+  }
+  .market-product-card .product-media{
+    height:170px;
+    flex-basis:170px;
+  }
+  .market-product-card .product-title{
+    font-size:.72rem;
+  }
+  .market-product-card .price-row strong{
+    font-size:.8rem;
+  }
+  .fig-category-card{
+    min-width:128px;
+  }
+  .fig-category-image{
+    height:112px;
+  }
+  .fig-category-image::before{
+    width:82px;
+    height:82px;
+  }
+}

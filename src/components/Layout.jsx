@@ -4,7 +4,7 @@ import { Icon } from './Icons';
 import { categories, products } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 import { siteAssets } from '../data/siteAssets';
-import { brandLogo } from '../data/brand';
+import { brandLogo, footerBrandLogo } from '../data/brand';
 
 const nav = [
   ['/shop', 'Բոլոր ապրանքները'],
@@ -92,7 +92,7 @@ export default function Layout({ children }) {
         <div className="container market-footer-word">OfficeStore</div>
         <div className="container footer-grid market-footer-grid">
           <div className="footer-brand-col">
-            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={brandLogo} alt="OfficeStore"/></Link>
+            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={footerBrandLogo} alt="OfficeStore"/></Link>
             <p>Ամենօրյա գրասենյակային գնումներ՝ պարզ, արագ և կանխատեսելի փորձով։</p>
             <div className="footer-social-pills"><span>Instagram</span><span>Facebook</span><span>LinkedIn</span></div>
           </div>

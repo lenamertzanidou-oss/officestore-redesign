@@ -1510,3 +1510,9 @@ textarea:focus-visible{
     height:16px!important;
   }
 }
+
+
+/* V8.4 — remove stock meter bars site-wide */
+.stock-meter{
+  display:none !important;
+}

@@ -24,6 +24,30 @@ export function Breadcrumbs({ items = [] }) {
   );
 }
 
+export function OrderProgress({ step = 1 }) {
+  const steps = ['Զամբյուղ', 'Վճարում', 'Հաստատում'];
+
+  return (
+    <div className="order-flow" aria-label="Պատվերի քայլեր">
+      {steps.map((label, index) => {
+        const number = index + 1;
+        const isDone = number < step;
+        const isActive = number === step;
+
+        return (
+          <div className="order-flow-part" key={label}>
+            <div className={`order-flow-step ${isDone ? 'is-done' : ''} ${isActive ? 'is-active' : ''}`} aria-current={isActive ? 'step' : undefined}>
+              <span className="order-flow-number">{isDone ? <Icon name="check" size={12}/> : number}</span>
+              <span>{label}</span>
+            </div>
+            {index < steps.length - 1 && <span className={`order-flow-line ${number < step ? 'is-done' : ''}`} aria-hidden="true"/>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Quantity({ value, onChange, min = 1 }) {
   return (
     <div className="quantity" role="group" aria-label="Քանակ">

@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Common';
 import { Icon } from '../components/Icons';
 
+const PROFILE_STORAGE_KEY = 'officestore-demo-profile';
+
+function loadStoredProfile() {
+  if (typeof window === 'undefined') return null;
+  try {
+    return JSON.parse(window.localStorage.getItem(PROFILE_STORAGE_KEY) || 'null');
+  } catch {
+    return null;
+  }
+}
+
+function saveStoredProfile(profile) {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+}
+
 function GoogleMark() {
   return (
     <svg className="google-mark" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -14,66 +30,207 @@ function GoogleMark() {
   );
 }
 
+function PersonalDashboard({ onLogout, profile }) {
+  const name = profile?.firstName ? `, ${profile.firstName}` : '';
+
+  return (
+    <div className="container account-dashboard">
+      <Breadcrumbs items={[{label:'Իմ էջը'}]}/>
+      <div className="dashboard-head">
+        <div>
+          <div className="eyebrow">Իմ OfficeStore</div>
+          <h1>Բարի վերադարձ{name} 👋</h1>
+          <p>Կառավարեք պատվերները, հասցեները և նախընտրած ապրանքները մեկ տեղում։</p>
+        </div>
+        <button className="btn btn-secondary" onClick={onLogout}>
+          <Icon name="logout" size={17}/> Դուրս գալ
+        </button>
+      </div>
+
+      <div className="account-dashboard-grid">
+        <aside className="account-nav">
+          <button className="is-active"><Icon name="grid"/> Ամփոփում</button>
+          <button><Icon name="package"/> Պատվերներ <span>12</span></button>
+          <button><Icon name="heart"/> Նախընտրելիներ</button>
+          <button><Icon name="location"/> Հասցեներ</button>
+          <button><Icon name="user"/> Հաշվի տվյալներ</button>
+        </aside>
+
+        <main className="account-main">
+          <div className="account-stat-grid">
+            <div><small>Վերջին 30 օրը</small><strong>48,700 ֏</strong><span>Գնումներ</span></div>
+            <div><small>Հաջող առաքումներ</small><strong>4</strong><span>Պատվեր</span></div>
+            <div><small>Պահպանված</small><strong>8</strong><span>Ապրանք</span></div>
+          </div>
+
+          <section className="recent-order">
+            <div className="section-mini-head">
+              <div><h2>Վերջին պատվերը</h2><span>#OS-1042 · 5 ապրանք</span></div>
+              <span className="status-pill">Առաքված է</span>
+            </div>
+            <div className="recent-order-items"><span>A4</span><span>💧</span><span>☕</span><span>+2</span></div>
+            <div className="recent-order-bottom">
+              <strong>26,480 ֏</strong>
+              <button className="btn btn-primary">Կրկնել պատվերը</button>
+            </div>
+          </section>
+
+          <section className="quick-actions">
+            <h2>Արագ գործողություններ</h2>
+            <div>
+              <Link to="/shop"><Icon name="search"/><span><strong>Գտնել ապրանք</strong><small>Որոնել ամբողջ կատալոգում</small></span><Icon name="arrow"/></Link>
+              <Link to="/delivery"><Icon name="truck"/><span><strong>Առաքման պայմաններ</strong><small>Ժամկետներ և գներ</small></span><Icon name="arrow"/></Link>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+function CorporateDashboard({ onLogout, profile }) {
+  const companyName = profile?.organization || 'Կորպորատիվ հաշիվ';
+  const contactName = [profile?.firstName, profile?.lastName].filter(Boolean).join(' ') || 'Կոնտակտային անձ';
+
+  return (
+    <div className="container account-dashboard corporate-dashboard">
+      <Breadcrumbs items={[{label:'Իմ էջը'}, {label:'Կորպորատիվ հաշիվ'}]}/>
+
+      <div className="dashboard-head corporate-dashboard-head">
+        <div>
+          <div className="eyebrow">OfficeStore Business</div>
+          <h1>{companyName}</h1>
+          <p>{profile?.taxId ? `ՀՎՀՀ՝ ${profile.taxId} · ` : ''}Կազմակերպության գնումների և առաքումների կառավարում։</p>
+        </div>
+        <button className="btn btn-secondary" onClick={onLogout}>
+          <Icon name="logout" size={17}/> Դուրս գալ
+        </button>
+      </div>
+
+      <div className="account-dashboard-grid corporate-dashboard-grid">
+        <aside className="account-nav corporate-account-nav">
+          <button className="is-active"><Icon name="grid"/> Ամփոփում</button>
+          <button><Icon name="package"/> Պատվերներ <span>0</span></button>
+          <button><Icon name="building"/> Կազմակերպություն</button>
+          <button><Icon name="location"/> Հասցեներ</button>
+          <button><Icon name="user"/> Կոնտակտային անձ</button>
+        </aside>
+
+        <main className="account-main corporate-account-main">
+          <div className="account-stat-grid corporate-stat-grid">
+            <div><small>Այս ամսվա գնումներ</small><strong>0 ֏</strong><span>Նոր հաշիվ</span></div>
+            <div><small>Պատվերներ</small><strong>0</strong><span>Դեռ չկան</span></div>
+            <div><small>Առաքման հասցեներ</small><strong>{profile?.legalAddress ? '1' : '0'}</strong><span>Պահպանված</span></div>
+          </div>
+
+          <section className="corporate-profile-card">
+            <div className="section-mini-head">
+              <div>
+                <span className="corporate-section-kicker">Կազմակերպության պրոֆիլ</span>
+                <h2>{companyName}</h2>
+              </div>
+              <span className="corporate-account-badge"><Icon name="building" size={14}/> Business</span>
+            </div>
+
+            <div className="corporate-profile-grid">
+              <div><small>ՀՎՀՀ</small><strong>{profile?.taxId || '—'}</strong></div>
+              <div><small>Իրավաբանական հասցե</small><strong>{profile?.legalAddress || '—'}</strong></div>
+              <div><small>Կոնտակտային անձ</small><strong>{contactName}</strong></div>
+              <div><small>Հեռախոս</small><strong>{profile?.phone || '—'}</strong></div>
+              <div className="corporate-profile-wide"><small>Կորպորատիվ էլ․ հասցե</small><strong>{profile?.email || '—'}</strong></div>
+            </div>
+          </section>
+
+          <section className="corporate-empty-orders">
+            <div className="corporate-empty-icon"><Icon name="package" size={22}/></div>
+            <div>
+              <h2>Դեռ պատվերներ չկան</h2>
+              <p>Սկսեք առաջին կորպորատիվ պատվերը կատալոգից։ Պատվերների պատմությունն այստեղ ավտոմատ կկազմակերպվի։</p>
+            </div>
+            <Link className="btn btn-primary" to="/shop">Բացել կատալոգը <Icon name="arrow" size={15}/></Link>
+          </section>
+
+          <section className="quick-actions corporate-quick-actions">
+            <h2>Արագ գործողություններ</h2>
+            <div>
+              <Link to="/shop"><Icon name="search"/><span><strong>Նոր պատվեր</strong><small>Ընտրել ապրանքներ կատալոգից</small></span><Icon name="arrow"/></Link>
+              <Link to="/delivery"><Icon name="truck"/><span><strong>Առաքման պայմաններ</strong><small>Ժամկետներ և գոտիներ</small></span><Icon name="arrow"/></Link>
+              <Link to="/contact"><Icon name="phone"/><span><strong>Կապ մեզ հետ</strong><small>Կորպորատիվ հարցերի համար</small></span><Icon name="arrow"/></Link>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
+
 export default function AccountPage() {
   const [mode, setMode] = useState('login');
   const [demoLogged, setDemoLogged] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [registerType, setRegisterType] = useState('personal');
+  const [accountProfile, setAccountProfile] = useState(() => loadStoredProfile());
+  const [loggedAccountType, setLoggedAccountType] = useState(null);
+
+  const logout = () => {
+    setDemoLogged(false);
+    setLoggedAccountType(null);
+  };
+
+  const login = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const loginValue = String(data.get('login') || '').trim().toLowerCase();
+    const stored = loadStoredProfile();
+
+    if (stored?.email && stored.email.toLowerCase() === loginValue) {
+      setAccountProfile(stored);
+      setLoggedAccountType(stored.type || 'personal');
+    } else {
+      setLoggedAccountType('personal');
+    }
+
+    setDemoLogged(true);
+  };
+
+  const register = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
+    const profile = registerType === 'corporate'
+      ? {
+          type: 'corporate',
+          organization: String(data.get('organization') || '').trim(),
+          taxId: String(data.get('taxId') || '').trim(),
+          legalAddress: String(data.get('legalAddress') || '').trim(),
+          firstName: String(data.get('firstName') || '').trim(),
+          lastName: String(data.get('lastName') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+        }
+      : {
+          type: 'personal',
+          firstName: String(data.get('firstName') || '').trim(),
+          lastName: String(data.get('lastName') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+        };
+
+    saveStoredProfile(profile);
+    setAccountProfile(profile);
+    setLoggedAccountType(profile.type);
+    setDemoLogged(true);
+  };
+
+  const googleLogin = () => {
+    setLoggedAccountType('personal');
+    setDemoLogged(true);
+  };
 
   if (demoLogged) {
-    return (
-      <div className="container account-dashboard">
-        <Breadcrumbs items={[{label:'Իմ էջը'}]}/>
-        <div className="dashboard-head">
-          <div>
-            <div className="eyebrow">Իմ OfficeStore</div>
-            <h1>Բարի վերադարձ 👋</h1>
-            <p>Սա account dashboard-ի ցուցադրական վիճակն է։</p>
-          </div>
-          <button className="btn btn-secondary" onClick={() => setDemoLogged(false)}>
-            <Icon name="logout" size={17}/> Դուրս գալ demo-ից
-          </button>
-        </div>
-
-        <div className="account-dashboard-grid">
-          <aside className="account-nav">
-            <button className="is-active"><Icon name="grid"/> Ամփոփում</button>
-            <button><Icon name="package"/> Պատվերներ <span>12</span></button>
-            <button><Icon name="heart"/> Նախընտրելիներ</button>
-            <button><Icon name="location"/> Հասցեներ</button>
-            <button><Icon name="user"/> Հաշվի տվյալներ</button>
-          </aside>
-
-          <main className="account-main">
-            <div className="account-stat-grid">
-              <div><small>Վերջին 30 օրը</small><strong>48,700 ֏</strong><span>Գնումներ</span></div>
-              <div><small>Հաջող առաքումներ</small><strong>4</strong><span>Պատվեր</span></div>
-              <div><small>Պահպանված</small><strong>8</strong><span>Ապրանք</span></div>
-            </div>
-
-            <section className="recent-order">
-              <div className="section-mini-head">
-                <div><h2>Վերջին պատվերը</h2><span>#OS-1042 · 5 ապրանք</span></div>
-                <span className="status-pill">Առաքված է</span>
-              </div>
-              <div className="recent-order-items"><span>A4</span><span>💧</span><span>☕</span><span>+2</span></div>
-              <div className="recent-order-bottom">
-                <strong>26,480 ֏</strong>
-                <button className="btn btn-primary">Կրկնել պատվերը</button>
-              </div>
-            </section>
-
-            <section className="quick-actions">
-              <h2>Արագ գործողություններ</h2>
-              <div>
-                <Link to="/shop"><Icon name="search"/><span><strong>Գտնել ապրանք</strong><small>Որոնել ամբողջ կատալոգում</small></span><Icon name="arrow"/></Link>
-                <Link to="/delivery"><Icon name="truck"/><span><strong>Առաքման պայմաններ</strong><small>Ժամկետներ և գներ</small></span><Icon name="arrow"/></Link>
-              </div>
-            </section>
-          </main>
-        </div>
-      </div>
-    );
+    return loggedAccountType === 'corporate'
+      ? <CorporateDashboard onLogout={logout} profile={accountProfile}/>
+      : <PersonalDashboard onLogout={logout} profile={accountProfile}/>;
   }
 
   return (
@@ -175,7 +332,11 @@ export default function AccountPage() {
 
             <div className="account-benefit-note">
               <Icon name="shield" size={16}/>
-              <span>{mode === 'register' && registerType === 'corporate' ? 'Կազմակերպության և կոնտակտային տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի, պատվերների ու սպասարկման համար։' : mode === 'register' ? 'Ձեր տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի ու պատվերների սպասարկման համար։' : 'Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։'}</span>
+              <span>{mode === 'register' && registerType === 'corporate'
+                ? 'Կազմակերպության և կոնտակտային տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի, պատվերների ու սպասարկման համար։'
+                : mode === 'register'
+                  ? 'Ձեր տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի ու պատվերների սպասարկման համար։'
+                  : 'Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։'}</span>
             </div>
           </section>
 
@@ -186,22 +347,22 @@ export default function AccountPage() {
             </div>
 
             {mode === 'login' ? (
-              <form className="form-stack account-form" onSubmit={e => {e.preventDefault(); setDemoLogged(true);}}>
+              <form className="form-stack account-form" onSubmit={login}>
                 <header className="auth-head">
                   <span className="auth-kicker">Վերադարձող հաճախորդ</span>
                   <h2>Բարի վերադարձ</h2>
-                  <p>Մուտք գործեք՝ պատվերները, հասցեները և wishlist-ը կառավարելու համար։</p>
+                  <p>Մուտք գործեք ձեր էլ․ հասցեով և գաղտնաբառով։ Եթե հասցեն կապված է կորպորատիվ պրոֆիլի հետ, կբացվի Business dashboard-ը։</p>
                 </header>
 
                 <label>
-                  <span>Էլ․ հասցե կամ օգտվողի անուն</span>
-                  <input required type="text" autoComplete="username" placeholder="name@example.com"/>
+                  <span>Էլ․ հասցե</span>
+                  <input name="login" required type="email" autoComplete="username" placeholder="name@example.com"/>
                 </label>
 
                 <label>
                   <span>Գաղտնաբառ</span>
                   <div className="input-icon-right">
-                    <input required type={showPassword ? 'text' : 'password'} autoComplete="current-password" placeholder="••••••••"/>
+                    <input name="password" required type={showPassword ? 'text' : 'password'} autoComplete="current-password" placeholder="••••••••"/>
                     <button type="button" className="password-toggle" onClick={() => setShowPassword(v => !v)} aria-label={showPassword ? 'Թաքցնել գաղտնաբառը' : 'Ցույց տալ գաղտնաբառը'}>
                       <Icon name="eye" size={17}/>
                     </button>
@@ -217,16 +378,16 @@ export default function AccountPage() {
 
                 <div className="auth-divider"><span>կամ շարունակել</span></div>
 
-                <button type="button" className="google-btn" onClick={() => setDemoLogged(true)}>
+                <button type="button" className="google-btn" onClick={googleLogin}>
                   <GoogleMark/>
                   <span>Շարունակել Google-ով</span>
                 </button>
 
                 <p className="auth-secure-note"><Icon name="lock" size={13}/> Անվտանգ մուտք՝ ձեր տվյալները պաշտպանված են։</p>
-                <button type="button" className="demo-login" onClick={() => setDemoLogged(true)}>Բացել dashboard demo-ն <Icon name="arrow" size={14}/></button>
+                <button type="button" className="demo-login" onClick={googleLogin}>Բացել անհատական dashboard demo-ն <Icon name="arrow" size={14}/></button>
               </form>
             ) : (
-              <form className="form-stack account-form" onSubmit={e => {e.preventDefault(); setDemoLogged(true);}}>
+              <form className="form-stack account-form" onSubmit={register}>
                 <header className="auth-head">
                   <span className="auth-kicker">{registerType === 'corporate' ? 'Կորպորատիվ հաճախորդ' : 'Նոր հաճախորդ'}</span>
                   <h2>{registerType === 'corporate' ? 'Ստեղծել բիզնես հաշիվ' : 'Ստեղծել հաշիվ'}</h2>
@@ -252,11 +413,11 @@ export default function AccountPage() {
                         <div><strong>Կազմակերպության տվյալներ</strong><small>Պարտադիր դաշտերը նշված են աստղանիշով</small></div>
                       </div>
 
-                      <label><span>Կազմակերպության անվանում *</span><input required autoComplete="organization" placeholder="Օր.՝ «ABC Group» ՍՊԸ"/></label>
+                      <label><span>Կազմակերպության անվանում *</span><input name="organization" required autoComplete="organization" placeholder="Օր.՝ «ABC Group» ՍՊԸ"/></label>
 
                       <div className="form-row">
-                        <label><span>ՀՎՀՀ *</span><input required inputMode="numeric" autoComplete="off" placeholder="Օր.՝ 01234567"/></label>
-                        <label><span>Իրավաբանական հասցե *</span><input required autoComplete="street-address" placeholder="Քաղաք, փողոց, շենք"/></label>
+                        <label><span>ՀՎՀՀ *</span><input name="taxId" required inputMode="numeric" autoComplete="off" placeholder="Օր.՝ 01234567"/></label>
+                        <label><span>Իրավաբանական հասցե *</span><input name="legalAddress" required autoComplete="street-address" placeholder="Քաղաք, փողոց, շենք"/></label>
                       </div>
                     </div>
 
@@ -267,27 +428,26 @@ export default function AccountPage() {
                       </div>
 
                       <div className="form-row">
-                        <label><span>Անուն *</span><input required autoComplete="given-name" placeholder="Անուն"/></label>
-                        <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
+                        <label><span>Անուն *</span><input name="firstName" required autoComplete="given-name" placeholder="Անուն"/></label>
+                        <label><span>Ազգանուն *</span><input name="lastName" required autoComplete="family-name" placeholder="Ազգանուն"/></label>
                       </div>
 
-                      <label><span>Հեռախոս *</span><input required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
-
-                      <label><span>Կորպորատիվ էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@company.am"/></label>
+                      <label><span>Հեռախոս *</span><input name="phone" required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
+                      <label><span>Կորպորատիվ էլ․ հասցե *</span><input name="email" required type="email" autoComplete="email" placeholder="name@company.am"/></label>
                     </div>
 
-                    <label><span>Գաղտնաբառ *</span><input required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
+                    <label><span>Գաղտնաբառ *</span><input name="password" required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
                   </>
                 ) : (
                   <>
                     <div className="form-row">
-                      <label><span>Անուն *</span><input required autoComplete="given-name" placeholder="Անուն"/></label>
-                      <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
+                      <label><span>Անուն *</span><input name="firstName" required autoComplete="given-name" placeholder="Անուն"/></label>
+                      <label><span>Ազգանուն *</span><input name="lastName" required autoComplete="family-name" placeholder="Ազգանուն"/></label>
                     </div>
 
-                    <label><span>Էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@example.com"/></label>
-                    <label><span>Հեռախոս</span><input type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
-                    <label><span>Գաղտնաբառ *</span><input required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
+                    <label><span>Էլ․ հասցե *</span><input name="email" required type="email" autoComplete="email" placeholder="name@example.com"/></label>
+                    <label><span>Հեռախոս</span><input name="phone" type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
+                    <label><span>Գաղտնաբառ *</span><input name="password" required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
                   </>
                 )}
 
@@ -303,7 +463,7 @@ export default function AccountPage() {
                 {registerType === 'personal' && (
                   <>
                     <div className="auth-divider"><span>կամ գրանցվել</span></div>
-                    <button type="button" className="google-btn" onClick={() => setDemoLogged(true)}>
+                    <button type="button" className="google-btn" onClick={googleLogin}>
                       <GoogleMark/>
                       <span>Շարունակել Google-ով</span>
                     </button>

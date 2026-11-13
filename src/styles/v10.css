@@ -271,7 +271,7 @@ h3{
 }
 
 /* Forms */
-.checkout-form label>span,
+.checkout-form label:not(.checkout-account-choice)>span,
 .form-stack label>span,
 .contact-form-card label>span,
 .filter-label{

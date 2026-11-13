@@ -1,0 +1,500 @@
+/* OfficeStore V10 — Mardoto typography system */
+
+@font-face{
+  font-family:"Mardoto";
+  src:url("https://raw.githubusercontent.com/vahanhovh/mardoto/master/fonts/ttf/Mardoto-Regular.ttf") format("truetype");
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Mardoto";
+  src:url("https://raw.githubusercontent.com/vahanhovh/mardoto/master/fonts/ttf/Mardoto-Medium.ttf") format("truetype");
+  font-style:normal;
+  font-weight:500;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Mardoto";
+  src:url("https://raw.githubusercontent.com/vahanhovh/mardoto/master/fonts/ttf/Mardoto-Bold.ttf") format("truetype");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Mardoto";
+  src:url("https://raw.githubusercontent.com/vahanhovh/mardoto/master/fonts/ttf/Mardoto-Black.ttf") format("truetype");
+  font-style:normal;
+  font-weight:900;
+  font-display:swap;
+}
+
+:root{
+  --font-ui:"Mardoto","Noto Sans Armenian",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+
+  --type-body:16px;
+  --type-small:13px;
+  --type-meta:12px;
+  --type-nav:14px;
+  --type-button:14px;
+  --type-card:15px;
+  --type-price:17px;
+  --type-h3:21px;
+  --type-h2:30px;
+  --type-h1:40px;
+  --type-hero:54px;
+}
+
+html{
+  font-size:16px;
+}
+
+body,
+button,
+input,
+select,
+textarea{
+  font-family:var(--font-ui)!important;
+  font-synthesis:none;
+}
+
+body{
+  font-size:var(--type-body);
+  line-height:1.6;
+  font-weight:400;
+  letter-spacing:0;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Headings */
+h1,h2,h3,h4,h5,h6,
+.section-heading h2,
+.page-hero h1,
+.category-hero h1,
+.fig-categories-section .section-heading h2,
+.limited-deals-heading h2{
+  font-family:var(--font-ui)!important;
+  color:var(--master-ink);
+  letter-spacing:-.018em!important;
+  text-wrap:balance;
+}
+
+h1,
+.page-hero h1,
+.category-hero h1{
+  font-size:clamp(2.25rem,3.4vw,var(--type-h1))!important;
+  line-height:1.13!important;
+  font-weight:700!important;
+}
+
+h2,
+.section-heading h2,
+.fig-categories-section .section-heading h2,
+.limited-deals-heading h2{
+  font-size:clamp(1.55rem,2.15vw,var(--type-h2))!important;
+  line-height:1.2!important;
+  font-weight:700!important;
+}
+
+h3{
+  font-size:var(--type-h3);
+  line-height:1.3;
+  font-weight:700;
+}
+
+/* Hero */
+.fig-hero-copy-premium h1{
+  max-width:650px;
+  font-size:clamp(2.8rem,4.2vw,var(--type-hero))!important;
+  line-height:1.08!important;
+  font-weight:700!important;
+  letter-spacing:-.025em!important;
+}
+
+.fig-hero-copy-premium>small{
+  font-size:12px!important;
+  line-height:1.4;
+  font-weight:500!important;
+  letter-spacing:.065em!important;
+}
+
+.fig-hero-copy-premium>p{
+  font-size:16px!important;
+  line-height:1.7!important;
+  font-weight:400;
+}
+
+.fig-hero-trust span{
+  font-size:13px!important;
+  line-height:1.4;
+  font-weight:500!important;
+}
+
+/* Navigation / header */
+.market-nav-row nav a,
+.market-category-trigger,
+.market-service-link,
+.market-action-link{
+  font-size:var(--type-nav)!important;
+  line-height:1.25;
+  font-weight:500!important;
+  letter-spacing:0!important;
+}
+
+.market-search input{
+  font-size:15px!important;
+  line-height:1.35;
+  font-weight:400;
+}
+
+.announcement-inner,
+.market-announcement{
+  font-size:12px!important;
+  line-height:1.35;
+  font-weight:500;
+}
+
+/* Buttons */
+.btn,
+.market-add-btn,
+.buy-btn,
+.checkout-btn,
+.search-submit,
+.fig-hero-primary,
+.fig-hero-secondary,
+.fig-hero-slider-add,
+.limited-deal-add,
+.fig-promo-card span,
+.fig-duo-card span,
+.fig-fresh-banner a{
+  font-family:var(--font-ui)!important;
+  font-size:var(--type-button)!important;
+  line-height:1!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+}
+
+.text-link{
+  font-size:14px!important;
+  line-height:1.25;
+  font-weight:500!important;
+}
+
+/* Category cards */
+.fig-category-content strong,
+.drawer-category-copy strong{
+  font-size:15px!important;
+  line-height:1.4!important;
+  font-weight:700!important;
+  letter-spacing:0!important;
+}
+
+.fig-category-content>div>span,
+.drawer-category-copy small{
+  font-size:12.5px!important;
+  line-height:1.4!important;
+  font-weight:400!important;
+}
+
+/* Product cards */
+.market-product-card .product-title,
+.product-title{
+  font-size:var(--type-card)!important;
+  line-height:1.45!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+}
+
+.market-product-card .product-meta,
+.product-meta{
+  font-size:12.5px!important;
+  line-height:1.45!important;
+  font-weight:400!important;
+}
+
+.market-product-card .product-rating-row small,
+.product-rating-row small{
+  font-size:12px!important;
+  line-height:1.3;
+}
+
+.market-product-card .price-row strong,
+.price-row strong{
+  font-size:var(--type-price)!important;
+  line-height:1.2!important;
+  font-weight:700!important;
+}
+
+.market-product-card .price-row del,
+.price-row del{
+  font-size:12.5px!important;
+  line-height:1.2;
+}
+
+/* Limited deal cards */
+.limited-deal-title{
+  font-size:16px!important;
+  line-height:1.4!important;
+  font-weight:500!important;
+}
+.limited-deal-rating small,
+.limited-deal-body p,
+.limited-deal-stock{
+  font-size:12.5px!important;
+  line-height:1.45!important;
+}
+.limited-deal-price strong{
+  font-size:17px!important;
+  font-weight:700!important;
+}
+
+/* Product detail */
+.product-detail-meta h1{
+  font-size:clamp(2rem,3vw,2.6rem)!important;
+  line-height:1.15!important;
+  font-weight:700!important;
+}
+.detail-description,
+.tab-panel{
+  font-size:15px!important;
+  line-height:1.7!important;
+}
+.detail-price strong{
+  font-size:28px!important;
+  font-weight:700!important;
+}
+.rating-row,
+.stock-line,
+.spec-list span,
+.clean-list li{
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+
+/* Forms */
+.checkout-form label>span,
+.form-stack label>span,
+.contact-form-card label>span,
+.filter-label{
+  font-size:13px!important;
+  line-height:1.4!important;
+  font-weight:500!important;
+}
+
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea,
+.form-stack input,
+.contact-form-card input,
+.contact-form-card textarea,
+.shop-toolbar select,
+.shop-search input{
+  font-family:var(--font-ui)!important;
+  font-size:15px!important;
+  line-height:1.45!important;
+  font-weight:400!important;
+}
+
+.result-count,
+.range-labels{
+  font-size:12.5px!important;
+  line-height:1.4!important;
+}
+
+/* Account */
+.account-benefit h1{
+  font-size:clamp(2.2rem,3.5vw,3rem)!important;
+  font-weight:700!important;
+  line-height:1.12!important;
+}
+.account-benefit>p,
+.form-stack p{
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+.account-nav button,
+.quick-actions strong,
+.recent-order strong{
+  font-size:14px!important;
+  line-height:1.4!important;
+  font-weight:500!important;
+}
+.quick-actions small,
+.recent-order small{
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+
+/* Drawer */
+.drawer-head-copy>div h2{
+  font-size:28px!important;
+  line-height:1.15!important;
+  font-weight:700!important;
+  letter-spacing:-.018em!important;
+}
+.drawer-head-copy>div p{
+  font-size:13px!important;
+  line-height:1.45!important;
+  font-weight:400!important;
+}
+
+/* Promo */
+.fig-promo-card h2{
+  font-size:32px!important;
+  line-height:1.12!important;
+  font-weight:700!important;
+}
+.fig-promo-card h3,
+.fig-duo-card h3{
+  font-size:21px!important;
+  line-height:1.28!important;
+  font-weight:700!important;
+}
+.fig-promo-card p,
+.fig-fresh-banner p{
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+
+/* Footer */
+.market-footer,
+.market-footer a,
+.market-footer span,
+.market-footer button{
+  font-family:var(--font-ui)!important;
+}
+
+.footer-brand-col p{
+  font-size:14px!important;
+  line-height:1.7!important;
+  font-weight:400!important;
+}
+
+.footer-column h3,
+.footer-contact-col h3{
+  font-size:16px!important;
+  line-height:1.3!important;
+  font-weight:700!important;
+}
+
+.footer-column a{
+  font-size:13.5px!important;
+  line-height:1.5!important;
+  font-weight:400!important;
+}
+
+.footer-contact-row small,
+.footer-payment-block>span{
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+
+.footer-contact-row strong{
+  font-size:13.5px!important;
+  line-height:1.4!important;
+  font-weight:500!important;
+}
+
+.footer-trust-item strong{
+  font-size:14px!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+}
+.footer-trust-item small{
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+
+.footer-bottom,
+.footer-bottom a,
+.footer-bottom>span{
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+/* Breadcrumbs and secondary UI */
+.breadcrumbs,
+.subcategory-strip a,
+.step-chip,
+.badge,
+.limited-deal-badge{
+  font-family:var(--font-ui)!important;
+}
+
+.breadcrumbs{
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+.subcategory-strip a{
+  font-size:13px!important;
+  line-height:1.3!important;
+  font-weight:500!important;
+}
+.step-chip{
+  font-size:12px!important;
+  line-height:1.3!important;
+  font-weight:500!important;
+}
+
+/* Keep badges compact but readable */
+.badge,
+.limited-deal-badge{
+  font-size:11.5px!important;
+  font-weight:700!important;
+  line-height:1!important;
+}
+
+/* Responsive type scale */
+@media (max-width:1000px){
+  :root{
+    --type-h2:28px;
+    --type-h1:36px;
+    --type-hero:48px;
+  }
+}
+
+@media (max-width:760px){
+  :root{
+    --type-body:15px;
+    --type-nav:13px;
+    --type-button:13.5px;
+    --type-card:14.5px;
+    --type-price:16px;
+    --type-h2:25px;
+    --type-h1:32px;
+    --type-hero:40px;
+  }
+
+  .fig-hero-copy-premium h1{
+    font-size:clamp(2.1rem,9vw,2.6rem)!important;
+  }
+
+  .fig-hero-copy-premium>p{
+    font-size:15px!important;
+  }
+
+  .footer-brand-col p{
+    font-size:13.5px!important;
+  }
+}
+
+@media (max-width:520px){
+  :root{
+    --type-body:15px;
+    --type-card:14px;
+    --type-h2:23px;
+    --type-h1:29px;
+    --type-hero:35px;
+  }
+
+  .section-heading h2,
+  .fig-categories-section .section-heading h2,
+  .limited-deals-heading h2{
+    font-size:23px!important;
+  }
+
+  .drawer-head-copy>div h2{
+    font-size:24px!important;
+  }
+}

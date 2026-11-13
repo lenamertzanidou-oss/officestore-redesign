@@ -602,3 +602,153 @@
     width:100%;
   }
 }
+
+
+/* V11.1 — compact desktop filters: no inner scroll */
+@media (min-width:901px){
+  .shop-layout{
+    grid-template-columns:250px minmax(0,1fr)!important;
+    gap:20px!important;
+  }
+
+  .filter-panel{
+    top:116px!important;
+    max-height:none!important;
+    overflow:visible!important;
+    border-radius:16px!important;
+  }
+
+  .filter-panel-head{
+    position:static!important;
+    padding:15px 15px 12px!important;
+  }
+
+  .filter-kicker,
+  .filter-panel-head p{
+    display:none!important;
+  }
+
+  .filter-title-row h2{
+    font-size:18px!important;
+  }
+
+  .filter-count-badge{
+    min-width:20px;
+    height:20px;
+    font-size:10.5px;
+  }
+
+  .filter-group{
+    padding:13px 13px 14px!important;
+  }
+
+  .filter-section-head{
+    margin-bottom:8px!important;
+  }
+
+  .filter-section-head strong{
+    font-size:13px!important;
+  }
+
+  .filter-section-icon{
+    width:27px;
+    height:27px;
+    border-radius:8px;
+  }
+
+  .filter-category-group{
+    gap:3px!important;
+  }
+
+  .filter-category-row{
+    min-height:36px!important;
+    grid-template-columns:26px minmax(0,1fr) auto 18px!important;
+    gap:7px!important;
+    padding:4px 6px!important;
+    border-radius:9px!important;
+  }
+
+  .filter-category-icon{
+    width:26px!important;
+    height:26px!important;
+    border-radius:7px!important;
+  }
+
+  .filter-category-icon svg{
+    width:15px!important;
+    height:15px!important;
+  }
+
+  .filter-category-name{
+    font-size:12.5px!important;
+  }
+
+  .filter-category-row small{
+    font-size:10.5px!important;
+  }
+
+  .filter-category-state{
+    width:18px!important;
+    height:18px!important;
+  }
+
+  .filter-price-value{
+    margin:2px 0 10px!important;
+    padding:9px 10px!important;
+    border-radius:10px!important;
+  }
+
+  .filter-price-value span{
+    font-size:11px!important;
+  }
+
+  .filter-price-value strong{
+    font-size:15px!important;
+  }
+
+  .range-labels{
+    margin-top:7px!important;
+    font-size:10.5px!important;
+  }
+
+  .filter-price-presets{
+    gap:5px!important;
+    margin-top:10px!important;
+  }
+
+  .filter-price-presets button{
+    min-height:28px!important;
+    padding:0 5px!important;
+    font-size:10.5px!important;
+    border-radius:8px!important;
+  }
+
+  .filter-chip-grid{
+    gap:5px!important;
+  }
+
+  .filter-chip-grid button{
+    min-height:28px!important;
+    padding:0 8px!important;
+    font-size:10.8px!important;
+  }
+
+  .filter-panel-actions{
+    position:static!important;
+    padding:10px 13px 13px!important;
+  }
+
+  .filter-clear-btn{
+    min-height:34px!important;
+    font-size:11.5px!important;
+  }
+}
+
+/* preserve scrolling only for mobile filter sheet */
+@media (max-width:900px){
+  .filter-panel{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    max-height:100dvh!important;
+  }
+}

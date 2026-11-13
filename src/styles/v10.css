@@ -71,7 +71,6 @@ body{
 h1,h2,h3,h4,h5,h6,
 .section-heading h2,
 .page-hero h1,
-.category-hero h1,
 .fig-categories-section .section-heading h2,
 .limited-deals-heading h2{
   font-family:var(--font-ui)!important;
@@ -81,8 +80,7 @@ h1,h2,h3,h4,h5,h6,
 }
 
 h1,
-.page-hero h1,
-.category-hero h1{
+.page-hero h1{
   font-size:clamp(2.25rem,3.4vw,var(--type-h1))!important;
   line-height:1.13!important;
   font-weight:700!important;

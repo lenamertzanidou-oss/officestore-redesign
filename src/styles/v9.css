@@ -607,16 +607,32 @@ textarea:focus-visible{
 }
 
 
-/* Product media placeholder state — imagery intentionally removed */
-.product-visual-empty{
+/* Shared product placeholder image */
+.product-visual-placeholder{
   width:100%!important;
   height:100%!important;
   min-height:inherit;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
   border:0!important;
   border-radius:inherit!important;
-  background:#F4F5F7!important;
+  background:#F2F3F5!important;
   box-shadow:none!important;
   transform:none!important;
+}
+
+.product-placeholder-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  mix-blend-mode:normal!important;
+  transform:none!important;
+  filter:none!important;
 }
 
 .market-product-card .product-media,
@@ -625,9 +641,30 @@ textarea:focus-visible{
 .checkout-line-visual,
 .limited-deal-media,
 .fig-hero-slider-image{
-  background:#F4F5F7!important;
+  background:#F2F3F5!important;
 }
 
-.product-card:hover .product-visual-empty{
+.market-product-card .product-placeholder-image{
+  padding:12px!important;
+}
+
+.product-visual-detail .product-placeholder-image{
+  padding:28px!important;
+}
+
+.cart-line-image .product-placeholder-image,
+.checkout-line-visual .product-placeholder-image{
+  padding:5px!important;
+}
+
+.gallery-thumbs .product-placeholder-image{
+  padding:4px!important;
+}
+
+.fig-hero-slider-image .product-placeholder-image{
+  padding:16px!important;
+}
+
+.product-card:hover .product-visual-placeholder{
   transform:none!important;
 }

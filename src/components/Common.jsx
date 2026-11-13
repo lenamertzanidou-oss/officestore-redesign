@@ -50,9 +50,9 @@ export function EmptyState({ title, text, action = 'Դիտել ապրանքնե�
   return <div className="empty-state"><div className="empty-icon"><Icon name={icon} size={30}/></div><h2>{title}</h2><p>{text}</p><Link className="btn btn-primary" to={to}>{action}<Icon name="arrow" size={18}/></Link></div>;
 }
 
-export function PageHero({ eyebrow, title, text, children }) {
+export function PageHero({ eyebrow, title, text, children, variant = 'default' }) {
   return (
-    <section className="page-hero">
+    <section className={`page-hero page-hero--${variant}`}>
       <div className="container page-hero-inner">
         <div className="page-hero-copy">
           {eyebrow && <div className="eyebrow"><i/>{eyebrow}</div>}

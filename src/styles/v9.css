@@ -155,37 +155,14 @@ textarea:focus{
 }
 
 /* ---------- Category pages ---------- */
-.category-hero-blue,
-.category-hero-aqua,
-.category-hero-violet,
-.category-hero-amber,
-.category-hero-green,
-.category-hero-rose,
-.category-hero-indigo,
-.category-hero-mint,
-.category-hero-orange{
-  background:#fff!important;
-}
 
-.category-hero-inner{
-  background:linear-gradient(135deg,#F8FAFD 0%,#EEF3FB 100%)!important;
-  border:1px solid #E3EAF4!important;
-  color:var(--master-ink)!important;
-}
 
-.category-hero h1{color:var(--master-ink)!important}
-.category-hero p{color:#687570!important}
-.category-symbol{
-  background:#fff!important;
-  color:var(--master-blue)!important;
-  border:1px solid #DCE5F2!important;
-  box-shadow:0 12px 30px rgba(39,87,165,.07)!important;
-}
-.category-hero-stats span{
-  background:#fff!important;
-  border-color:#E0E7F1!important;
-  color:#5F6B67!important;
-}
+
+
+
+
+
+
 .subcategory-strip a:hover{
   background:var(--master-blue-050)!important;
   border-color:#C9D7EA!important;
@@ -409,9 +386,7 @@ textarea:focus-visible{
 
 /* ---------- Responsive consistency ---------- */
 @media (max-width:760px){
-  .category-hero-inner{
-    background:linear-gradient(180deg,#F8FAFD 0%,#EEF3FB 100%)!important;
-  }
+  
   .drawer-category-row:hover{
     transform:none;
   }

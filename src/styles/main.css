@@ -809,7 +809,7 @@ body{background:#edf0ed;color:var(--market-ink)}
 .market-shell .buy-btn{background:var(--market-green)!important;color:#fff!important;border-radius:999px!important}
 .market-shell .delivery-card{background:#f3faf7!important;border:1px solid #dfeee9!important;border-radius:13px!important}
 .market-shell .tabs button.is-active{background:var(--market-green)!important;color:#fff!important;border-color:var(--market-green)!important}
-.market-shell .tab-panel{border-radius:14px!important;border-color:var(--market-line)!important}.market-shell .order-summary,.market-shell .recent-order,.market-shell .quick-actions,.market-shell .legal-article,.market-shell .legal-toc,.market-shell .booking-card,.market-shell .contact-form-card{border:1px solid var(--market-line)!important;box-shadow:none!important;border-radius:14px!important;background:#fff!important}
+.market-shell .tab-panel{border-radius:14px!important;border-color:var(--market-line)!important}.market-shell .recent-order,.market-shell .quick-actions,.market-shell .legal-article,.market-shell .legal-toc,.market-shell .booking-card,.market-shell .contact-form-card{border:1px solid var(--market-line)!important;box-shadow:none!important;border-radius:14px!important;background:#fff!important}
 .market-shell .summary-trust{background:#f1faf7!important;color:#315e54!important;border-radius:11px!important}
 .market-shell .summary-trust svg{color:var(--market-green)!important}
 

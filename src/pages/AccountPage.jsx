@@ -2,22 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Common';
 import { Icon } from '../components/Icons';
-
-const PROFILE_STORAGE_KEY = 'officestore-demo-profile';
-
-function loadStoredProfile() {
-  if (typeof window === 'undefined') return null;
-  try {
-    return JSON.parse(window.localStorage.getItem(PROFILE_STORAGE_KEY) || 'null');
-  } catch {
-    return null;
-  }
-}
-
-function saveStoredProfile(profile) {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
-}
+import { loadStoredProfile, saveStoredProfile } from '../utils/accountProfile';
 
 function GoogleMark() {
   return (

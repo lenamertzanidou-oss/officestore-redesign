@@ -59,7 +59,7 @@ export default function ShopPage({ forcedCategory = null }) {
   };
 
   return <>
-    <PageHero eyebrow="Կատալոգ" title="Ապրանքներ" text="Արագ որոնում, հստակ ֆիլտրեր և նույնական ապրանքային քարտեր՝ desktop-ից մինչև mobile։" />
+    <PageHero variant="catalog" eyebrow="OfficeStore կատալոգ" title="Գտեք այն, ինչ պետք է ձեր գրասենյակին" text="Ընտրեք ջուր, սուրճ, գրենական և ամենօրյա անհրաժեշտ ապրանքներ՝ արագ որոնմամբ ու հարմար ֆիլտրերով։" />
 
     <div className="container shop-shell">
       <Breadcrumbs items={[{label:'Ապրանքներ'}]}/>

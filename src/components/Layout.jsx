@@ -112,7 +112,9 @@ export default function Layout({ children }) {
 
         <div className="container footer-grid market-footer-grid">
           <div className="footer-brand-col">
-            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={brandLogo} alt="OfficeStore"/></Link>
+            <Link to="/" className="brand market-brand market-brand-footer" aria-label="OfficeStore գլխավոր էջ">
+  <span className="footer-brand-wordmark"><span>Office</span><span>Store</span></span>
+</Link>
             <p>Գրասենյակի ամենօրյա գնումները՝ մեկ վստահելի վայրում։ Ջուր, սուրճ, գրենական և անհրաժեշտ պարագաներ՝ արագ և պարզ պատվերով։</p>
             <div className="footer-social-icons" aria-label="Սոցիալական ցանցեր">
               <a href="#" aria-label="Instagram"><Icon name="instagram" size={18}/></a>

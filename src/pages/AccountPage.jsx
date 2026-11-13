@@ -18,6 +18,7 @@ export default function AccountPage() {
   const [mode, setMode] = useState('login');
   const [demoLogged, setDemoLogged] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [registerType, setRegisterType] = useState('personal');
 
   if (demoLogged) {
     return (
@@ -112,6 +113,35 @@ export default function AccountPage() {
                   </div>
                 </div>
               </>
+            ) : registerType === 'corporate' ? (
+              <>
+                <div className="account-benefit-top">
+                  <div className="account-benefit-eyebrow"><span/> OfficeStore Business</div>
+                  <h1 id="account-benefit-title">Կորպորատիվ գնումները՝ մեկ կազմակերպված հաշվով</h1>
+                  <p>Ստեղծեք կազմակերպության հաշիվ՝ պատվերների, առաքման հասցեների և հաշվարկային տվյալների կառավարումը մեկ տեղում պահելու համար։</p>
+                </div>
+
+                <div className="account-benefit-list account-benefit-list--register">
+                  <span><i><Icon name="check" size={14}/></i> Կազմակերպության տվյալները՝ մեկ պրոֆիլում</span>
+                  <span><i><Icon name="check" size={14}/></i> Պատվերների և առաքումների միասնական պատմություն</span>
+                  <span><i><Icon name="check" size={14}/></i> Հարմար տվյալներ փաստաթղթավորման համար</span>
+                </div>
+
+                <div className="account-register-guide account-register-guide--business">
+                  <div className="account-register-guide-head">
+                    <span className="account-access-icon"><Icon name="building" size={17}/></span>
+                    <div>
+                      <small>Կորպորատիվ գրանցում</small>
+                      <strong>3 քայլ՝ կազմակերպության հաշիվը պատրաստ է</strong>
+                    </div>
+                  </div>
+                  <div className="account-register-steps">
+                    <div><b>01</b><span>Կազմակերպություն և ՀՎՀՀ</span></div>
+                    <div><b>02</b><span>Կոնտակտային տվյալներ</span></div>
+                    <div><b>03</b><span>Հաշվի անվտանգություն</span></div>
+                  </div>
+                </div>
+              </>
             ) : (
               <>
                 <div className="account-benefit-top">
@@ -145,7 +175,7 @@ export default function AccountPage() {
 
             <div className="account-benefit-note">
               <Icon name="shield" size={16}/>
-              <span>{mode === 'register' ? 'Ձեր տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի ու պատվերների սպասարկման համար։' : 'Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։'}</span>
+              <span>{mode === 'register' && registerType === 'corporate' ? 'Կազմակերպության և կոնտակտային տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի, պատվերների ու սպասարկման համար։' : mode === 'register' ? 'Ձեր տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի ու պատվերների սպասարկման համար։' : 'Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։'}</span>
             </div>
           </section>
 
@@ -198,33 +228,90 @@ export default function AccountPage() {
             ) : (
               <form className="form-stack account-form" onSubmit={e => {e.preventDefault(); setDemoLogged(true);}}>
                 <header className="auth-head">
-                  <span className="auth-kicker">Նոր հաճախորդ</span>
-                  <h2>Ստեղծել հաշիվ</h2>
-                  <p>Մի քանի տվյալ, որպեսզի հաջորդ գնումը լինի ավելի արագ և հարմար։</p>
+                  <span className="auth-kicker">{registerType === 'corporate' ? 'Կորպորատիվ հաճախորդ' : 'Նոր հաճախորդ'}</span>
+                  <h2>{registerType === 'corporate' ? 'Ստեղծել բիզնես հաշիվ' : 'Ստեղծել հաշիվ'}</h2>
+                  <p>{registerType === 'corporate' ? 'Լրացրեք կազմակերպության և հիմնական կոնտակտային տվյալները։' : 'Մի քանի տվյալ, որպեսզի հաջորդ գնումը լինի ավելի արագ և հարմար։'}</p>
                 </header>
 
-                <div className="form-row">
-                  <label><span>Անուն *</span><input required autoComplete="given-name" placeholder="Անուն"/></label>
-                  <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
+                <div className="account-type-switch" role="radiogroup" aria-label="Հաշվի տեսակ">
+                  <button type="button" role="radio" aria-checked={registerType === 'personal'} className={registerType === 'personal' ? 'is-active' : ''} onClick={() => setRegisterType('personal')}>
+                    <Icon name="user" size={16}/>
+                    <span><strong>Անհատ</strong><small>Անձնական գնումների համար</small></span>
+                  </button>
+                  <button type="button" role="radio" aria-checked={registerType === 'corporate'} className={registerType === 'corporate' ? 'is-active' : ''} onClick={() => setRegisterType('corporate')}>
+                    <Icon name="building" size={16}/>
+                    <span><strong>Կորպորատիվ</strong><small>Կազմակերպությունների համար</small></span>
+                  </button>
                 </div>
 
-                <label><span>Էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@example.com"/></label>
-                <label><span>Հեռախոս</span><input type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
-                <label><span>Գաղտնաբառ *</span><input required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
+                {registerType === 'corporate' ? (
+                  <>
+                    <div className="corporate-form-section">
+                      <div className="corporate-form-section-head">
+                        <span><Icon name="building" size={15}/></span>
+                        <div><strong>Կազմակերպության տվյալներ</strong><small>Պարտադիր դաշտերը նշված են աստղանիշով</small></div>
+                      </div>
+
+                      <label><span>Կազմակերպության անվանում *</span><input required autoComplete="organization" placeholder="Օր.՝ «ABC Group» ՍՊԸ"/></label>
+
+                      <div className="form-row">
+                        <label><span>ՀՎՀՀ *</span><input required inputMode="numeric" autoComplete="off" placeholder="Օր.՝ 01234567"/></label>
+                        <label><span>Իրավաբանական հասցե *</span><input required autoComplete="street-address" placeholder="Քաղաք, փողոց, շենք"/></label>
+                      </div>
+                    </div>
+
+                    <div className="corporate-form-section">
+                      <div className="corporate-form-section-head">
+                        <span><Icon name="user" size={15}/></span>
+                        <div><strong>Կոնտակտային անձ</strong><small>Մարդը, ում հետ կարող ենք կապ հաստատել պատվերների հարցերով</small></div>
+                      </div>
+
+                      <div className="form-row">
+                        <label><span>Անուն *</span><input required autoComplete="given-name" placeholder="Անուն"/></label>
+                        <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
+                      </div>
+
+                      <div className="form-row">
+                        <label><span>Պաշտոն</span><input autoComplete="organization-title" placeholder="Օր.՝ Office manager"/></label>
+                        <label><span>Հեռախոս *</span><input required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
+                      </div>
+
+                      <label><span>Կորպորատիվ էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@company.am"/></label>
+                    </div>
+
+                    <label><span>Գաղտնաբառ *</span><input required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
+                  </>
+                ) : (
+                  <>
+                    <div className="form-row">
+                      <label><span>Անուն *</span><input required autoComplete="given-name" placeholder="Անուն"/></label>
+                      <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
+                    </div>
+
+                    <label><span>Էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@example.com"/></label>
+                    <label><span>Հեռախոս</span><input type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
+                    <label><span>Գաղտնաբառ *</span><input required type="password" minLength="8" autoComplete="new-password" placeholder="Առնվազն 8 նիշ"/></label>
+                  </>
+                )}
 
                 <label className="terms-check">
                   <input required type="checkbox"/>
                   <span>Համաձայն եմ <Link to="/terms">օգտագործման պայմաններին</Link> և <Link to="/privacy">գաղտնիության քաղաքականությանը</Link>։</span>
                 </label>
 
-                <button className="btn btn-primary btn-lg full-width auth-submit">Ստեղծել հաշիվ</button>
-
-                <div className="auth-divider"><span>կամ գրանցվել</span></div>
-
-                <button type="button" className="google-btn" onClick={() => setDemoLogged(true)}>
-                  <GoogleMark/>
-                  <span>Շարունակել Google-ով</span>
+                <button className="btn btn-primary btn-lg full-width auth-submit">
+                  {registerType === 'corporate' ? 'Ստեղծել կորպորատիվ հաշիվ' : 'Ստեղծել հաշիվ'}
                 </button>
+
+                {registerType === 'personal' && (
+                  <>
+                    <div className="auth-divider"><span>կամ գրանցվել</span></div>
+                    <button type="button" className="google-btn" onClick={() => setDemoLogged(true)}>
+                      <GoogleMark/>
+                      <span>Շարունակել Google-ով</span>
+                    </button>
+                  </>
+                )}
               </form>
             )}
           </section>

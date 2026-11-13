@@ -116,14 +116,15 @@ export default function CheckoutPage() {
           <header className="checkout-page-head">
             <span>Պատվերի ձևակերպում</span>
             <h1>Վճարում և առաքում</h1>
-            <p>Լրացրեք միայն պատվերի համար անհրաժեշտ տվյալները։ Գրանցվելը պարտադիր չէ։</p>
+            <p>Լրացրեք պատվերի համար անհրաժեշտ տվյալները և ընտրեք առաքման ու վճարման տարբերակը։</p>
           </header>
 
           <form className="checkout-layout" onSubmit={submit}>
             <div className="checkout-form">
-              <div className="checkout-login-note">
+              <div className="checkout-main-panel">
+                <div className="checkout-login-note">
                 <span><Icon name="user" size={16}/></span>
-                <p><strong>Պատվիրեք որպես հյուր</strong> կամ <Link to="/account">մուտք գործեք</Link>՝ պահպանված տվյալներն օգտագործելու համար։</p>
+                <p><strong>Առանց գրանցման պատվեր</strong> · Կարող եք նաև <Link to="/account">մուտք գործել</Link>՝ պահպանված տվյալներն օգտագործելու համար։</p>
               </div>
 
               <section className="checkout-section">
@@ -184,7 +185,7 @@ export default function CheckoutPage() {
                   </div>
                 </header>
 
-                <div className="payment-list">
+                <div className="payment-list payment-list--compact">
                   {paymentMethods.map(([id,title,text]) => (
                     <button type="button" key={id} className={payment===id?'is-active':''} onClick={()=>setPayment(id)}>
                       <PaymentMark id={id}/>
@@ -195,8 +196,8 @@ export default function CheckoutPage() {
                 </div>
               </section>
 
-              <section className="checkout-save-section">
-                <label className={`checkout-account-choice ${saveAsAccount ? 'is-active' : ''}`}>
+                <section className="checkout-save-section">
+                  <label className={`checkout-account-choice ${saveAsAccount ? 'is-active' : ''}`}>
                   <input
                     className="checkout-account-choice-input"
                     type="checkbox"
@@ -222,7 +223,8 @@ export default function CheckoutPage() {
                     </label>
                   </div>
                 )}
-              </section>
+                </section>
+              </div>
             </div>
 
             <aside className="order-summary checkout-summary">

@@ -311,3 +311,107 @@
     right:0;
   }
 }
+
+
+/* Catalog hero variant: compact product-discovery entry point */
+.page-hero--catalog .page-hero-inner{
+  min-height:248px!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr)!important;
+  gap:34px!important;
+  padding:30px 38px!important;
+  border-radius:20px!important;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.13),transparent 27%),
+    linear-gradient(135deg,#2D61B2 0%,#2757A5 52%,#1F4B92 100%)!important;
+}
+
+.page-hero--catalog .page-hero-copy{
+  max-width:760px!important;
+}
+
+.page-hero--catalog h1{
+  max-width:720px!important;
+  font-size:clamp(2.15rem,3.3vw,3.05rem)!important;
+  line-height:1.08!important;
+}
+
+.page-hero--catalog p{
+  max-width:690px!important;
+  margin-top:12px!important;
+  font-size:14.5px!important;
+  line-height:1.6!important;
+}
+
+.page-hero--catalog .page-hero-benefits{
+  margin-top:17px!important;
+}
+
+.page-hero--catalog .page-hero-visual{
+  width:260px;
+  height:178px;
+}
+
+.page-hero--catalog .page-hero-mini-card{
+  min-width:158px;
+  padding:9px 10px;
+  border-radius:12px;
+}
+
+.page-hero--catalog .page-hero-mini-card-a{
+  right:62px;
+  top:20px;
+}
+
+.page-hero--catalog .page-hero-mini-card-b{
+  right:0;
+  bottom:16px;
+}
+
+.page-hero--catalog .page-hero-glow{
+  width:230px;
+  height:230px;
+  right:-50px;
+  top:-58px;
+}
+
+.page-hero--catalog .page-hero-ring-a{
+  width:164px;
+  height:164px;
+}
+
+.page-hero--catalog .page-hero-ring-b{
+  width:102px;
+  height:102px;
+}
+
+@media (max-width:760px){
+  .page-hero--catalog .page-hero-inner{
+    min-height:auto!important;
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+    padding:26px 20px 20px!important;
+    border-radius:16px!important;
+  }
+
+  .page-hero--catalog h1{
+    font-size:clamp(1.95rem,8.5vw,2.45rem)!important;
+  }
+
+  .page-hero--catalog .page-hero-benefits{
+    margin-top:15px!important;
+  }
+
+  .page-hero--catalog .page-hero-visual{
+    height:104px;
+  }
+
+  .page-hero--catalog .page-hero-mini-card-b{
+    display:none;
+  }
+
+  .page-hero--catalog .page-hero-mini-card-a{
+    left:auto;
+    right:0;
+    top:4px;
+  }
+}

@@ -3436,7 +3436,7 @@ textarea:focus-visible{
   min-width:0;
 }
 
-.checkout-form label>span{
+.checkout-form label:not(.checkout-account-choice)>span{
   display:block;
   margin-bottom:5px;
   color:#505C58!important;
@@ -3684,68 +3684,145 @@ textarea:focus-visible{
   padding:2px 0 0;
 }
 
-.checkout-create-account{
+
+
+
+
+
+
+
+
+
+
+.checkout-create-account-copy strong,
+
+
+
+
+
+
+
+
+.checkout-account-choice{
+  position:relative;
   display:grid!important;
-  grid-template-columns:17px 34px minmax(0,1fr);
+  grid-template-columns:38px minmax(0,1fr) 28px;
   align-items:center!important;
-  gap:10px!important;
-  min-height:64px;
-  padding:10px 12px!important;
+  gap:12px!important;
+  min-height:72px;
+  padding:12px 13px!important;
   margin:0!important;
   border:1px solid #E1E7ED!important;
-  border-radius:13px!important;
+  border-radius:14px!important;
   background:#FAFBFD!important;
   cursor:pointer;
-  transition:background .18s ease,border-color .18s ease;
+  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease;
 }
 
-.checkout-create-account:hover{
-  border-color:#CBD8E8!important;
+.checkout-account-choice:hover{
+  border-color:#C9D7E8!important;
   background:#F7F9FD!important;
 }
 
-.checkout-create-account.is-active{
-  border-color:#B9CCE5!important;
-  background:#F2F6FC!important;
+.checkout-account-choice.is-active{
+  border-color:#AFC5E1!important;
+  background:#F3F7FD!important;
+  box-shadow:0 0 0 1px rgba(39,87,165,.025);
 }
 
-.checkout-create-account>input{
-  width:16px!important;
-  height:16px!important;
-  min-height:16px!important;
-  margin:0!important;
+.checkout-account-choice-input{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  min-height:1px!important;
   padding:0!important;
-  accent-color:var(--master-blue)!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+  opacity:0;
+  pointer-events:none;
 }
 
-.checkout-create-account-icon{
-  width:34px;
-  height:34px;
-  display:grid;
-  place-items:center;
-  border-radius:9px;
+.checkout-account-choice:focus-within{
+  outline:3px solid rgba(39,87,165,.12);
+  outline-offset:2px;
+}
+
+.checkout-account-choice-icon{
+  width:38px;
+  height:38px;
+  display:grid!important;
+  place-items:center!important;
+  margin:0!important;
+  border-radius:11px;
   background:#EAF1FB;
-  color:var(--master-blue);
+  color:var(--master-blue)!important;
 }
 
-.checkout-create-account-copy strong,
-.checkout-create-account-copy small{
-  display:block;
+.checkout-account-choice-copy{
+  min-width:0;
+  display:block!important;
+  margin:0!important;
+  color:inherit!important;
 }
 
-.checkout-create-account-copy strong{
-  color:#36423E;
-  font-size:12px;
+.checkout-account-choice-title{
+  display:flex!important;
+  align-items:center;
+  gap:8px;
+  margin:0!important;
+}
+
+.checkout-account-choice-title strong{
+  color:#34413C;
+  font-size:12.5px;
   line-height:1.35;
   font-weight:600;
 }
 
-.checkout-create-account-copy small{
-  margin-top:2px;
-  color:#8A9490;
+.checkout-account-choice-title em{
+  display:inline-flex;
+  align-items:center;
+  min-height:22px;
+  padding:0 7px;
+  border-radius:999px;
+  background:#EEF3FB;
+  color:var(--master-blue);
+  font-size:9px;
+  line-height:1;
+  font-style:normal;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.checkout-account-choice-copy>small{
+  display:block;
+  margin-top:3px;
+  color:#87918D;
   font-size:10px;
-  line-height:1.35;
+  line-height:1.4;
   font-weight:400;
+}
+
+.checkout-account-choice-check{
+  width:28px;
+  height:28px;
+  display:grid!important;
+  place-items:center!important;
+  margin:0!important;
+  border:1px solid #D5DEE7;
+  border-radius:50%;
+  background:#fff;
+  color:transparent!important;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+
+.checkout-account-choice.is-active .checkout-account-choice-check{
+  border-color:var(--master-blue);
+  background:var(--master-blue);
+  color:#fff!important;
 }
 
 .checkout-account-password{
@@ -4144,13 +4221,9 @@ textarea:focus-visible{
     align-items:flex-start;
   }
 
-  .checkout-create-account{
-    grid-template-columns:17px minmax(0,1fr);
-  }
+  
 
-  .checkout-create-account-icon{
-    display:none;
-  }
+  
 
   .checkout-summary-head{
     flex-direction:row;

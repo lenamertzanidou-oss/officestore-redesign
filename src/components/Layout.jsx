@@ -4,7 +4,7 @@ import { Icon } from './Icons';
 import { categories, products } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 import { siteAssets } from '../data/siteAssets';
-import { brandLogo, footerBrandLogo } from '../data/brand';
+import { brandLogo } from '../data/brand';
 
 const categoryIconBySlug = {
   bulk: 'grid',
@@ -112,7 +112,7 @@ export default function Layout({ children }) {
 
         <div className="container footer-grid market-footer-grid">
           <div className="footer-brand-col">
-            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={footerBrandLogo} alt="OfficeStore"/></Link>
+            <Link to="/" className="brand market-brand market-brand-footer"><img className="market-brand-logo market-brand-logo-footer" src={brandLogo} alt="OfficeStore"/></Link>
             <p>Գրասենյակի ամենօրյա գնումները՝ մեկ վստահելի վայրում։ Ջուր, սուրճ, գրենական և անհրաժեշտ պարագաներ՝ արագ և պարզ պատվերով։</p>
             <div className="footer-social-icons" aria-label="Սոցիալական ցանցեր">
               <a href="#" aria-label="Instagram"><Icon name="instagram" size={18}/></a>

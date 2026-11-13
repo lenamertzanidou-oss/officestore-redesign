@@ -81,38 +81,71 @@ export default function AccountPage() {
         <Breadcrumbs items={[{label:'Իմ էջը'}]}/>
 
         <div className="account-shell">
-          <section className="account-benefit" aria-labelledby="account-benefit-title">
-            <div className="account-benefit-top">
-              <div className="account-benefit-eyebrow"><span/> OfficeStore հաշիվ</div>
-              <h1 id="account-benefit-title">Ձեր գնումները՝ ավելի արագ և կազմակերպված</h1>
-              <p>Մուտք գործեք մեկ անգամ և պահեք պատվերների պատմությունը, հասցեները ու նախընտրած ապրանքները մեկ տեղում։</p>
-            </div>
-
-            <div className="account-benefit-list">
-              <span><i><Icon name="check" size={14}/></i> Կրկնել նախորդ պատվերը մեկ հպումով</span>
-              <span><i><Icon name="check" size={14}/></i> Հետևել պատվերի կարգավիճակին</span>
-              <span><i><Icon name="check" size={14}/></i> Պահպանել հաճախ օգտագործվող հասցեները</span>
-              <span><i><Icon name="check" size={14}/></i> Պահել wishlist-ը հաշվի մեջ</span>
-            </div>
-
-            <div className="account-access-panel">
-              <div className="account-access-head">
-                <span className="account-access-icon"><Icon name="user" size={17}/></span>
-                <div>
-                  <small>Մուտք գործելուց հետո</small>
-                  <strong>Ձեր անձնական OfficeStore տարածքը</strong>
+          <section className={`account-benefit ${mode === 'register' ? 'account-benefit--register' : 'account-benefit--login'}`} aria-labelledby="account-benefit-title">
+            {mode === 'login' ? (
+              <>
+                <div className="account-benefit-top">
+                  <div className="account-benefit-eyebrow"><span/> OfficeStore հաշիվ</div>
+                  <h1 id="account-benefit-title">Ձեր գնումները՝ ավելի արագ և կազմակերպված</h1>
+                  <p>Մուտք գործեք մեկ անգամ և պահեք պատվերների պատմությունը, հասցեները ու նախընտրած ապրանքները մեկ տեղում։</p>
                 </div>
-              </div>
-              <div className="account-access-grid">
-                <span><Icon name="package" size={15}/><b>Պատվերների պատմություն</b></span>
-                <span><Icon name="location" size={15}/><b>Պահպանված հասցեներ</b></span>
-                <span><Icon name="heart" size={15}/><b>Wishlist և նախընտրելիներ</b></span>
-              </div>
-            </div>
+
+                <div className="account-benefit-list">
+                  <span><i><Icon name="check" size={14}/></i> Կրկնել նախորդ պատվերը մեկ հպումով</span>
+                  <span><i><Icon name="check" size={14}/></i> Հետևել պատվերի կարգավիճակին</span>
+                  <span><i><Icon name="check" size={14}/></i> Պահպանել հաճախ օգտագործվող հասցեները</span>
+                  <span><i><Icon name="check" size={14}/></i> Պահել wishlist-ը հաշվի մեջ</span>
+                </div>
+
+                <div className="account-access-panel">
+                  <div className="account-access-head">
+                    <span className="account-access-icon"><Icon name="user" size={17}/></span>
+                    <div>
+                      <small>Մուտք գործելուց հետո</small>
+                      <strong>Ձեր անձնական OfficeStore տարածքը</strong>
+                    </div>
+                  </div>
+                  <div className="account-access-grid">
+                    <span><Icon name="package" size={15}/><b>Պատվերների պատմություն</b></span>
+                    <span><Icon name="location" size={15}/><b>Պահպանված հասցեներ</b></span>
+                    <span><Icon name="heart" size={15}/><b>Wishlist և նախընտրելիներ</b></span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="account-benefit-top">
+                  <div className="account-benefit-eyebrow"><span/> Նոր OfficeStore հաշիվ</div>
+                  <h1 id="account-benefit-title">Ստեղծեք հաշիվ՝ հաջորդ պատվերը ավելի արագ կատարելու համար</h1>
+                  <p>Գրանցումը տևում է ընդամենը մի քանի քայլ, իսկ հետո հասցեները, պատվերներն ու նախընտրած ապրանքները միշտ հասանելի կլինեն մեկ տեղում։</p>
+                </div>
+
+                <div className="account-benefit-list account-benefit-list--register">
+                  <span><i><Icon name="check" size={14}/></i> Ավելի արագ checkout՝ պահպանված տվյալներով</span>
+                  <span><i><Icon name="check" size={14}/></i> Պատվերների պատմություն և կարգավիճակ</span>
+                  <span><i><Icon name="check" size={14}/></i> Wishlist և հաճախ օգտագործվող հասցեներ</span>
+                </div>
+
+                <div className="account-register-guide">
+                  <div className="account-register-guide-head">
+                    <span className="account-access-icon"><Icon name="user" size={17}/></span>
+                    <div>
+                      <small>Գրանցումը պարզ է</small>
+                      <strong>3 քայլ՝ ձեր հաշիվը պատրաստ է</strong>
+                    </div>
+                  </div>
+                  <div className="account-register-steps">
+                    <div><b>01</b><span>Անուն և կապ</span></div>
+                    <div><b>02</b><span>Գաղտնաբառ</span></div>
+                    <div><b>03</b><span>Պատրաստ է</span></div>
+                  </div>
+                </div>
+              </>
+            )}
 
             <div className="account-benefit-note">
               <Icon name="shield" size={16}/>
-              <span>Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։</span>
+              <span>{mode === 'register' ? 'Ձեր տվյալները պահպանվում են անվտանգ և օգտագործվում են միայն հաշվի ու պատվերների սպասարկման համար։' : 'Ձեր հաշվի տվյալները օգտագործվում են միայն պատվերների և սպասարկման համար։'}</span>
             </div>
           </section>
 

@@ -1,0 +1,68 @@
+/* OfficeStore V13 — isolated shop result summary */
+
+.result-summary{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0 12px 0 0!important;
+  border:0!important;
+  border-right:1px solid #E9EDEF!important;
+  background:transparent!important;
+  color:#17201E!important;
+  font-family:var(--font-ui)!important;
+  font-style:normal!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  white-space:nowrap!important;
+}
+
+.result-summary-number{
+  display:grid!important;
+  place-items:center!important;
+  min-width:28px!important;
+  height:28px!important;
+  padding:0 7px!important;
+  margin:0!important;
+  border-radius:8px!important;
+  background:#EEF3FB!important;
+  color:#2757A5!important;
+  font-family:var(--font-ui)!important;
+  font-size:13px!important;
+  line-height:1!important;
+  font-weight:700!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+.result-summary-label{
+  display:inline!important;
+  margin:0!important;
+  padding:0!important;
+  color:#66716E!important;
+  font-family:var(--font-ui)!important;
+  font-size:12.5px!important;
+  line-height:1.2!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  word-spacing:0!important;
+  text-transform:none!important;
+}
+
+@media (max-width:650px){
+  .result-summary{
+    padding-right:10px!important;
+  }
+
+  .result-summary-number{
+    min-width:26px!important;
+    height:26px!important;
+    font-size:12px!important;
+  }
+
+  .result-summary-label{
+    font-size:12px!important;
+  }
+}

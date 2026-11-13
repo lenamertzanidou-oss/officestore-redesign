@@ -86,7 +86,10 @@ export default function ShopPage({ forcedCategory = null }) {
         <div className="toolbar-spacer"/>
 
         <div className="shop-toolbar-meta">
-          <span className="result-count"><strong>{filtered.length}</strong> արդյունք</span>
+          <div className="result-summary" aria-live="polite">
+            <span className="result-summary-number">{filtered.length}</span>
+            <span className="result-summary-label">արդյունք</span>
+          </div>
           <label className="shop-sort">
             <span>Դասավորել</span>
             <select value={sort} onChange={e => setSort(e.target.value)} aria-label="Դասավորել">

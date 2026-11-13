@@ -2156,3 +2156,159 @@ textarea:focus-visible{
     margin:0;
   }
 }
+
+
+/* Corporate account registration */
+.account-type-switch{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin:2px 0 4px;
+  padding:5px;
+  border:1px solid #E3E8EE;
+  border-radius:14px;
+  background:#F5F7FA;
+}
+
+.account-type-switch button{
+  min-height:58px;
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr);
+  align-items:center;
+  gap:9px;
+  padding:8px 10px;
+  border:1px solid transparent;
+  border-radius:10px;
+  background:transparent;
+  color:#6E7875;
+  text-align:left;
+  box-shadow:none;
+}
+
+.account-type-switch button:hover{
+  background:#F8FAFD;
+  color:var(--master-blue);
+}
+
+.account-type-switch button.is-active{
+  border-color:#D3DEEE;
+  background:#fff;
+  color:var(--master-blue-dark);
+  box-shadow:0 3px 10px rgba(28,48,78,.06);
+}
+
+.account-type-switch button>svg{
+  width:32px;
+  height:32px;
+  padding:7px;
+  border-radius:9px;
+  background:#EAF1FB;
+  color:var(--master-blue);
+}
+
+.account-type-switch button>span{
+  min-width:0;
+}
+
+.account-type-switch strong,
+.account-type-switch small{
+  display:block;
+}
+
+.account-type-switch strong{
+  color:inherit;
+  font-size:12.5px;
+  line-height:1.25;
+  font-weight:700;
+}
+
+.account-type-switch small{
+  margin-top:2px;
+  color:#8A9490;
+  font-size:9.8px;
+  line-height:1.25;
+  font-weight:400;
+}
+
+.corporate-form-section{
+  display:grid;
+  gap:12px;
+  padding:14px;
+  border:1px solid #E3E8EE;
+  border-radius:14px;
+  background:#FAFBFD;
+}
+
+.corporate-form-section-head{
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr);
+  align-items:center;
+  gap:9px;
+  margin-bottom:1px;
+}
+
+.corporate-form-section-head>span{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#EAF1FB;
+  color:var(--master-blue);
+}
+
+.corporate-form-section-head strong,
+.corporate-form-section-head small{
+  display:block;
+}
+
+.corporate-form-section-head strong{
+  color:var(--master-ink);
+  font-size:12.5px;
+  line-height:1.3;
+  font-weight:700;
+}
+
+.corporate-form-section-head small{
+  margin-top:2px;
+  color:#8A9490;
+  font-size:10px;
+  line-height:1.35;
+}
+
+.account-benefit--corporate{
+  background:
+    radial-gradient(circle at 84% 8%,rgba(255,255,255,.13),transparent 26%),
+    radial-gradient(circle at 96% 84%,rgba(255,255,255,.06),transparent 24%),
+    linear-gradient(145deg,#2B5DA9 0%,#2757A5 48%,#1D477F 100%)!important;
+}
+
+.account-benefit--corporate .account-register-guide{
+  margin-top:32px;
+}
+
+.account-register-guide--business{
+  background:rgba(255,255,255,.11);
+}
+
+.account-benefit--corporate .account-register-steps>div{
+  background:rgba(255,255,255,.09);
+}
+
+.account-benefit--corporate .account-register-steps span{
+  font-size:10.5px;
+}
+
+@media (max-width:640px){
+  .account-type-switch{
+    grid-template-columns:1fr;
+  }
+
+  .account-type-switch button{
+    min-height:54px;
+  }
+
+  .corporate-form-section{
+    padding:12px;
+  }
+}

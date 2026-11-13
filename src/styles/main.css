@@ -615,7 +615,7 @@ body{background:#edf0ed;color:var(--market-ink)}
 .market-nav-row nav a{font-size:.68rem;color:#525d59;font-weight:680;position:relative;padding:14px 0 13px}
 .market-nav-row nav a:hover,.market-nav-row nav a.is-active{color:var(--market-green)}
 .market-nav-row nav a.is-active:after{content:"";position:absolute;height:2px;background:var(--market-green);left:0;right:0;bottom:0}
-.market-service-link{font-size:.66rem;display:flex;align-items:center;gap:6px;color:var(--market-green);font-weight:780}
+.market-service-link{font-size:.66rem;display:flex;align-items:center;gap:6px;color:#2757A5;font-weight:780}
 
 /* home layout */
 .market-home{background:#fff;padding-bottom:24px}

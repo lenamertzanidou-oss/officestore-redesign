@@ -50,7 +50,7 @@ export function EmptyState({ title, text, action = 'Դիտել ապրանքնե�
   return <div className="empty-state"><div className="empty-icon"><Icon name={icon} size={30}/></div><h2>{title}</h2><p>{text}</p><Link className="btn btn-primary" to={to}>{action}<Icon name="arrow" size={18}/></Link></div>;
 }
 
-export function PageHero({ eyebrow, title, text, children, variant = 'default' }) {
+export function PageHero({ eyebrow, title, text, children, variant = 'default', benefits = ['Արագ ընտրություն', 'Հարմար պատվեր', 'Վստահելի առաքում'] }) {
   return (
     <section className={`page-hero page-hero--${variant}`}>
       <div className="container page-hero-inner">
@@ -58,11 +58,11 @@ export function PageHero({ eyebrow, title, text, children, variant = 'default' }
           {eyebrow && <div className="eyebrow"><i/>{eyebrow}</div>}
           <h1>{title}</h1>
           {text && <p>{text}</p>}
-          <div className="page-hero-benefits" aria-label="OfficeStore առավելություններ">
-            <span><Icon name="check" size={13}/> Արագ ընտրություն</span>
-            <span><Icon name="check" size={13}/> Հարմար պատվեր</span>
-            <span><Icon name="check" size={13}/> Վստահելի առաքում</span>
-          </div>
+          {benefits?.length > 0 && (
+            <div className="page-hero-benefits" aria-label="OfficeStore առավելություններ">
+              {benefits.map((benefit) => <span key={benefit}><Icon name="check" size={13}/> {benefit}</span>)}
+            </div>
+          )}
         </div>
         {children || (
           <div className="page-hero-visual" aria-hidden="true">

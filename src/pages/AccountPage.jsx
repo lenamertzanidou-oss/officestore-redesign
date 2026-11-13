@@ -271,10 +271,7 @@ export default function AccountPage() {
                         <label><span>Ազգանուն *</span><input required autoComplete="family-name" placeholder="Ազգանուն"/></label>
                       </div>
 
-                      <div className="form-row">
-                        <label><span>Պաշտոն</span><input autoComplete="organization-title" placeholder="Օր.՝ Office manager"/></label>
-                        <label><span>Հեռախոս *</span><input required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
-                      </div>
+                      <label><span>Հեռախոս *</span><input required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
 
                       <label><span>Կորպորատիվ էլ․ հասցե *</span><input required type="email" autoComplete="email" placeholder="name@company.am"/></label>
                     </div>

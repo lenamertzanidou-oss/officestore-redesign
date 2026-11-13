@@ -2312,3 +2312,368 @@ textarea:focus-visible{
     padding:12px;
   }
 }
+
+
+/* Corporate account dashboard */
+.corporate-dashboard{
+  padding-top:18px;
+  padding-bottom:90px;
+}
+
+.corporate-dashboard .breadcrumbs{
+  margin-bottom:22px;
+}
+
+.corporate-dashboard-head{
+  align-items:center;
+  margin-bottom:24px;
+  padding:24px 26px;
+  border:1px solid #DDE6F2;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 92% 0%,rgba(39,87,165,.08),transparent 28%),
+    #fff;
+}
+
+.corporate-dashboard-head .eyebrow{
+  color:var(--master-blue);
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.corporate-dashboard-head h1{
+  margin:7px 0 5px;
+  color:var(--master-ink);
+  font-size:clamp(2rem,3vw,2.7rem);
+  line-height:1.1;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+
+.corporate-dashboard-head p{
+  margin:0;
+  color:var(--master-muted);
+  font-size:13.5px;
+  line-height:1.55;
+}
+
+.corporate-dashboard-grid{
+  grid-template-columns:250px minmax(0,1fr)!important;
+  gap:24px!important;
+}
+
+.corporate-account-nav{
+  padding:10px!important;
+  border:1px solid #E1E7EF!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:0 8px 24px rgba(24,39,35,.035)!important;
+}
+
+.corporate-account-nav button{
+  min-height:44px;
+  border-radius:11px!important;
+  color:#596662!important;
+  font-size:12.5px;
+  font-weight:500;
+}
+
+.corporate-account-nav button:hover{
+  background:#F5F8FD!important;
+  color:var(--master-blue)!important;
+}
+
+.corporate-account-nav button.is-active{
+  background:#EEF3FB!important;
+  color:var(--master-blue-dark)!important;
+  font-weight:700!important;
+}
+
+.corporate-account-nav button span{
+  background:#fff!important;
+  border:1px solid #DCE5F2;
+  color:var(--master-blue);
+}
+
+.corporate-account-main{
+  min-width:0;
+}
+
+.corporate-stat-grid{
+  gap:12px!important;
+}
+
+.corporate-stat-grid>div{
+  min-height:112px;
+  padding:18px!important;
+  border:1px solid #E1E7EF!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+
+.corporate-stat-grid>div:first-child{
+  background:linear-gradient(135deg,#F3F7FD 0%,#EEF3FB 100%)!important;
+  border-color:#D4E0EF!important;
+}
+
+.corporate-stat-grid small{
+  color:#87918D!important;
+  font-size:10.5px!important;
+  font-weight:500;
+}
+
+.corporate-stat-grid strong{
+  margin:7px 0 4px!important;
+  color:var(--master-ink)!important;
+  font-size:1.65rem!important;
+  line-height:1;
+  font-weight:700;
+}
+
+.corporate-stat-grid span{
+  color:#7A8581!important;
+  font-size:11px!important;
+}
+
+.corporate-profile-card{
+  margin-top:14px;
+  padding:20px;
+  border:1px solid #E1E7EF!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+
+.corporate-profile-card .section-mini-head{
+  align-items:flex-start;
+  gap:16px;
+}
+
+.corporate-section-kicker{
+  display:block;
+  margin-bottom:5px;
+  color:var(--master-blue);
+  font-size:10.5px;
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.corporate-profile-card h2{
+  margin:0!important;
+  color:var(--master-ink);
+  font-size:20px!important;
+  line-height:1.25;
+  font-weight:700;
+}
+
+.corporate-account-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:999px;
+  background:#EEF3FB;
+  color:var(--master-blue);
+  font-size:10.5px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.corporate-profile-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+}
+
+.corporate-profile-grid>div{
+  min-width:0;
+  padding:13px 14px;
+  border:1px solid #E8ECF1;
+  border-radius:12px;
+  background:#FAFBFC;
+}
+
+.corporate-profile-grid small,
+.corporate-profile-grid strong{
+  display:block;
+}
+
+.corporate-profile-grid small{
+  color:#8A9490;
+  font-size:10.5px;
+  line-height:1.25;
+}
+
+.corporate-profile-grid strong{
+  margin-top:4px;
+  overflow-wrap:anywhere;
+  color:#28332F;
+  font-size:12.5px;
+  line-height:1.4;
+  font-weight:600;
+}
+
+.corporate-profile-wide{
+  grid-column:1 / -1;
+}
+
+.corporate-empty-orders{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  padding:18px 20px;
+  border:1px solid #DDE6F2!important;
+  border-radius:18px!important;
+  background:linear-gradient(135deg,#F8FAFD 0%,#F3F7FD 100%)!important;
+}
+
+.corporate-empty-icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#E8F0FB;
+  color:var(--master-blue);
+}
+
+.corporate-empty-orders h2{
+  margin:0 0 4px;
+  color:var(--master-ink);
+  font-size:15px;
+  line-height:1.3;
+  font-weight:700;
+}
+
+.corporate-empty-orders p{
+  max-width:580px;
+  margin:0;
+  color:#76817D;
+  font-size:11.5px;
+  line-height:1.5;
+}
+
+.corporate-empty-orders .btn{
+  min-height:40px;
+  white-space:nowrap;
+}
+
+.corporate-quick-actions{
+  margin-top:20px!important;
+}
+
+.corporate-quick-actions h2{
+  margin-bottom:10px;
+  color:var(--master-ink);
+  font-size:17px!important;
+}
+
+.corporate-quick-actions>div{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;
+}
+
+.corporate-quick-actions a{
+  min-height:80px;
+  border-color:#E1E7EF!important;
+  background:#fff;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+.corporate-quick-actions a:hover{
+  transform:translateY(-1px);
+  background:#F7F9FD!important;
+  border-color:#CAD8EA!important;
+}
+
+@media (max-width:980px){
+  .corporate-dashboard-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .corporate-account-nav{
+    position:static!important;
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:6px;
+  }
+
+  .corporate-account-nav button{
+    justify-content:center;
+    text-align:center;
+  }
+
+  .corporate-account-nav button span{
+    display:none;
+  }
+}
+
+@media (max-width:760px){
+  .corporate-dashboard-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:16px;
+    padding:20px;
+  }
+
+  .corporate-stat-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .corporate-profile-grid{
+    grid-template-columns:1fr;
+  }
+
+  .corporate-profile-wide{
+    grid-column:auto;
+  }
+
+  .corporate-empty-orders{
+    grid-template-columns:40px minmax(0,1fr);
+  }
+
+  .corporate-empty-orders .btn{
+    grid-column:1 / -1;
+    width:100%;
+  }
+
+  .corporate-quick-actions>div{
+    grid-template-columns:1fr!important;
+  }
+
+  .corporate-account-nav{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:460px){
+  .corporate-dashboard{
+    padding-top:10px;
+  }
+
+  .corporate-dashboard-head{
+    padding:17px;
+    border-radius:16px;
+  }
+
+  .corporate-account-nav{
+    grid-template-columns:1fr;
+  }
+
+  .corporate-profile-card{
+    padding:16px;
+  }
+
+  .corporate-profile-card .section-mini-head{
+    flex-direction:column;
+  }
+}

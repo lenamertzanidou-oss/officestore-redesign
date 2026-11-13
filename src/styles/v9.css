@@ -592,3 +592,29 @@ textarea:focus-visible{
     opacity:.9;
   }
 }
+
+
+/* Product media placeholder state — imagery intentionally removed */
+.product-visual-empty{
+  width:100%!important;
+  height:100%!important;
+  min-height:inherit;
+  border:0!important;
+  border-radius:inherit!important;
+  background:#F4F5F7!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.market-product-card .product-media,
+.product-gallery-main,
+.cart-line-image,
+.checkout-line-visual,
+.limited-deal-media,
+.fig-hero-slider-image{
+  background:#F4F5F7!important;
+}
+
+.product-card:hover .product-visual-empty{
+  transform:none!important;
+}

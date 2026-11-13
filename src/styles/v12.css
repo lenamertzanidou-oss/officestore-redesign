@@ -501,3 +501,82 @@
     top:4px;
   }
 }
+
+
+/* Service hero variant */
+.page-hero--service .page-hero-inner{
+  min-height:250px!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr)!important;
+  gap:32px!important;
+  padding:32px 40px!important;
+  border-radius:20px!important;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(255,255,255,.12),transparent 29%),
+    linear-gradient(135deg,#2D61B2 0%,#2757A5 54%,#1F4B92 100%)!important;
+}
+
+.page-hero--service h1{
+  max-width:760px!important;
+  font-size:clamp(2.2rem,3.5vw,3.15rem)!important;
+  line-height:1.08!important;
+}
+
+.page-hero--service p{
+  max-width:700px!important;
+  margin-top:12px!important;
+  font-size:14.5px!important;
+  line-height:1.62!important;
+}
+
+.page-hero--service .page-hero-benefits{
+  margin-top:18px!important;
+}
+
+.page-hero--service .page-hero-visual{
+  width:250px;
+  height:172px;
+}
+
+.page-hero--service .page-hero-mini-card{
+  min-width:156px;
+  padding:9px 10px;
+  border-radius:12px;
+}
+
+.page-hero--service .page-hero-mini-card-a{
+  right:56px;
+  top:18px;
+}
+
+.page-hero--service .page-hero-mini-card-b{
+  right:0;
+  bottom:14px;
+}
+
+@media (max-width:760px){
+  .page-hero--service .page-hero-inner{
+    min-height:auto!important;
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+    padding:26px 20px 20px!important;
+    border-radius:16px!important;
+  }
+
+  .page-hero--service h1{
+    font-size:clamp(1.95rem,8.5vw,2.45rem)!important;
+  }
+
+  .page-hero--service .page-hero-visual{
+    height:102px;
+  }
+
+  .page-hero--service .page-hero-mini-card-b{
+    display:none;
+  }
+
+  .page-hero--service .page-hero-mini-card-a{
+    left:auto;
+    right:0;
+    top:4px;
+  }
+}

@@ -562,29 +562,6 @@ main{background:var(--ref-bg)}
   background:linear-gradient(180deg,#42A6CA 0%,#C8EBF8 100%);
   color:#fff;
 }
-
-/* ===== Inner pages ===== */
-.page-hero{
-  background:#fff;
-  padding:24px 0 8px;
-}
-.page-hero-inner{
-  min-height:210px;
-  border-radius:10px;
-  background:var(--ref-blue)!important;
-  color:#fff;
-}
-.page-hero .eyebrow,
-.page-hero h1,
-.page-hero p,
-.page-hero-line{color:#fff}
-.page-hero p{opacity:.82}
-.page-hero-line i{background:rgba(255,255,255,.35)}
-
-.category-hero{
-  background:#fff!important;
-  padding:24px 0 8px;
-}
 .category-hero-inner{
   border:0!important;
   border-radius:10px!important;
@@ -595,14 +572,8 @@ main{background:var(--ref-bg)}
   background:#ECECEC!important;
   border-radius:9px!important;
 }
-.subcategory-strip a{
-  border-radius:999px!important;
-  border-color:var(--ref-line)!important;
-}
-.subcategory-strip a:hover{
-  color:var(--ref-blue)!important;
-  border-color:#AFC4E4!important;
-}
+
+
 .category-callout,
 .free-delivery-banner,
 .discount-note,
@@ -852,9 +823,7 @@ a.eyebrow:hover{
 .account-nav a.is-active,
 .product-tabs button.is-active,
 .checkout-step.is-active,
-.subcategory-strip a:hover{
-  color:var(--ref-blue) !important;
-}
+
 
 /* remove leftover teal/green action text from old layers */
 .section-heading .text-link,

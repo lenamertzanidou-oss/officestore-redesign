@@ -82,7 +82,7 @@ export default function AccountPage() {
         <Breadcrumbs items={[{label:'Իմ էջը'}]}/>
 
         <div className="account-shell">
-          <section className={`account-benefit ${mode === 'register' ? 'account-benefit--register' : 'account-benefit--login'}`} aria-labelledby="account-benefit-title">
+          <section className={`account-benefit ${mode === 'register' ? `account-benefit--register ${registerType === 'corporate' ? 'account-benefit--corporate' : ''}` : 'account-benefit--login'}`} aria-labelledby="account-benefit-title">
             {mode === 'login' ? (
               <>
                 <div className="account-benefit-top">

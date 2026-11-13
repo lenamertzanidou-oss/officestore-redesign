@@ -51,5 +51,35 @@ export function EmptyState({ title, text, action = 'Դիտել ապրանքնե�
 }
 
 export function PageHero({ eyebrow, title, text, children }) {
-  return <section className="page-hero"><div className="container page-hero-inner"><div className="page-hero-copy">{eyebrow && <div className="eyebrow"><i/>{eyebrow}</div>}<h1>{title}</h1>{text && <p>{text}</p>}<div className="page-hero-line"><span>OFFICESTORE</span><i/></div></div>{children || <div className="page-hero-orbit" aria-hidden="true"><span/><i/><b/></div>}</div></section>;
+  return (
+    <section className="page-hero">
+      <div className="container page-hero-inner">
+        <div className="page-hero-copy">
+          {eyebrow && <div className="eyebrow"><i/>{eyebrow}</div>}
+          <h1>{title}</h1>
+          {text && <p>{text}</p>}
+          <div className="page-hero-benefits" aria-label="OfficeStore առավելություններ">
+            <span><Icon name="check" size={13}/> Արագ ընտրություն</span>
+            <span><Icon name="check" size={13}/> Հարմար պատվեր</span>
+            <span><Icon name="check" size={13}/> Վստահելի առաքում</span>
+          </div>
+        </div>
+        {children || (
+          <div className="page-hero-visual" aria-hidden="true">
+            <div className="page-hero-glow"/>
+            <div className="page-hero-ring page-hero-ring-a"/>
+            <div className="page-hero-ring page-hero-ring-b"/>
+            <div className="page-hero-mini-card page-hero-mini-card-a">
+              <span><Icon name="grid" size={17}/></span>
+              <div><strong>OfficeStore</strong><small>Ամեն ինչ մեկ տեղում</small></div>
+            </div>
+            <div className="page-hero-mini-card page-hero-mini-card-b">
+              <span><Icon name="package" size={16}/></span>
+              <div><strong>Արագ</strong><small>պատվեր և առաքում</small></div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }

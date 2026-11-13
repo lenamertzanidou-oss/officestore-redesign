@@ -477,13 +477,13 @@ input,select,textarea{accent-color:var(--fig-green)}
   border-color:rgba(7,54,47,.08);
   box-shadow:0 0 0 58px rgba(7,54,47,.025),0 0 0 116px rgba(7,54,47,.018);
 }
-.page-hero .eyebrow{color:var(--fig-green)}
+
 .page-hero h1{font-size:clamp(1.8rem,3vw,3rem);margin:6px 0 9px}
 .page-hero p{color:#536b64;font-size:.7rem}
 .page-hero-line{color:#688078}
 .page-hero-line i{background:#9fbab2}
 .page-hero-orbit span,.page-hero-orbit i{border-color:rgba(7,54,47,.14)}
-.page-hero-orbit b{background:var(--fig-green)}
+
 
 .category-hero{padding-top:16px}
 .category-hero-inner{

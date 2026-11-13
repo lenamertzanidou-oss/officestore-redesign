@@ -95,16 +95,18 @@ export default function AccountPage() {
               <span><i><Icon name="check" size={14}/></i> Պահել wishlist-ը հաշվի մեջ</span>
             </div>
 
-            <div className="account-preview-card">
-              <div className="account-preview-head">
-                <span><Icon name="package" size={16}/></span>
-                <div><small>Վերջին պատվերը</small><strong>#OS-1042</strong></div>
-                <b>Առաքված</b>
+            <div className="account-access-panel">
+              <div className="account-access-head">
+                <span className="account-access-icon"><Icon name="user" size={17}/></span>
+                <div>
+                  <small>Մուտք գործելուց հետո</small>
+                  <strong>Ձեր անձնական OfficeStore տարածքը</strong>
+                </div>
               </div>
-              <div className="account-preview-body">
-                <div><small>Ընդհանուր</small><strong>26,480 ֏</strong></div>
-                <div><small>Ապրանքներ</small><strong>5</strong></div>
-                <div><small>Առաքում</small><strong>0 ֏</strong></div>
+              <div className="account-access-grid">
+                <span><Icon name="package" size={15}/><b>Պատվերների պատմություն</b></span>
+                <span><Icon name="location" size={15}/><b>Պահպանված հասցեներ</b></span>
+                <span><Icon name="heart" size={15}/><b>Wishlist և նախընտրելիներ</b></span>
               </div>
             </div>
 

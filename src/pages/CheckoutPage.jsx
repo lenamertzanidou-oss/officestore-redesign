@@ -8,16 +8,41 @@ import { useStore } from '../context/StoreContext';
 import { saveStoredProfile } from '../utils/accountProfile';
 
 const paymentMethods = [
+  ['cash','Կանխիկ','Վճարում ստանալիս'],
   ['card','Բանկային քարտ','Visa · MasterCard'],
   ['idram','Idram','Արագ վճարում'],
   ['telcell','TelCell','Վճարում TelCell-ով'],
   ['bank','Բանկային փոխանցում','Հարմար է կազմակերպությունների համար'],
-  ['cash','Կանխիկ','Վճարում ստանալիս'],
 ];
+
+function PaymentMark({ id }) {
+  const iconName = {
+    cash: 'banknote',
+    card: 'card',
+    idram: 'wallet',
+    telcell: 'mobile',
+    bank: 'building',
+  }[id] || 'card';
+
+  const label = {
+    cash: 'CASH',
+    card: 'VISA',
+    idram: 'IDRAM',
+    telcell: 'TELCELL',
+    bank: 'BANK',
+  }[id] || id.toUpperCase();
+
+  return (
+    <span className={`payment-method-mark payment-method-mark--${id}`} aria-hidden="true">
+      <Icon name={iconName} size={15}/>
+      <b>{label}</b>
+    </span>
+  );
+}
 
 export default function CheckoutPage() {
   const { cartLines, subtotal, deliveryFee, total, hasFreeDelivery, clearCart } = useStore();
-  const [payment, setPayment] = useState('card');
+  const [payment, setPayment] = useState('cash');
   const [delivery, setDelivery] = useState('courier');
   const [ordered, setOrdered] = useState(false);
   const [saveAsAccount, setSaveAsAccount] = useState(false);
@@ -56,7 +81,7 @@ export default function CheckoutPage() {
           <span className="checkout-confirmation-icon"><Icon name="check" size={24}/></span>
           <span className="checkout-confirmation-kicker">Պատվերն ընդունված է</span>
           <h1>Շնորհակալություն ձեր պատվերի համար</h1>
-          <p>Պատվերի հաստատումը կուղարկվի ձեր էլ․ հասցեին և հեռախոսահամարին։</p>
+          <p>Պատվերի հաստատման համար մենք կկապվենք նշված հեռախոսահամարով։</p>
 
           <div className="checkout-confirmation-number">
             <small>Պատվերի համարը</small>
@@ -114,7 +139,7 @@ export default function CheckoutPage() {
                   <label><span>Անուն *</span><input name="firstName" required autoComplete="given-name"/></label>
                   <label><span>Ազգանուն *</span><input name="lastName" required autoComplete="family-name"/></label>
                   <label><span>Հեռախոս *</span><input name="phone" required type="tel" autoComplete="tel" placeholder="0XX XX XX XX"/></label>
-                  <label><span>Էլ․ հասցե *</span><input name="email" required type="email" autoComplete="email"/></label>
+                  <label><span>Էլ․ հասցե <small className="field-optional">ըստ ցանկության</small></span><input name="email" required={saveAsAccount} type="email" autoComplete="email" placeholder="name@example.com"/></label>
                 </div>
               </section>
 
@@ -144,8 +169,7 @@ export default function CheckoutPage() {
                 {delivery==='courier' && (
                   <div className="checkout-subform form-grid address-grid">
                     <label className="span-2"><span>Հասցե *</span><input name="address" required placeholder="Փողոց, շենք, բնակարան/գրասենյակ"/></label>
-                    <label><span>Քաղաք *</span><select name="city" required><option>Երևան</option><option>Փարաքար</option><option>Աբովյան</option><option>Աշտարակ</option><option>Այլ</option></select></label>
-                    <label><span>Փոստային ինդեքս</span><input name="postalCode" inputMode="numeric"/></label>
+                    <label className="span-2"><span>Քաղաք *</span><select name="city" required><option>Երևան</option><option>Փարաքար</option><option>Աբովյան</option><option>Աշտարակ</option><option>Այլ</option></select></label>
                     <label className="span-2"><span>Առաքման նշումներ</span><textarea name="deliveryNotes" rows="2" placeholder="Մուտք, հարկ կամ այլ օգտակար նշում"/></label>
                   </div>
                 )}
@@ -163,19 +187,12 @@ export default function CheckoutPage() {
                 <div className="payment-list">
                   {paymentMethods.map(([id,title,text]) => (
                     <button type="button" key={id} className={payment===id?'is-active':''} onClick={()=>setPayment(id)}>
-                      <span className={`payment-logo payment-${id}`}>{id==='card'?'CARD':id.toUpperCase()}</span>
+                      <PaymentMark id={id}/>
                       <span><strong>{title}</strong><small>{text}</small></span>
                       <span className="radio-dot"/>
                     </button>
                   ))}
                 </div>
-
-                {payment==='card' && (
-                  <div className="checkout-payment-note">
-                    <Icon name="lock" size={14}/>
-                    <span>Քարտային վճարումը կկատարվի անվտանգ վճարային միջավայրում։</span>
-                  </div>
-                )}
               </section>
 
               <section className="checkout-save-section">
@@ -226,11 +243,6 @@ export default function CheckoutPage() {
               <div className="summary-row"><span>Առաքում</span><strong className={deliveryFee===0?'checkout-free':''}>{delivery==='pickup'||deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}</strong></div>
               <div className="summary-divider"/>
               <div className="summary-total"><span>Ընդհանուր</span><strong>{formatPrice(payable)}</strong></div>
-
-              <label className="checkout-terms">
-                <input type="checkbox" required/>
-                <span>Համաձայն եմ <Link to="/terms">պայմաններին</Link> և <Link to="/privacy">գաղտնիության քաղաքականությանը</Link>։</span>
-              </label>
 
               <button className="btn btn-primary btn-lg full-width checkout-submit">
                 Հաստատել պատվերը

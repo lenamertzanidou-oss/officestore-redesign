@@ -196,13 +196,22 @@ export default function CheckoutPage() {
               </section>
 
               <section className="checkout-save-section">
-                <label className={`checkout-create-account ${saveAsAccount ? 'is-active' : ''}`}>
-                  <input type="checkbox" checked={saveAsAccount} onChange={e=>setSaveAsAccount(e.target.checked)}/>
-                  <span className="checkout-create-account-icon"><Icon name="user" size={16}/></span>
-                  <span className="checkout-create-account-copy">
-                    <strong>Պահպանել տվյալները հաջորդ գնումների համար</strong>
-                    <small>Ընտրության դեպքում կստեղծվի անձնական հաշիվ։</small>
+                <label className={`checkout-account-choice ${saveAsAccount ? 'is-active' : ''}`}>
+                  <input
+                    className="checkout-account-choice-input"
+                    type="checkbox"
+                    checked={saveAsAccount}
+                    onChange={e=>setSaveAsAccount(e.target.checked)}
+                  />
+                  <span className="checkout-account-choice-icon"><Icon name="user" size={16}/></span>
+                  <span className="checkout-account-choice-copy">
+                    <span className="checkout-account-choice-title">
+                      <strong>Ստեղծել հաշիվ և պահպանել տվյալները</strong>
+                      <em>Ըստ ցանկության</em>
+                    </span>
+                    <small>Հաջորդ գնումների ժամանակ կոնտակտային տվյալները նորից լրացնելու կարիք չի լինի։</small>
                   </span>
+                  <span className="checkout-account-choice-check" aria-hidden="true"><Icon name="check" size={13}/></span>
                 </label>
 
                 {saveAsAccount && (

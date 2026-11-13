@@ -416,3 +416,68 @@ textarea:focus-visible{
     transform:none;
   }
 }
+
+
+/* V9.1 — corrected footer brand block */
+.footer-brand-col{
+  max-width:390px!important;
+  padding-right:18px;
+}
+
+.market-brand-footer{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:auto!important;
+  min-height:42px!important;
+  margin:0 0 22px!important;
+  padding:0!important;
+}
+
+.market-brand-footer::before,
+.market-brand-footer::after{
+  display:none!important;
+  content:none!important;
+}
+
+.market-brand-logo-footer{
+  display:block!important;
+  width:auto!important;
+  height:38px!important;
+  max-width:205px!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  filter:brightness(0) invert(1)!important;
+  transform:none!important;
+  opacity:1!important;
+}
+
+.footer-brand-col p{
+  max-width:350px!important;
+  margin:0!important;
+  color:rgba(255,255,255,.68)!important;
+  font-size:.78rem!important;
+  line-height:1.72!important;
+}
+
+.footer-social-icons{
+  margin-top:22px!important;
+}
+
+@media (max-width:760px){
+  .footer-brand-col{
+    max-width:none!important;
+    padding-right:0;
+  }
+
+  .market-brand-logo-footer{
+    height:34px!important;
+    max-width:184px!important;
+  }
+}
+
+@media (max-width:520px){
+  .market-brand-logo-footer{
+    height:31px!important;
+    max-width:170px!important;
+  }
+}

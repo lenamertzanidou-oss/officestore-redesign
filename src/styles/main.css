@@ -360,7 +360,7 @@ h1 strong,h2 strong{font-weight:720}
 .header-round-btn:hover{background:#fff;transform:translateY(-1px)}
 .site-header-home .header-round-btn{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(10px)}
 .site-header-home .header-round-btn:hover{background:rgba(255,255,255,.18)}
-.cart-action b{position:absolute;right:-3px;top:-4px;min-width:17px;height:17px;border-radius:999px;padding:0 4px;display:grid;place-items:center;background:var(--v3-lime);color:var(--v3-ink);font-size:9px}
+.cart-action b{position:absolute;right:-3px;top:-4px;min-width:17px;height:17px;border-radius:999px;padding:0 4px;display:grid;place-items:center;background:#2757A5;color:#fff;font-size:9px}
 .header-order-btn{
   min-height:39px;border-radius:999px;background:var(--v3-lime);color:var(--v3-ink);
   display:flex;align-items:center;gap:10px;padding:4px 5px 4px 15px;

@@ -40,6 +40,9 @@ export function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
     dispenser: <><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M9 7h6M10 12h4M12 12v3M10 18h4"/></>,
     cup: <><path d="M6 5h12l-1 15H7L6 5Z"/><path d="M8 9h8"/></>,
     cleaning: <><path d="M5 18h14"/><path d="m8 18 2-9h4l2 9"/><path d="M12 4v5"/></>,
+    tag: <><path d="M20 13 13 20 4 11V4h7l9 9Z"/><circle cx="8.5" cy="8.5" r="1.2"/></>,
+    sparkles: <><path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></>,
+    refresh: <><path d="M20 7v5h-5"/><path d="M4.9 17a8 8 0 1 0 .5-10.5L4 8"/></>,
   };
   return <svg {...common}>{paths[name] || paths.info}</svg>;
 }

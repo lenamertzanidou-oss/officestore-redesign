@@ -325,9 +325,22 @@ textarea:focus{
 }
 
 /* ---------- Discounts ---------- */
+.discounts-head{
+  padding:20px 22px!important;
+  border:1px solid var(--master-line)!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  box-shadow:0 8px 24px rgba(22,38,34,.04)!important;
+}
+.discounts-head h2{
+  color:var(--master-ink)!important;
+}
+.discounts-head p{
+  color:var(--master-muted)!important;
+}
 .discount-note{
   background:var(--master-blue-050)!important;
-  border-color:var(--master-blue-border)!important;
+  border:1px solid var(--master-blue-border)!important;
   color:var(--master-blue-dark)!important;
 }
 .discount-hero-badge{

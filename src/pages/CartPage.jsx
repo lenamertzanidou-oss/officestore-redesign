@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Breadcrumbs, EmptyState, Quantity } from '../components/Common';
+import { Breadcrumbs, EmptyState, OrderProgress, Quantity } from '../components/Common';
 import ProductVisual from '../components/ProductVisual';
 import { Icon } from '../components/Icons';
 import { formatPrice } from '../data/catalog';
@@ -13,13 +13,7 @@ export default function CartPage() {
     <div className="container cart-page">
       <Breadcrumbs items={[{label:'Զամբյուղ'}]}/>
 
-      <div className="checkout-progress cart-progress" aria-label="Պատվերի քայլեր">
-        <span className="is-active"><b>1</b>Զամբյուղ</span>
-        <i/>
-        <span><b>2</b>Վճարում</span>
-        <i/>
-        <span><b>3</b>Հաստատում</span>
-      </div>
+      <OrderProgress step={1}/>
 
       {!cartLines.length ? (
         <EmptyState

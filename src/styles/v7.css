@@ -228,25 +228,13 @@ main{background:var(--f7-bg)}
 .fig-duo-sky{background:linear-gradient(180deg,#47a8cb 0%,#acdced 100%);color:#fff}
 
 .fig-limited-section{padding-bottom:48px}
-
-/* INNER PAGES — same design language */
-.page-hero{background:#fff;padding:24px 0 8px}
-.page-hero-inner{min-height:210px;border-radius:10px;background:var(--f7-blue);color:#fff;padding:34px 38px}
-.page-hero .eyebrow{color:#dff5fb}
-.page-hero h1{font-size:2.5rem;color:#fff}
-.page-hero p{font-size:.86rem;color:rgba(255,255,255,.82)}
-.page-hero-line{color:rgba(255,255,255,.65)}
-.page-hero-line i{background:rgba(255,255,255,.35)}
-.page-hero-orbit span,.page-hero-orbit i{border-color:rgba(255,255,255,.18)}
-.page-hero-orbit b{background:#fff}
-.breadcrumbs{font-size:.7rem;color:#858c89;padding:14px 0}
 .category-hero{background:#fff!important;padding:24px 0 8px}
 .category-hero-inner{border-radius:10px;border:0;background:#f6f6f6!important;box-shadow:none;padding:30px 34px}
 .category-symbol{background:#ececec;border-radius:8px}
 .category-hero h1{font-size:2.25rem}
 .category-hero p{font-size:.84rem}
-.subcategory-strip a{border-radius:999px;border-color:var(--f7-line);font-size:.72rem}
-.subcategory-strip a:hover{color:var(--f7-blue);border-color:#acd1de}
+
+
 .category-callout,.free-delivery-banner,.discount-note{background:#eaf6f9;border-color:#c9e4ed;color:#134d60}
 
 .shop-shell,.category-page,.product-page,.cart-page,.checkout-page,.account-dashboard,.contact-page,.delivery-page,.discounts-page,.blog-page,.about-page,.service-page,.legal-page{background:var(--f7-bg)}

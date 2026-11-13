@@ -557,3 +557,63 @@ textarea:focus-visible{
     font-size:1.65rem;
   }
 }
+
+
+/* V9.1 — footer brand area correction */
+.market-brand-footer{
+  display:inline-flex!important;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  margin-bottom:20px!important;
+}
+
+.market-brand-logo-footer{
+  display:block!important;
+  width:190px!important;
+  max-width:100%!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  filter:brightness(0) invert(1);
+  transform:none!important;
+}
+
+.footer-brand-col{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  max-width:390px!important;
+}
+
+.footer-brand-col p{
+  max-width:365px!important;
+  margin:0!important;
+  color:#FFFFFF!important;
+  opacity:.88;
+  font-size:.79rem!important;
+  line-height:1.75!important;
+  font-weight:450;
+}
+
+@media (max-width:760px){
+  .market-brand-logo-footer{
+    width:175px!important;
+    height:auto!important;
+  }
+  .footer-brand-col p{
+    max-width:420px!important;
+    font-size:.76rem!important;
+  }
+}
+
+@media (max-width:520px){
+  .market-brand-logo-footer{
+    width:162px!important;
+  }
+  .footer-brand-col p{
+    color:#fff!important;
+    opacity:.9;
+  }
+}

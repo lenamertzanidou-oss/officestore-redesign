@@ -574,12 +574,12 @@ h1 strong,h2 strong{font-weight:720}
 body{background:#edf0ed;color:var(--market-ink)}
 .market-shell{background:#fff;min-height:100vh}
 .market-shell main{background:#fff}
-.market-shell .btn-primary{background:var(--market-green)!important;color:#fff!important;box-shadow:none!important}
-.market-shell .btn-primary:hover{background:#087665!important}
+.market-shell .btn-primary{background:#2757A5!important;color:#fff!important;border-color:#2757A5!important;box-shadow:0 8px 18px rgba(39,87,165,.16)!important}
+.market-shell .btn-primary:hover{background:#1F4B92!important;border-color:#1F4B92!important}
 .market-shell .text-link{color:var(--market-green)!important}
 .market-shell .eyebrow{color:var(--market-green)!important}
 .market-shell .section-soft{background:#f7f8f6!important}
-.market-shell :focus-visible{outline-color:rgba(10,143,123,.28)}
+.market-shell :focus-visible{outline-color:rgba(39,87,165,.28)}
 
 /* top bar + header */
 .market-announcement{background:var(--market-green);color:#effffb;font-size:.72rem}

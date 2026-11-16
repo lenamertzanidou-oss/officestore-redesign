@@ -3553,6 +3553,315 @@ textarea:focus-visible{
 }
 
 
+
+
+/* Cart delivery scheduling */
+.cart-delivery-planner{
+  margin:14px 0 16px;
+  padding:16px;
+  border-top:1px solid #EDF0F3;
+}
+
+.cart-delivery-planner-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:13px;
+}
+
+.cart-delivery-planner-icon{
+  width:36px;
+  height:36px;
+  flex:0 0 36px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#EEF3FB;
+  color:var(--master-blue);
+}
+
+.cart-delivery-planner-head strong,
+.cart-delivery-planner-head span{
+  display:block;
+}
+
+.cart-delivery-planner-head strong{
+  color:var(--master-ink);
+  font-size:13px;
+  line-height:1.3;
+  font-weight:700;
+}
+
+.cart-delivery-planner-head>div>span{
+  margin-top:2px;
+  color:#858F8B;
+  font-size:10.5px;
+  line-height:1.35;
+}
+
+.delivery-date-options{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+}
+
+.delivery-date-options button{
+  position:relative;
+  min-width:0;
+  min-height:66px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  padding:10px 28px 10px 11px;
+  border:1px solid #E0E6EC;
+  border-radius:11px;
+  background:#fff;
+  color:#53605B;
+  text-align:left;
+  box-shadow:none;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+
+.delivery-date-options button:hover{
+  border-color:#C7D5E7;
+  background:#FAFBFD;
+  color:var(--master-blue-dark);
+}
+
+.delivery-date-options button.is-active{
+  border-color:#AFC4DF;
+  background:#F3F7FD;
+  color:var(--master-blue-dark);
+}
+
+.delivery-date-options small,
+.delivery-date-options strong{
+  display:block;
+}
+
+.delivery-date-options small{
+  color:#929B98;
+  font-size:8.5px;
+  line-height:1.2;
+  font-weight:500;
+}
+
+.delivery-date-options button.is-active small{
+  color:#6D82A0;
+}
+
+.delivery-date-options strong{
+  margin-top:4px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  color:inherit;
+  font-size:10.5px;
+  line-height:1.35;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.delivery-date-check{
+  position:absolute;
+  top:9px;
+  right:9px;
+  width:19px;
+  height:19px;
+  display:grid;
+  place-items:center;
+  border:1px solid #D8E0E7;
+  border-radius:50%;
+  background:#fff;
+  color:transparent;
+}
+
+.delivery-date-options button.is-active .delivery-date-check{
+  border-color:var(--master-blue);
+  background:var(--master-blue);
+  color:#fff;
+}
+
+.delivery-policy-note{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr);
+  align-items:start;
+  gap:10px;
+  margin-top:12px;
+  padding:12px 13px;
+  border:1px solid #DCE6F2;
+  border-radius:11px;
+  background:#F7F9FD;
+}
+
+.delivery-policy-note>span{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#EAF1FB;
+  color:var(--master-blue);
+}
+
+.delivery-policy-note strong{
+  display:block;
+  color:#3D4A46;
+  font-size:10.5px;
+  line-height:1.35;
+  font-weight:700;
+}
+
+.delivery-policy-note p{
+  margin:3px 0 0;
+  color:#76817D;
+  font-size:9.8px;
+  line-height:1.55;
+}
+
+.cart-delivery-date-row{
+  align-items:flex-start!important;
+}
+
+.cart-delivery-date-row strong{
+  max-width:155px;
+  color:var(--master-blue-dark)!important;
+  text-align:right;
+  line-height:1.35;
+}
+
+/* Selected delivery day in checkout */
+.checkout-selected-delivery{
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) auto;
+  align-items:center;
+  gap:9px;
+  margin-top:12px;
+  padding:10px 11px;
+  border:1px solid #DFE6ED;
+  border-radius:10px;
+  background:#F8FAFD;
+}
+
+.checkout-selected-delivery-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#EAF1FB;
+  color:var(--master-blue);
+}
+
+.checkout-selected-delivery small,
+.checkout-selected-delivery strong{
+  display:block;
+}
+
+.checkout-selected-delivery small{
+  color:#8B9491;
+  font-size:9px;
+  line-height:1.25;
+}
+
+.checkout-selected-delivery strong{
+  margin-top:2px;
+  color:#36423E;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:600;
+}
+
+.checkout-selected-delivery>a{
+  color:var(--master-blue);
+  font-size:10px;
+  line-height:1.2;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.checkout-selected-delivery>a:hover{
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.checkout-confirmation-delivery{
+  width:min(100%,340px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  margin:-7px auto 18px;
+  padding:10px 12px;
+  border:1px solid #DCE6F2;
+  border-radius:11px;
+  background:#F7F9FD;
+  color:var(--master-blue);
+  text-align:left;
+}
+
+.checkout-confirmation-delivery span{
+  min-width:0;
+}
+
+.checkout-confirmation-delivery small,
+.checkout-confirmation-delivery strong{
+  display:block;
+}
+
+.checkout-confirmation-delivery small{
+  color:#8B9491;
+  font-size:9px;
+  line-height:1.25;
+}
+
+.checkout-confirmation-delivery strong{
+  margin-top:2px;
+  color:#36423E;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:600;
+}
+
+@media (max-width:1100px){
+  .delivery-date-options{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+@media (max-width:680px){
+  .cart-delivery-planner{
+    margin:10px 0 12px;
+    padding:14px 0 2px;
+  }
+
+  .delivery-date-options{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .delivery-date-options button{
+    min-height:62px;
+  }
+
+  .delivery-policy-note{
+    margin-bottom:10px;
+  }
+}
+
+@media (max-width:420px){
+  .delivery-date-options{
+    grid-template-columns:1fr;
+  }
+
+  .delivery-date-options button{
+    min-height:56px;
+  }
+
+  .checkout-selected-delivery{
+    grid-template-columns:32px minmax(0,1fr) auto;
+  }
+}
+
 /* ---------- Order flow / checkout ---------- */
 .order-flow{
   width:min(100%,540px);

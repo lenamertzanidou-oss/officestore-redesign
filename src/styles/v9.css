@@ -3879,64 +3879,6 @@ textarea:focus-visible{
   line-height:1.55;
 }
 
-.cart-summary-delivery{
-  display:grid;
-}
-
-.checkout-selected-delivery{
-  display:grid;
-  grid-template-columns:34px minmax(0,1fr) auto;
-  align-items:center;
-  gap:9px;
-  margin-top:12px;
-  padding:10px 11px;
-  border:1px solid #DFE6ED;
-  border-radius:10px;
-  background:#F8FAFD;
-}
-
-.checkout-selected-delivery-icon{
-  width:34px;
-  height:34px;
-  display:grid;
-  place-items:center;
-  border-radius:9px;
-  background:#EAF1FB;
-  color:var(--master-blue);
-}
-
-.checkout-selected-delivery small,
-.checkout-selected-delivery strong{
-  display:block;
-}
-
-.checkout-selected-delivery small{
-  color:#8B9491;
-  font-size:9px;
-  line-height:1.25;
-}
-
-.checkout-selected-delivery strong{
-  margin-top:2px;
-  color:#36423E;
-  font-size:11px;
-  line-height:1.35;
-  font-weight:600;
-}
-
-.checkout-selected-delivery>a{
-  color:var(--master-blue);
-  font-size:10px;
-  line-height:1.2;
-  font-weight:600;
-  text-decoration:none;
-}
-
-.checkout-selected-delivery>a:hover{
-  text-decoration:underline;
-  text-underline-offset:2px;
-}
-
 .checkout-confirmation-delivery{
   width:min(100%,340px);
   display:flex;
@@ -4011,10 +3953,6 @@ textarea:focus-visible{
   .delivery-calendar-grid button,
   .delivery-calendar-empty{
     min-height:36px;
-  }
-
-  .checkout-selected-delivery{
-    grid-template-columns:32px minmax(0,1fr) auto;
   }
 }
 

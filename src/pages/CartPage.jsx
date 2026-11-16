@@ -6,8 +6,9 @@ import { formatPrice } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 
 export default function CartPage() {
-  const { cartLines, updateQty, removeFromCart, subtotal, deliveryFee, hasFreeDelivery, total } = useStore();
+  const { cartLines, updateQty, removeFromCart, subtotal, deliveryFee, hasFreeDelivery, total, deliveryDate, setDeliveryDate, deliveryOptions } = useStore();
   const itemCount = cartLines.reduce((sum, line) => sum + line.quantity, 0);
+  const selectedDelivery = deliveryOptions.find((option) => option.value === deliveryDate) || deliveryOptions[0];
 
   return (
     <div className="container cart-page">
@@ -87,6 +88,41 @@ export default function CartPage() {
                   </div>
                 </div>
               )}
+
+              <div className="cart-delivery-planner">
+                <div className="cart-delivery-planner-head">
+                  <span className="cart-delivery-planner-icon"><Icon name="calendar" size={18}/></span>
+                  <div>
+                    <strong>Ընտրեք առաքման օրը</strong>
+                    <span>Նույն օրը առաքում չի իրականացվում։</span>
+                  </div>
+                </div>
+
+                <div className="delivery-date-options" role="radiogroup" aria-label="Առաքման օր">
+                  {deliveryOptions.map((option) => (
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={deliveryDate === option.value}
+                      className={deliveryDate === option.value ? 'is-active' : ''}
+                      key={option.value}
+                      onClick={() => setDeliveryDate(option.value)}
+                    >
+                      <small>{option.isEarliest ? 'Ամենաարագ' : 'Հասանելի'}</small>
+                      <strong>{option.shortLabel}</strong>
+                      <span className="delivery-date-check"><Icon name="check" size={12}/></span>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="delivery-policy-note">
+                  <span><Icon name="info" size={17}/></span>
+                  <div>
+                    <strong>Առաքման պայմաններ</strong>
+                    <p>Մինչև ժամը 18:00-ը ձևակերպված պատվերները կառաքվեն հաջորդ աշխատանքային օրը։ Շաբաթ և կիրակի օրերին ձևակերպված պատվերները կառաքվեն երկուշաբթի։ Ծանրաբեռնվածության դեպքում առաքումը կարող է իրականացվել մինչև 2 աշխատանքային օրվա ընթացքում։ Առաքման մասին ծանուցումը կուղարկվի Ձեր նշած հեռախոսահամարին։</p>
+                  </div>
+                </div>
+              </div>
             </section>
 
             <aside className="order-summary cart-summary">
@@ -105,6 +141,10 @@ export default function CartPage() {
                   <strong className={deliveryFee===0?'cart-delivery-free':''}>
                     {deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}
                   </strong>
+                </div>
+                <div className="summary-row cart-delivery-date-row">
+                  <span>Առաքման օր</span>
+                  <strong>{selectedDelivery?.shortLabel || '—'}</strong>
                 </div>
               </div>
 

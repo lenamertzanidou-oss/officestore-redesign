@@ -41,7 +41,7 @@ function PaymentMark({ id }) {
 }
 
 export default function CheckoutPage() {
-  const { cartLines, subtotal, deliveryFee, total, hasFreeDelivery, clearCart } = useStore();
+  const { cartLines, subtotal, deliveryFee, total, hasFreeDelivery, clearCart, deliveryDate, deliveryOptions } = useStore();
   const [payment, setPayment] = useState('cash');
   const [delivery, setDelivery] = useState('courier');
   const [ordered, setOrdered] = useState(false);
@@ -50,6 +50,7 @@ export default function CheckoutPage() {
 
   const itemCount = cartLines.reduce((sum, line) => sum + line.quantity, 0);
   const payable = delivery === 'pickup' ? subtotal : total;
+  const selectedDelivery = deliveryOptions.find((option) => option.value === deliveryDate) || deliveryOptions[0];
 
   const submit = (e) => {
     e.preventDefault();
@@ -87,6 +88,13 @@ export default function CheckoutPage() {
             <small>Պատվերի համարը</small>
             <strong>#OS-2027-1048</strong>
           </div>
+
+          {delivery === 'courier' && selectedDelivery && (
+            <div className="checkout-confirmation-delivery">
+              <Icon name="calendar" size={16}/>
+              <span><small>Ընտրված առաքման օր</small><strong>{selectedDelivery.label}</strong></span>
+            </div>
+          )}
 
           {accountCreated && (
             <div className="checkout-confirmation-account">
@@ -156,7 +164,7 @@ export default function CheckoutPage() {
                 <div className="delivery-choice">
                   <button type="button" className={delivery==='courier'?'is-active':''} onClick={()=>setDelivery('courier')}>
                     <span className="choice-icon"><Icon name="truck" size={18}/></span>
-                    <span><strong>Առաքում հասցեով</strong><small>{hasFreeDelivery ? 'Անվճար' : '600 ֏'} · հաջորդ աշխատանքային օրը</small></span>
+                    <span><strong>Առաքում հասցեով</strong><small>{hasFreeDelivery ? 'Անվճար' : '600 ֏'} · {selectedDelivery?.shortLabel || 'ընտրված օր'}</small></span>
                     <span className="radio-dot"/>
                   </button>
 
@@ -166,6 +174,17 @@ export default function CheckoutPage() {
                     <span className="radio-dot"/>
                   </button>
                 </div>
+
+                {delivery==='courier' && selectedDelivery && (
+                  <div className="checkout-selected-delivery">
+                    <span className="checkout-selected-delivery-icon"><Icon name="calendar" size={16}/></span>
+                    <div>
+                      <small>Ընտրված առաքման օր</small>
+                      <strong>{selectedDelivery.label}</strong>
+                    </div>
+                    <Link to="/cart">Փոխել</Link>
+                  </div>
+                )}
 
                 {delivery==='courier' && (
                   <div className="checkout-subform form-grid address-grid">

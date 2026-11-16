@@ -271,6 +271,17 @@ export default function CheckoutPage() {
               <div className="summary-divider"/>
               <div className="summary-row"><span>Ապրանքներ</span><strong>{formatPrice(subtotal)}</strong></div>
               <div className="summary-row"><span>Առաքում</span><strong className={deliveryFee===0?'checkout-free':''}>{delivery==='pickup'||deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}</strong></div>
+
+              {delivery === 'courier' && selectedDelivery && (
+                <div className="checkout-summary-delivery">
+                  <span className="checkout-summary-delivery-icon"><Icon name="calendar" size={15}/></span>
+                  <span>
+                    <small>Առաքման օր</small>
+                    <strong>{selectedDelivery.label}</strong>
+                  </span>
+                </div>
+              )}
+
               <div className="summary-divider"/>
               <div className="summary-total"><span>Ընդհանուր</span><strong>{formatPrice(payable)}</strong></div>
 

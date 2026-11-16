@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { products } from '../data/catalog';
+import { getDeliveryOptions } from '../utils/deliverySchedule';
 
 const StoreContext = createContext(null);
 const readStorage = (key, fallback) => {
@@ -16,9 +17,17 @@ export function StoreProvider({ children }) {
   const [wishlist, setWishlist] = useState(() => readStorage('os-wishlist', []));
   const [toast, setToast] = useState('');
   const [language, setLanguage] = useState('HY');
+  const deliveryOptions = useMemo(() => getDeliveryOptions(), []);
+  const [deliveryDate, setDeliveryDateState] = useState(() => {
+    const stored = readStorage('os-delivery-date', '');
+    return deliveryOptions.some((option) => option.value === stored)
+      ? stored
+      : deliveryOptions[0]?.value || '';
+  });
 
   useEffect(() => localStorage.setItem('os-cart', JSON.stringify(cart)), [cart]);
   useEffect(() => localStorage.setItem('os-wishlist', JSON.stringify(wishlist)), [wishlist]);
+  useEffect(() => localStorage.setItem('os-delivery-date', JSON.stringify(deliveryDate)), [deliveryDate]);
   useEffect(() => {
     if (!toast) return;
     const timer = setTimeout(() => setToast(''), 2200);
@@ -44,6 +53,11 @@ export function StoreProvider({ children }) {
   };
 
   const removeFromCart = (id) => setCart((current) => current.filter((item) => item.id !== id));
+  const setDeliveryDate = (value) => {
+    if (deliveryOptions.some((option) => option.value === value)) {
+      setDeliveryDateState(value);
+    }
+  };
   const clearCart = () => setCart([]);
   const toggleWishlist = (id) => {
     setWishlist((current) => current.includes(id) ? current.filter((x) => x !== id) : [...current, id]);
@@ -60,6 +74,7 @@ export function StoreProvider({ children }) {
     cart, cartLines, wishlist, language, setLanguage, toast,
     addToCart, updateQty, removeFromCart, clearCart, toggleWishlist,
     subtotal, deliveryFee, hasFreeDelivery, total, itemCount,
+    deliveryDate, setDeliveryDate, deliveryOptions,
   };
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

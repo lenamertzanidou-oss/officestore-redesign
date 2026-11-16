@@ -6,7 +6,7 @@ import { formatPrice } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 
 export default function CartPage() {
-  const { cartLines, updateQty, removeFromCart, subtotal, deliveryFee, hasFreeDelivery, total, deliveryDate, setDeliveryDate, deliveryOptions } = useStore();
+  const { cartLines, updateQty, removeFromCart, subtotal, deliveryFee, hasFreeDelivery, total, deliveryDate, setDeliveryDate, deliveryOptions, deliveryCalendar } = useStore();
   const itemCount = cartLines.reduce((sum, line) => sum + line.quantity, 0);
   const selectedDelivery = deliveryOptions.find((option) => option.value === deliveryDate) || deliveryOptions[0];
 
@@ -98,21 +98,33 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <div className="delivery-date-options" role="radiogroup" aria-label="Առաքման օր">
-                  {deliveryOptions.map((option) => (
-                    <button
-                      type="button"
-                      role="radio"
-                      aria-checked={deliveryDate === option.value}
-                      className={deliveryDate === option.value ? 'is-active' : ''}
-                      key={option.value}
-                      onClick={() => setDeliveryDate(option.value)}
-                    >
-                      <small>{option.isEarliest ? 'Ամենաարագ' : 'Հասանելի'}</small>
-                      <strong>{option.shortLabel}</strong>
-                      <span className="delivery-date-check"><Icon name="check" size={12}/></span>
-                    </button>
-                  ))}
+                <div className="delivery-calendar" aria-label="Առաքման ամսական օրացույց">
+                  <div className="delivery-calendar-head">
+                    <strong>{deliveryCalendar.monthLabel}</strong>
+                    <span>Ընտրեք հասանելի աշխատանքային օրը</span>
+                  </div>
+
+                  <div className="delivery-calendar-weekdays" aria-hidden="true">
+                    {['Երկ','Երք','Չրք','Հնգ','Ուրբ','Շբթ','Կիր'].map(day => <span key={day}>{day}</span>)}
+                  </div>
+
+                  <div className="delivery-calendar-grid" role="radiogroup" aria-label="Առաքման օր">
+                    {deliveryCalendar.days.map((day, index) => day ? (
+                      <button
+                        type="button"
+                        role="radio"
+                        aria-label={day.label}
+                        aria-checked={deliveryDate === day.value}
+                        disabled={!day.isAvailable}
+                        className={`${deliveryDate === day.value ? 'is-active' : ''} ${day.isEarliest ? 'is-earliest' : ''}`}
+                        key={day.value}
+                        onClick={() => setDeliveryDate(day.value)}
+                      >
+                        <span>{day.day}</span>
+                        {day.isEarliest && <small>Արագ</small>}
+                      </button>
+                    ) : <span className="delivery-calendar-empty" key={`empty-${index}`}/>)}
+                  </div>
                 </div>
 
                 <div className="delivery-policy-note">

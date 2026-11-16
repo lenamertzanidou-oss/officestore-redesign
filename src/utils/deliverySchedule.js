@@ -63,15 +63,50 @@ export function formatDeliveryDate(value, options = {}) {
   }).format(date);
 }
 
-export function getDeliveryOptions(now = new Date(), count = 5) {
+export function getDeliveryOptions(now = new Date()) {
   const earliest = getEarliestDeliveryDate(now);
-  return Array.from({ length: count }, (_, index) => {
-    const date = index === 0 ? earliest : addBusinessDays(earliest, index);
-    return {
-      value: toDeliveryDateKey(date),
+  const endOfMonth = new Date(earliest.getFullYear(), earliest.getMonth() + 1, 0, 12, 0, 0, 0);
+  const options = [];
+
+  for (let date = cloneAtNoon(earliest); date <= endOfMonth; date.setDate(date.getDate() + 1)) {
+    if (isWeekend(date)) continue;
+    const current = cloneAtNoon(date);
+    options.push({
+      value: toDeliveryDateKey(current),
+      label: formatDeliveryDate(current),
+      shortLabel: formatDeliveryDate(current, { short: true }),
+      isEarliest: options.length === 0,
+    });
+  }
+
+  return options;
+}
+
+export function getDeliveryCalendar(now = new Date()) {
+  const earliest = getEarliestDeliveryDate(now);
+  const year = earliest.getFullYear();
+  const month = earliest.getMonth();
+  const firstDay = new Date(year, month, 1, 12, 0, 0, 0);
+  const lastDay = new Date(year, month + 1, 0, 12, 0, 0, 0);
+  const available = new Set(getDeliveryOptions(now).map((option) => option.value));
+  const leadingBlanks = (firstDay.getDay() + 6) % 7;
+  const days = Array.from({ length: leadingBlanks }, () => null);
+
+  for (let day = 1; day <= lastDay.getDate(); day += 1) {
+    const date = new Date(year, month, day, 12, 0, 0, 0);
+    const value = toDeliveryDateKey(date);
+    days.push({
+      value,
+      day,
       label: formatDeliveryDate(date),
-      shortLabel: formatDeliveryDate(date, { short: true }),
-      isEarliest: index === 0,
-    };
-  });
+      isWeekend: isWeekend(date),
+      isAvailable: available.has(value),
+      isEarliest: value === toDeliveryDateKey(earliest),
+    });
+  }
+
+  return {
+    monthLabel: new Intl.DateTimeFormat('hy-AM', { month: 'long', year: 'numeric' }).format(firstDay),
+    days,
+  };
 }

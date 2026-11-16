@@ -154,9 +154,12 @@ export default function CartPage() {
                     {deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}
                   </strong>
                 </div>
-                <div className="summary-row cart-delivery-date-row">
-                  <span>Առաքման օր</span>
-                  <strong>{selectedDelivery?.shortLabel || '—'}</strong>
+                <div className="cart-summary-delivery">
+                  <span className="cart-summary-delivery-icon"><Icon name="calendar" size={15}/></span>
+                  <span>
+                    <small>Առաքման օր</small>
+                    <strong>{selectedDelivery?.label || '—'}</strong>
+                  </span>
                 </div>
               </div>
 

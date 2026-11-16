@@ -1,5 +1,26 @@
 const DELIVERY_CUTOFF_HOUR = 18;
 
+const HY_MONTHS = [
+  'հունվար','փետրվար','մարտ','ապրիլ','մայիս','հունիս',
+  'հուլիս','օգոստոս','սեպտեմբեր','հոկտեմբեր','նոյեմբեր','դեկտեմբեր',
+];
+
+const HY_MONTHS_GENITIVE = [
+  'հունվարի','փետրվարի','մարտի','ապրիլի','մայիսի','հունիսի',
+  'հուլիսի','օգոստոսի','սեպտեմբերի','հոկտեմբերի','նոյեմբերի','դեկտեմբերի',
+];
+
+const HY_MONTHS_SHORT = [
+  'հունվ.','փետր.','մարտ','ապր.','մայ.','հուն.','հուլ.','օգ.','սեպ.','հոկ.','նոյ.','դեկ.',
+];
+
+const HY_WEEKDAYS = ['կիրակի','երկուշաբթի','երեքշաբթի','չորեքշաբթի','հինգշաբթի','ուրբաթ','շաբաթ'];
+const HY_WEEKDAYS_SHORT = ['կիր','երկ','երք','չրք','հնգ','ուրբ','շբթ'];
+
+function capitalizeHy(value) {
+  return value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+}
+
 function cloneAtNoon(date) {
   const next = new Date(date);
   next.setHours(12, 0, 0, 0);
@@ -56,11 +77,16 @@ export function fromDeliveryDateKey(value) {
 export function formatDeliveryDate(value, options = {}) {
   const date = typeof value === 'string' ? fromDeliveryDateKey(value) : value;
   if (!date) return '';
-  return new Intl.DateTimeFormat('hy-AM', {
-    weekday: options.short ? 'short' : 'long',
-    day: 'numeric',
-    month: 'short',
-  }).format(date);
+
+  const weekday = options.short
+    ? HY_WEEKDAYS_SHORT[date.getDay()]
+    : HY_WEEKDAYS[date.getDay()];
+
+  const month = options.short
+    ? HY_MONTHS_SHORT[date.getMonth()]
+    : HY_MONTHS_GENITIVE[date.getMonth()];
+
+  return `${weekday}, ${date.getDate()} ${month}`;
 }
 
 export function getDeliveryOptions(now = new Date()) {
@@ -106,7 +132,7 @@ export function getDeliveryCalendar(now = new Date()) {
   }
 
   return {
-    monthLabel: new Intl.DateTimeFormat('hy-AM', { month: 'long', year: 'numeric' }).format(firstDay),
+    monthLabel: `${capitalizeHy(HY_MONTHS[month])} ${year}`,
     days,
   };
 }

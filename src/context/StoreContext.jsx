@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { products } from '../data/catalog';
-import { getDeliveryOptions } from '../utils/deliverySchedule';
+import { getDeliveryCalendar, getDeliveryOptions } from '../utils/deliverySchedule';
 
 const StoreContext = createContext(null);
 const readStorage = (key, fallback) => {
@@ -18,6 +18,7 @@ export function StoreProvider({ children }) {
   const [toast, setToast] = useState('');
   const [language, setLanguage] = useState('HY');
   const deliveryOptions = useMemo(() => getDeliveryOptions(), []);
+  const deliveryCalendar = useMemo(() => getDeliveryCalendar(), []);
   const [deliveryDate, setDeliveryDateState] = useState(() => {
     const stored = readStorage('os-delivery-date', '');
     return deliveryOptions.some((option) => option.value === stored)
@@ -74,7 +75,7 @@ export function StoreProvider({ children }) {
     cart, cartLines, wishlist, language, setLanguage, toast,
     addToCart, updateQty, removeFromCart, clearCart, toggleWishlist,
     subtotal, deliveryFee, hasFreeDelivery, total, itemCount,
-    deliveryDate, setDeliveryDate, deliveryOptions,
+    deliveryDate, setDeliveryDate, deliveryOptions, deliveryCalendar,
   };
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

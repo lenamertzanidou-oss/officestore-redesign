@@ -1,5 +1,6 @@
 export function Icon({ name, size = 20, strokeWidth = 1.8, className = '' }) {
-  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', className, 'aria-hidden': true };
+  const iconClassName = ['os-icon', className].filter(Boolean).join(' ');
+  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', className: iconClassName, focusable: 'false', 'aria-hidden': true };
   const paths = {
     search: <><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></>,
     cart: <><path d="M3 4h2l2 11h10l2-7H7"/><circle cx="9" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></>,

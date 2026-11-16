@@ -43,13 +43,12 @@ function PaymentMark({ id }) {
 export default function CheckoutPage() {
   const { cartLines, subtotal, deliveryFee, total, hasFreeDelivery, clearCart, deliveryDate, deliveryOptions } = useStore();
   const [payment, setPayment] = useState('cash');
-  const [delivery, setDelivery] = useState('courier');
   const [ordered, setOrdered] = useState(false);
   const [saveAsAccount, setSaveAsAccount] = useState(false);
   const [accountCreated, setAccountCreated] = useState(false);
 
   const itemCount = cartLines.reduce((sum, line) => sum + line.quantity, 0);
-  const payable = delivery === 'pickup' ? subtotal : total;
+  const payable = total;
   const selectedDelivery = deliveryOptions.find((option) => option.value === deliveryDate) || deliveryOptions[0];
 
   const submit = (e) => {
@@ -89,7 +88,7 @@ export default function CheckoutPage() {
             <strong>#OS-2027-1048</strong>
           </div>
 
-          {delivery === 'courier' && selectedDelivery && (
+          {selectedDelivery && (
             <div className="checkout-confirmation-delivery">
               <Icon name="calendar" size={16}/>
               <span><small>Ընտրված առաքման օր</small><strong>{selectedDelivery.label}</strong></span>
@@ -161,21 +160,15 @@ export default function CheckoutPage() {
                   </div>
                 </header>
 
-                <div className="delivery-choice">
-                  <button type="button" className={delivery==='courier'?'is-active':''} onClick={()=>setDelivery('courier')}>
+                <div className="delivery-choice delivery-choice--single">
+                  <div className="delivery-method-static">
                     <span className="choice-icon"><Icon name="truck" size={18}/></span>
                     <span><strong>Առաքում հասցեով</strong><small>{hasFreeDelivery ? 'Անվճար' : '600 ֏'} · {selectedDelivery?.shortLabel || 'ընտրված օր'}</small></span>
-                    <span className="radio-dot"/>
-                  </button>
-
-                  <button type="button" className={delivery==='pickup'?'is-active':''} onClick={()=>setDelivery('pickup')}>
-                    <span className="choice-icon"><Icon name="location" size={18}/></span>
-                    <span><strong>Ինքնուրույն վերցնել</strong><small>Ֆուչիկ փ. 27/52 · ըստ հաստատման</small></span>
-                    <span className="radio-dot"/>
-                  </button>
+                    <span className="delivery-method-check"><Icon name="check" size={12}/></span>
+                  </div>
                 </div>
 
-                {delivery==='courier' && selectedDelivery && (
+                {selectedDelivery && (
                   <div className="checkout-selected-delivery">
                     <span className="checkout-selected-delivery-icon"><Icon name="calendar" size={16}/></span>
                     <div>
@@ -186,13 +179,11 @@ export default function CheckoutPage() {
                   </div>
                 )}
 
-                {delivery==='courier' && (
-                  <div className="checkout-subform form-grid address-grid">
+                <div className="checkout-subform form-grid address-grid">
                     <label className="span-2"><span>Հասցե *</span><input name="address" required placeholder="Փողոց, շենք, բնակարան/գրասենյակ"/></label>
                     <label className="span-2"><span>Քաղաք *</span><select name="city" required><option>Երևան</option><option>Փարաքար</option><option>Աբովյան</option><option>Աշտարակ</option><option>Այլ</option></select></label>
                     <label className="span-2"><span>Առաքման նշումներ</span><textarea name="deliveryNotes" rows="2" placeholder="Մուտք, հարկ կամ այլ օգտակար նշում"/></label>
                   </div>
-                )}
               </section>
 
               <section className="checkout-section">
@@ -270,9 +261,9 @@ export default function CheckoutPage() {
 
               <div className="summary-divider"/>
               <div className="summary-row"><span>Ապրանքներ</span><strong>{formatPrice(subtotal)}</strong></div>
-              <div className="summary-row"><span>Առաքում</span><strong className={deliveryFee===0?'checkout-free':''}>{delivery==='pickup'||deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}</strong></div>
+              <div className="summary-row"><span>Առաքում</span><strong className={deliveryFee===0?'checkout-free':''}>{deliveryFee===0?'Անվճար':formatPrice(deliveryFee)}</strong></div>
 
-              {delivery === 'courier' && selectedDelivery && (
+              {selectedDelivery && (
                 <div className="checkout-summary-delivery">
                   <span className="checkout-summary-delivery-icon"><Icon name="calendar" size={15}/></span>
                   <span>

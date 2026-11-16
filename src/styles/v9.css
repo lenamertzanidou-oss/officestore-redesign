@@ -27,6 +27,33 @@
   --green-soft:var(--master-blue-100);
 }
 
+
+
+/* ---------- Shared icon geometry ---------- */
+.os-icon{
+  display:block;
+  flex:0 0 auto;
+  box-sizing:border-box;
+  max-width:none;
+  vertical-align:middle;
+  overflow:visible;
+  transform-origin:center;
+  transform-box:view-box;
+}
+
+button>.os-icon,
+a>.os-icon,
+.btn>.os-icon{
+  align-self:center;
+}
+
+.icon-only>.os-icon,
+.wishlist-btn>.os-icon,
+.cart-remove-btn>.os-icon,
+.password-toggle>.os-icon{
+  margin:auto;
+}
+
 /* ---------- Global interaction language ---------- */
 a:hover{color:var(--master-blue)}
 button,input,select,textarea{accent-color:var(--master-blue)}
@@ -1876,7 +1903,6 @@ textarea:focus-visible{
 
 .privacy-inline svg{
   flex:0 0 auto;
-  margin-top:1px;
   color:#7183A0;
 }
 
@@ -2286,7 +2312,6 @@ textarea:focus-visible{
 
 .account-benefit-note svg{
   flex:0 0 auto;
-  margin-top:1px;
 }
 
 .auth-card{
@@ -4789,7 +4814,6 @@ textarea:focus-visible{
 
 .checkout-confirmation-account svg{
   flex:0 0 auto;
-  margin-top:1px;
   color:var(--master-blue);
 }
 

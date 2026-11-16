@@ -3673,9 +3673,13 @@ textarea:focus-visible{
 
 /* Cart delivery scheduling */
 .cart-delivery-planner{
-  margin:14px 0 16px;
+  margin:12px 0 0;
   padding:16px;
-  border-top:1px solid #EDF0F3;
+  border:1px solid #C9D9EC;
+  border-radius:15px;
+  background:
+    radial-gradient(circle at 94% 4%,rgba(39,87,165,.09),transparent 24%),
+    linear-gradient(145deg,#EEF4FC 0%,#F8FAFD 100%);
 }
 
 .cart-delivery-planner-head{
@@ -3686,14 +3690,15 @@ textarea:focus-visible{
 }
 
 .cart-delivery-planner-icon{
-  width:36px;
-  height:36px;
-  flex:0 0 36px;
+  width:38px;
+  height:38px;
+  flex:0 0 38px;
   display:grid;
   place-items:center;
-  border-radius:10px;
-  background:#EEF3FB;
-  color:var(--master-blue);
+  border-radius:11px;
+  background:var(--master-blue);
+  color:#fff;
+  box-shadow:0 6px 14px rgba(39,87,165,.15);
 }
 
 .cart-delivery-planner-head strong,
@@ -3702,46 +3707,25 @@ textarea:focus-visible{
 }
 
 .cart-delivery-planner-head strong{
-  color:var(--master-ink);
+  color:var(--master-blue-dark);
   font-size:13px;
   line-height:1.3;
-  font-weight:700;
+  font-weight:750;
 }
 
 .cart-delivery-planner-head>div>span{
   margin-top:2px;
-  color:#858F8B;
-  font-size:10.5px;
+  color:#718092;
+  font-size:10px;
   line-height:1.35;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.delivery-date-options button.is-active 
-
-
-
 .delivery-calendar{
   overflow:hidden;
-  border:1px solid #E0E6EC;
-  border-radius:12px;
+  border:1px solid #D5E0ED;
+  border-radius:13px;
   background:#fff;
+  box-shadow:0 6px 18px rgba(39,87,165,.035);
 }
 
 .delivery-calendar-head{
@@ -3750,20 +3734,20 @@ textarea:focus-visible{
   justify-content:space-between;
   gap:12px;
   padding:11px 13px;
-  border-bottom:1px solid #EDF0F3;
-  background:#FAFBFD;
+  border-bottom:1px solid #E6EBF1;
+  background:linear-gradient(135deg,#F8FAFD 0%,#F2F6FB 100%);
 }
 
 .delivery-calendar-head strong{
-  color:var(--master-ink);
+  color:var(--master-blue-dark);
   font-size:12px;
   line-height:1.3;
-  font-weight:700;
+  font-weight:750;
   text-transform:capitalize;
 }
 
 .delivery-calendar-head span{
-  color:#89928F;
+  color:#7B8794;
   font-size:9.5px;
   line-height:1.3;
 }
@@ -3775,21 +3759,22 @@ textarea:focus-visible{
 }
 
 .delivery-calendar-weekdays{
-  padding:8px 10px 5px;
+  padding:9px 10px 5px;
+  background:#FBFCFE;
 }
 
 .delivery-calendar-weekdays span{
   text-align:center;
-  color:#9AA39F;
+  color:#8B97A4;
   font-size:8px;
   line-height:1;
-  font-weight:600;
+  font-weight:700;
   text-transform:uppercase;
 }
 
 .delivery-calendar-grid{
   gap:4px;
-  padding:5px 10px 11px;
+  padding:6px 10px 12px;
 }
 
 .delivery-calendar-grid button,
@@ -3805,33 +3790,35 @@ textarea:focus-visible{
   border:1px solid transparent;
   border-radius:9px;
   background:#fff;
-  color:#40504A;
+  color:#3F4D59;
   box-shadow:none;
-  transition:background .18s ease,border-color .18s ease,color .18s ease;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
 }
 
 .delivery-calendar-grid button:not(:disabled):hover{
-  border-color:#C7D5E7;
-  background:#F7F9FD;
+  transform:translateY(-1px);
+  border-color:#B9CBE2;
+  background:#F4F7FC;
   color:var(--master-blue-dark);
 }
 
 .delivery-calendar-grid button:disabled{
   cursor:not-allowed;
-  color:#C1C8C5;
-  background:#FAFBFB;
+  color:#C4CBD1;
+  background:#FAFBFC;
 }
 
 .delivery-calendar-grid button.is-active{
   border-color:var(--master-blue);
-  background:var(--master-blue);
+  background:linear-gradient(135deg,#3569BC 0%,#2757A5 100%);
   color:#fff;
+  box-shadow:0 6px 12px rgba(39,87,165,.16);
 }
 
 .delivery-calendar-grid button>span{
   font-size:11px;
   line-height:1;
-  font-weight:600;
+  font-weight:650;
 }
 
 .delivery-calendar-grid button small{
@@ -3842,72 +3829,44 @@ textarea:focus-visible{
   color:var(--master-blue);
   font-size:6.8px;
   line-height:1;
-  font-weight:700;
+  font-weight:750;
 }
 
 .delivery-calendar-grid button.is-active small{
-  color:rgba(255,255,255,.86);
+  color:rgba(255,255,255,.9);
 }
 
 .delivery-calendar-grid button.is-earliest:not(.is-active){
-  border-color:#C9D8EB;
-  background:#F4F7FC;
-}
-
-@media (max-width:680px){
-  .delivery-calendar-head{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:3px;
-  }
-
-  .delivery-calendar-grid button,
-  .delivery-calendar-empty{
-    min-height:38px;
-  }
-}
-
-@media (max-width:420px){
-  .delivery-calendar-grid{
-    gap:3px;
-    padding-inline:7px;
-  }
-
-  .delivery-calendar-weekdays{
-    padding-inline:7px;
-  }
-
-  .delivery-calendar-grid button,
-  .delivery-calendar-empty{
-    min-height:36px;
-  }
+  border-color:#BDD0E8;
+  background:#EDF3FB;
+  color:var(--master-blue-dark);
 }
 
 .delivery-policy-note{
   display:grid;
-  grid-template-columns:30px minmax(0,1fr);
+  grid-template-columns:32px minmax(0,1fr);
   align-items:start;
   gap:10px;
   margin-top:12px;
   padding:12px 13px;
-  border:1px solid #DCE6F2;
+  border:1px solid #D7E2EF;
   border-radius:11px;
-  background:#F7F9FD;
+  background:rgba(255,255,255,.72);
 }
 
 .delivery-policy-note>span{
-  width:30px;
-  height:30px;
+  width:32px;
+  height:32px;
   display:grid;
   place-items:center;
   border-radius:9px;
-  background:#EAF1FB;
+  background:#E5EEF9;
   color:var(--master-blue);
 }
 
 .delivery-policy-note strong{
   display:block;
-  color:#3D4A46;
+  color:#40506A;
   font-size:10.5px;
   line-height:1.35;
   font-weight:700;
@@ -3915,23 +3874,15 @@ textarea:focus-visible{
 
 .delivery-policy-note p{
   margin:3px 0 0;
-  color:#76817D;
-  font-size:9.8px;
+  color:#6F7D89;
+  font-size:9.5px;
   line-height:1.55;
 }
 
-.cart-delivery-date-row{
-  align-items:flex-start!important;
+.cart-summary-delivery{
+  display:grid;
 }
 
-.cart-delivery-date-row strong{
-  max-width:155px;
-  color:var(--master-blue-dark)!important;
-  text-align:right;
-  line-height:1.35;
-}
-
-/* Selected delivery day in checkout */
 .checkout-selected-delivery{
   display:grid;
   grid-template-columns:34px minmax(0,1fr) auto;
@@ -4024,29 +3975,43 @@ textarea:focus-visible{
   font-weight:600;
 }
 
-@media (max-width:1100px){
-  
-}
-
 @media (max-width:680px){
   .cart-delivery-planner{
-    margin:10px 0 12px;
-    padding:14px 0 2px;
+    margin-top:10px;
+    padding:13px;
+    border-radius:13px;
   }
 
-  
+  .delivery-calendar-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:3px;
+  }
 
-  
+  .delivery-calendar-grid button,
+  .delivery-calendar-empty{
+    min-height:38px;
+  }
 
   .delivery-policy-note{
-    margin-bottom:10px;
+    margin-bottom:0;
   }
 }
 
 @media (max-width:420px){
-  
+  .delivery-calendar-grid{
+    gap:3px;
+    padding-inline:7px;
+  }
 
-  
+  .delivery-calendar-weekdays{
+    padding-inline:7px;
+  }
+
+  .delivery-calendar-grid button,
+  .delivery-calendar-empty{
+    min-height:36px;
+  }
 
   .checkout-selected-delivery{
     grid-template-columns:32px minmax(0,1fr) auto;

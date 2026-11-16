@@ -156,7 +156,7 @@ export default function CheckoutPage() {
                   <span className="checkout-section-icon"><Icon name="truck" size={17}/></span>
                   <div>
                     <h2>Առաքման եղանակ</h2>
-                    <p>Ընտրեք ձեզ հարմար տարբերակը</p>
+                    <p>Առաքումը կատարվում է ձեր նշած հասցեով</p>
                   </div>
                 </header>
 

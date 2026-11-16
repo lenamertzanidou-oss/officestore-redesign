@@ -27,16 +27,15 @@ function cloneAtNoon(date) {
   return next;
 }
 
-function isWeekend(date) {
-  const day = date.getDay();
-  return day === 0 || day === 6;
+function isNonDeliveryDay(date) {
+  return date.getDay() === 0;
 }
 
 function nextBusinessDay(date) {
   const next = cloneAtNoon(date);
   do {
     next.setDate(next.getDate() + 1);
-  } while (isWeekend(next));
+  } while (isNonDeliveryDay(next));
   return next;
 }
 
@@ -52,7 +51,7 @@ export function getEarliestDeliveryDate(now = new Date()) {
   const current = new Date(now);
   const day = current.getDay();
 
-  if (day === 0 || day === 6) {
+  if (day === 0) {
     return nextBusinessDay(current);
   }
 
@@ -95,7 +94,7 @@ export function getDeliveryOptions(now = new Date()) {
   const options = [];
 
   for (let date = cloneAtNoon(earliest); date <= endOfMonth; date.setDate(date.getDate() + 1)) {
-    if (isWeekend(date)) continue;
+    if (isNonDeliveryDay(date)) continue;
     const current = cloneAtNoon(date);
     options.push({
       value: toDeliveryDateKey(current),
@@ -125,7 +124,7 @@ export function getDeliveryCalendar(now = new Date()) {
       value,
       day,
       label: formatDeliveryDate(date),
-      isWeekend: isWeekend(date),
+      isNonDeliveryDay: isNonDeliveryDay(date),
       isAvailable: available.has(value),
       isEarliest: value === toDeliveryDateKey(earliest),
     });

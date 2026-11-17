@@ -85,7 +85,7 @@ export default function CheckoutPage() {
 
           <div className="checkout-confirmation-number">
             <small>Պատվերի համարը</small>
-            <strong>#OS-2027-1048</strong>
+            <strong>#OS-2026-1048</strong>
           </div>
 
           {selectedDelivery && (

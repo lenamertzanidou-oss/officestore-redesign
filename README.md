@@ -52,8 +52,9 @@ npm run preview
 - Wishlist
 - LocalStorage cart/wishlist persistence
 - Free-delivery rule for 18.9L Aparan water; otherwise 600 AMD demo delivery fee
+- Delivery scheduling supports Monday–Saturday; Sunday is excluded
 - Checkout payment method selection
-- Delivery/pickup selection
+- Address delivery flow (pickup/self-collection removed)
 - Account login/register UI
 - Service booking form
 - Newsletter form

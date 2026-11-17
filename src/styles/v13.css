@@ -570,3 +570,270 @@
     transform:none!important;
   }
 }
+
+
+/* OfficeStore V15 — canonical shop filter visual language
+   Calm sidebar navigation; product CTA blue remains the strongest accent. */
+.shop-layout .filter-panel{
+  border:1px solid #E5EAF0!important;
+  border-radius:16px!important;
+  background:#fff!important;
+  box-shadow:0 10px 28px rgba(25,42,67,.045)!important;
+}
+
+.shop-layout .filter-panel-head{
+  padding:19px 18px 16px!important;
+  border-bottom:1px solid #EEF1F4!important;
+  background:#fff!important;
+}
+
+.shop-layout .filter-kicker{
+  color:#87919C!important;
+  font-size:10.5px!important;
+  letter-spacing:.045em!important;
+}
+
+.shop-layout .filter-title-row h2{
+  color:#1F2725!important;
+  font-size:20px!important;
+  font-weight:700!important;
+}
+
+.shop-layout .filter-panel-head p{
+  color:#8A949F!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+.shop-layout .filter-group{
+  padding:16px 14px 18px!important;
+  border-bottom:1px solid #EEF1F4!important;
+}
+
+.shop-layout .filter-section-head{
+  margin:0 2px 10px!important;
+}
+
+.shop-layout .filter-section-head>div{
+  gap:8px!important;
+}
+
+.shop-layout .filter-section-icon{
+  width:30px!important;
+  height:30px!important;
+  border-radius:9px!important;
+  background:#F1F5FA!important;
+  color:#476C9D!important;
+}
+
+.shop-layout .filter-section-head strong{
+  color:#2F3936!important;
+  font-size:13px!important;
+  font-weight:650!important;
+}
+
+/* Category rows */
+.shop-layout .filter-category-group{
+  gap:3px!important;
+}
+
+.shop-layout .filter-category-row{
+  position:relative!important;
+  min-height:43px!important;
+  grid-template-columns:30px minmax(0,1fr) auto 20px!important;
+  gap:8px!important;
+  padding:5px 7px!important;
+  border:1px solid transparent!important;
+  border-radius:10px!important;
+  background:#fff!important;
+  color:#46514E!important;
+  box-shadow:none!important;
+  transform:none!important;
+  transition:
+    background-color .14s ease,
+    border-color .14s ease,
+    color .14s ease!important;
+}
+
+.shop-layout .filter-category-icon{
+  width:30px!important;
+  height:30px!important;
+  border-radius:8px!important;
+  background:#F4F6F8!important;
+  color:#7A858B!important;
+  box-shadow:none!important;
+  transition:background-color .14s ease,color .14s ease!important;
+}
+
+.shop-layout .filter-category-name{
+  color:inherit!important;
+  font-size:12.75px!important;
+  line-height:1.3!important;
+  font-weight:500!important;
+}
+
+.shop-layout .filter-category-row small{
+  min-width:18px!important;
+  color:#9AA3AA!important;
+  font-size:10.5px!important;
+  line-height:1!important;
+  text-align:right!important;
+  font-weight:500!important;
+}
+
+.shop-layout .filter-category-state{
+  width:20px!important;
+  height:20px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  color:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Hover is deliberately restrained: no motion, no shadow, no left stripe. */
+.shop-layout .filter-category-row:hover{
+  transform:none!important;
+  background:#F7F9FC!important;
+  border-color:#EDF1F5!important;
+  color:#315F99!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-category-row:hover .filter-category-icon{
+  background:#EBF1F8!important;
+  color:#406DAB!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-category-row:hover .filter-category-name{
+  color:#315F99!important;
+}
+
+.shop-layout .filter-category-row:hover small{
+  color:#83909D!important;
+}
+
+.shop-layout .filter-category-row:hover .filter-category-state:not(:empty){
+  border:0!important;
+  background:transparent!important;
+  color:transparent!important;
+}
+
+/* Selected state remains visible, but visually secondary to product CTAs. */
+.shop-layout .filter-category-row.is-active,
+.shop-layout .filter-category-row.is-active:hover{
+  transform:none!important;
+  background:#EEF4FB!important;
+  border-color:#D4E2F1!important;
+  color:#275C9F!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-category-row.is-active .filter-category-icon,
+.shop-layout .filter-category-row.is-active:hover .filter-category-icon{
+  background:#DFEAF7!important;
+  color:#2D63A8!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-category-row.is-active .filter-category-name{
+  color:#275C9F!important;
+  font-weight:600!important;
+}
+
+.shop-layout .filter-category-row.is-active small{
+  color:#74889F!important;
+}
+
+.shop-layout .filter-category-row.is-active .filter-category-state,
+.shop-layout .filter-category-row.is-active:hover .filter-category-state{
+  width:20px!important;
+  height:20px!important;
+  border:0!important;
+  background:#2D63B8!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-category-row.is-active .filter-category-state svg{
+  width:11px!important;
+  height:11px!important;
+  stroke-width:2.2!important;
+}
+
+.shop-layout .filter-category-row:focus-visible{
+  outline:0!important;
+  border-color:#AFC6E0!important;
+  box-shadow:0 0 0 3px rgba(45,99,184,.10)!important;
+}
+
+/* Price and chip controls use the same restrained interaction scale. */
+.shop-layout .filter-price-value{
+  padding:10px 11px!important;
+  border:1px solid #EDF1F4!important;
+  border-radius:10px!important;
+  background:#F8FAFC!important;
+}
+
+.shop-layout .filter-price-value span{
+  color:#8A949D!important;
+  font-size:11px!important;
+}
+
+.shop-layout .filter-price-value strong{
+  color:#2C3532!important;
+  font-size:16px!important;
+}
+
+.shop-layout .filter-price-presets{
+  gap:5px!important;
+}
+
+.shop-layout .filter-price-presets button,
+.shop-layout .filter-chip-grid button{
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-price-presets button:hover,
+.shop-layout .filter-chip-grid button:hover,
+.shop-layout .filter-clear-btn:hover:not(:disabled){
+  background:#F7F9FC!important;
+  border-color:#E1E8F0!important;
+  color:#315F99!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.shop-layout .filter-price-presets button.is-active,
+.shop-layout .filter-chip-grid button.is-active{
+  background:#EEF4FB!important;
+  border-color:#D4E2F1!important;
+  color:#275C9F!important;
+  box-shadow:none!important;
+}
+
+.shop-layout .filter-panel-actions{
+  padding:12px 14px 14px!important;
+  border-top:1px solid #EEF1F4!important;
+  background:#fff!important;
+}
+
+@media (max-width:760px){
+  .shop-layout .filter-panel{
+    border-radius:18px 18px 0 0!important;
+  }
+
+  .shop-layout .filter-category-row{
+    min-height:46px!important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .shop-layout .filter-category-row,
+  .shop-layout .filter-category-icon{
+    transition:none!important;
+  }
+}

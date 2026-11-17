@@ -78,22 +78,37 @@ export default function CheckoutPage() {
         <OrderProgress step={3}/>
 
         <section className="checkout-confirmation">
-          <span className="checkout-confirmation-icon"><Icon name="check" size={24}/></span>
-          <span className="checkout-confirmation-kicker">Պատվերն ընդունված է</span>
-          <h1>Շնորհակալություն ձեր պատվերի համար</h1>
-          <p>Պատվերի հաստատման համար մենք կկապվենք նշված հեռախոսահամարով։</p>
-
-          <div className="checkout-confirmation-number">
-            <small>Պատվերի համարը</small>
-            <strong>#OS-2026-1048</strong>
+          <div className="checkout-confirmation-hero">
+            <span className="checkout-confirmation-icon"><Icon name="check" size={26}/></span>
+            <span className="checkout-confirmation-kicker">Պատվերն ընդունված է</span>
+            <h1>Շնորհակալություն ձեր պատվերի համար</h1>
+            <p>Պատվերը հաջողությամբ գրանցվել է։ Հաստատման համար մենք կկապվենք նշված հեռախոսահամարով։</p>
           </div>
 
-          {selectedDelivery && (
-            <div className="checkout-confirmation-delivery">
-              <Icon name="calendar" size={16}/>
-              <span><small>Ընտրված առաքման օր</small><strong>{selectedDelivery.label}</strong></span>
+          <div className="checkout-confirmation-details">
+            <div className="checkout-confirmation-number">
+              <span className="checkout-confirmation-detail-icon"><Icon name="package" size={17}/></span>
+              <span>
+                <small>Պատվերի համարը</small>
+                <strong>#OS-2026-1048</strong>
+              </span>
             </div>
-          )}
+
+            {selectedDelivery && (
+              <div className="checkout-confirmation-delivery">
+                <span className="checkout-confirmation-detail-icon checkout-confirmation-detail-icon--delivery"><Icon name="calendar" size={16}/></span>
+                <span><small>Ընտրված առաքման օր</small><strong>{selectedDelivery.label}</strong></span>
+              </div>
+            )}
+          </div>
+
+          <div className="checkout-confirmation-status">
+            <span><Icon name="phone" size={16}/></span>
+            <div>
+              <strong>Հաջորդ քայլը՝ հաստատման զանգ</strong>
+              <small>Մեր աշխատակիցը կճշտի պատվերի և առաքման մանրամասները։</small>
+            </div>
+          </div>
 
           {accountCreated && (
             <div className="checkout-confirmation-account">
@@ -103,7 +118,7 @@ export default function CheckoutPage() {
           )}
 
           <div className="checkout-confirmation-actions">
-            <Link className="btn btn-primary" to="/shop">Վերադառնալ խանութ <Icon name="arrow" size={15}/></Link>
+            <Link className="btn btn-primary" to="/shop">Շարունակել գնումները <Icon name="arrow" size={15}/></Link>
             {accountCreated && <Link className="btn btn-secondary" to="/account">Իմ էջը</Link>}
           </div>
         </section>
@@ -134,7 +149,7 @@ export default function CheckoutPage() {
                 <p><strong>Առանց գրանցման պատվեր</strong> · Կարող եք նաև <Link to="/account">մուտք գործել</Link>՝ պահպանված տվյալներն օգտագործելու համար։</p>
               </div>
 
-              <section className="checkout-section">
+              <section className="checkout-section checkout-section--contact">
                 <header className="checkout-section-head">
                   <span className="checkout-section-icon"><Icon name="user" size={17}/></span>
                   <div>
@@ -151,7 +166,7 @@ export default function CheckoutPage() {
                 </div>
               </section>
 
-              <section className="checkout-section">
+              <section className="checkout-section checkout-section--delivery">
                 <header className="checkout-section-head">
                   <span className="checkout-section-icon"><Icon name="truck" size={17}/></span>
                   <div>
@@ -186,7 +201,7 @@ export default function CheckoutPage() {
                   </div>
               </section>
 
-              <section className="checkout-section">
+              <section className="checkout-section checkout-section--payment">
                 <header className="checkout-section-head">
                   <span className="checkout-section-icon"><Icon name="lock" size={17}/></span>
                   <div>

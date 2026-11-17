@@ -791,8 +791,8 @@ body{background:#edf0ed;color:var(--market-ink)}
 .market-shell .shop-toolbar select{border:1px solid var(--market-line)!important}
 .market-shell .shop-layout{gap:16px!important}
 .market-shell .filter-panel{background:#fff!important;border:1px solid var(--market-line)!important;border-radius:13px!important;padding:16px!important;top:134px!important}
-.market-shell .filter-group button:hover,.market-shell .filter-group button.is-active{background:#e7f6f1!important;color:var(--market-green)!important}
-.market-shell .price-range{accent-color:var(--market-green)!important}
+.market-shell .filter-group button:hover,.market-shell .filter-group button.is-active{background:#F7F9FC!important;color:#315F99!important}
+.market-shell .price-range{accent-color:var(--master-blue)!important}
 .market-shell .product-grid-shop{gap:12px!important}
 
 

@@ -85,7 +85,7 @@ export function formatSubscriptionDate(value){
 }
 
 export function createWaterSubscription(input){
-  const id = globalThis.crypto?.randomUUID?.() || `water-${Date.now()}`;
+  const id = input.id || globalThis.crypto?.randomUUID?.() || `water-${Date.now()}`;
   const upcomingDeliveries = buildUpcomingDeliveries(input.schedule);
 
   return {
@@ -103,7 +103,8 @@ export function createWaterSubscription(input){
     paymentMethod:input.customerType === 'corporate' ? 'bank_transfer' : 'cash',
     upcomingDeliveries,
     nextDeliveryDate:upcomingDeliveries[0] || null,
-    createdAt:new Date().toISOString(),
+    createdAt:input.createdAt || new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
     automation:{
       orderCreation:'backend-required',
       notification:'backend-required'

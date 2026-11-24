@@ -10,16 +10,16 @@ A complete front-end redesign concept for **officestore.am**, built with **React
 
 ```bash
 npm install
-npm run dev
+npm.cmd run dev
 ```
 
-4. Open the local address shown by Vite (usually `http://localhost:5173`).
+4. Open the local address shown by Vite (usually `http://127.0.0.1:5173`). Routes now use clean paths such as `/blog` and `/blog/office-supplies-checklist`.
 
 For production:
 
 ```bash
-npm run build
-npm run preview
+npm.cmd run build
+npm.cmd run preview
 ```
 
 ## Included page templates
@@ -32,7 +32,7 @@ npm run preview
 - About
 - Contact
 - Delivery + FAQ
-- Blog / empty-state + editorial layout
+- SEO blog hub + individual article pages
 - Cart
 - Checkout
 - Account login/register + dashboard preview
@@ -60,6 +60,10 @@ npm run preview
 - Newsletter form
 - Mobile menu and mobile bottom navigation
 - Accessible focus states and reduced-motion support
+- Clean BrowserRouter URLs (no `#/` routes)
+- Dynamic SEO metadata, Open Graph and JSON-LD for blog/article pages
+- Build-time blog SEO snapshots plus generated `sitemap.xml` and `robots.txt`
+- SPA fallback configs for Apache, Netlify and Vercel
 
 ## Important
 

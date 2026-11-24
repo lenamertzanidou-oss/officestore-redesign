@@ -473,11 +473,12 @@
   display:grid!important;
   place-items:center!important;
   border-radius:11px!important;
-  background:var(--sub-aqua-soft)!important;
-  color:var(--sub-aqua-dark)!important;
+  background:var(--sub-blue-soft)!important;
+  color:var(--sub-blue)!important;
 }
 
-.water-sub-section--product .water-sub-section-head>span{
+.water-sub-section--product .water-sub-section-head>span,
+.water-sub-section--schedule .water-sub-section-head>span{
   background:var(--sub-aqua-soft)!important;
   color:var(--sub-aqua-dark)!important;
 }
@@ -647,6 +648,7 @@
 .water-sub-type-switch button.is-active{
   border-color:#BDD0E7!important;
   background:#F2F6FC!important;
+  box-shadow:0 4px 12px rgba(39,87,165,.045)!important;
 }
 
 .water-sub-schedule-tabs button.is-active>svg{
@@ -1021,7 +1023,7 @@
   padding:9px 10px!important;
   border:1px solid #DCE4EC!important;
   border-radius:9px!important;
-  background:#FAFBFD!important;
+  background:#FFFFFF!important;
   color:var(--sub-ink)!important;
   box-shadow:none!important;
 }
@@ -1275,8 +1277,8 @@
   display:grid!important;
   place-items:center!important;
   border-radius:10px!important;
-  background:var(--sub-blue-soft)!important;
-  color:var(--sub-blue)!important;
+  background:var(--sub-aqua-soft)!important;
+  color:var(--sub-aqua-dark)!important;
 }
 
 .water-sub-summary-product small,

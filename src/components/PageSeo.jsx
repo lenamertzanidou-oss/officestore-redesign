@@ -29,9 +29,14 @@ export default function PageSeo({
   jsonLd,
 }) {
   useEffect(() => {
-    if (title) document.title = title;
-
+    const previousTitle = document.title;
     const descriptionMeta = ensureMeta('meta[name="description"]',{name:'description'});
+    const previousDescription = descriptionMeta.getAttribute('content') || '';
+
+    const canonicalLink = canonical ? ensureLink('canonical') : null;
+    const previousCanonical = canonicalLink?.getAttribute('href') || '';
+
+    if (title) document.title = title;
     if (description) descriptionMeta.setAttribute('content', description);
 
     const ogTitle = ensureMeta('meta[property="og:title"]',{property:'og:title'});
@@ -45,16 +50,10 @@ export default function PageSeo({
     ogType.setAttribute('content', type);
     twitterCard.setAttribute('content', 'summary_large_image');
 
-    if (image) {
-      ogImage.setAttribute('content', image);
-    } else {
-      ogImage.removeAttribute('content');
-    }
+    if (image) ogImage.setAttribute('content', image);
 
-    if (canonical) {
-      const canonicalLink = ensureLink('canonical');
+    if (canonical && canonicalLink) {
       canonicalLink.setAttribute('href', canonical);
-
       const ogUrl = ensureMeta('meta[property="og:url"]',{property:'og:url'});
       ogUrl.setAttribute('content', canonical);
     }
@@ -69,11 +68,17 @@ export default function PageSeo({
         document.head.appendChild(script);
       }
       script.textContent = JSON.stringify(jsonLd);
-    } else if (script) {
-      script.remove();
     }
 
     return () => {
+      document.title = previousTitle;
+      descriptionMeta.setAttribute('content', previousDescription);
+
+      if (canonicalLink) {
+        if (previousCanonical) canonicalLink.setAttribute('href', previousCanonical);
+        else canonicalLink.remove();
+      }
+
       const currentScript = document.getElementById(scriptId);
       if (currentScript) currentScript.remove();
     };

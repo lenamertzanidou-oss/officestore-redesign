@@ -18,6 +18,11 @@ import './styles/v15.css';
 import './styles/v16.css';
 import './styles/v17.css';
 
+if (window.location.hash.startsWith('#/')) {
+  const legacyPath = window.location.hash.slice(1);
+  window.history.replaceState(null, '', legacyPath);
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

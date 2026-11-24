@@ -172,6 +172,101 @@
   margin:18px 0 22px!important;
 }
 
+.water-sub-existing{
+  display:grid!important;
+  grid-template-columns:34px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:10px!important;
+  margin:0 0 12px!important;
+  padding:11px 13px!important;
+  border:1px solid #C8D8EA!important;
+  border-radius:11px!important;
+  background:#F2F6FC!important;
+}
+
+.water-sub-existing>span{
+  width:34px!important;
+  height:34px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:9px!important;
+  background:#fff!important;
+  color:var(--sub-blue)!important;
+}
+
+.water-sub-existing strong,
+.water-sub-existing small{
+  display:block!important;
+}
+
+.water-sub-existing strong{
+  color:var(--sub-blue-dark)!important;
+  font-size:10.5px!important;
+}
+
+.water-sub-existing small{
+  margin-top:2px!important;
+  color:#788694!important;
+  font-size:9px!important;
+  line-height:1.4!important;
+}
+
+/* Account integration */
+.account-water-subscription{
+  border-color:#D7E2EF!important;
+  background:#fff!important;
+}
+
+.account-water-subscription .corporate-section-kicker{
+  color:#2757A5!important;
+}
+
+.account-water-subscription-row{
+  display:grid!important;
+  grid-template-columns:40px minmax(0,1fr) minmax(110px,.55fr) auto!important;
+  align-items:center!important;
+  gap:12px!important;
+  padding:12px!important;
+  border:1px solid #E0E7EF!important;
+  border-radius:12px!important;
+  background:#F7F9FC!important;
+}
+
+.account-water-subscription-row>span{
+  width:40px!important;
+  height:40px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:10px!important;
+  background:#EEF3FB!important;
+  color:#2757A5!important;
+}
+
+.account-water-subscription-row small,
+.account-water-subscription-row strong{
+  display:block!important;
+}
+
+.account-water-subscription-row small{
+  color:#87939B!important;
+  font-size:8.8px!important;
+}
+
+.account-water-subscription-row strong{
+  margin-top:2px!important;
+  color:#314458!important;
+  font-size:10.5px!important;
+}
+
+.account-water-subscription-row>a{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:5px!important;
+  color:#2757A5!important;
+  font-size:9.8px!important;
+  font-weight:700!important;
+}
+
 .water-sub-kicker{
   display:block!important;
   margin-bottom:5px!important;
@@ -1034,6 +1129,14 @@
 }
 
 @media (max-width:600px){
+  .account-water-subscription-row{
+    grid-template-columns:40px minmax(0,1fr)!important;
+  }
+
+  .account-water-subscription-row>a{
+    grid-column:2!important;
+  }
+
   .water-sub-intro{
     padding:19px!important;
   }

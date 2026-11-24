@@ -17,6 +17,7 @@ import './styles/v14.css';
 import './styles/v15.css';
 import './styles/v16.css';
 import './styles/v17.css';
+import './styles/v18.css';
 
 if (window.location.hash.startsWith('#/')) {
   const legacyPath = window.location.hash.slice(1);

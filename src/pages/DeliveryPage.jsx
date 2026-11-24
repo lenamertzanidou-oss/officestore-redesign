@@ -149,7 +149,7 @@ export default function DeliveryPage() {
         </div>
         <div className="delivery-cta-actions">
           <Link className="btn btn-primary" to="/shop">Դիտել ապրանքները <Icon name="arrow" size={15}/></Link>
-          <Link className="delivery-contact-link" to="/contact">Կապ մեզ հետ</Link>
+          <Link className="delivery-contact-link" to="/water-subscription">Պարբերական ջրի առաքում</Link>
         </div>
       </section>
     </div>

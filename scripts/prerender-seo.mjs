@@ -37,7 +37,7 @@ const injectSeo = (html, { title, description, canonical, image, type='website',
     `<meta name="twitter:title" content="${htmlEscape(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscape(description)}" />`,
     image ? `<meta name="twitter:image" content="${htmlEscape(image)}" />` : '',
-    jsonLd ? `<script type="application/ld+json">${jsonForHtml(jsonLd)}</script>` : ''
+    jsonLd ? `<script id="page-json-ld" type="application/ld+json">${jsonForHtml(jsonLd)}</script>` : ''
   ].filter(Boolean).join('\n    ');
 
   return output.replace('</head>', `    ${tags}\n  </head>`);

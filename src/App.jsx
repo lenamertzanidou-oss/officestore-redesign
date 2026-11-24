@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import DeliveryPage from './pages/DeliveryPage';
 import BlogPage from './pages/BlogPage';
+import BlogArticlePage from './pages/BlogArticlePage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import AccountPage from './pages/AccountPage';
@@ -27,6 +28,7 @@ export default function App() {
     <Route path="/contact" element={<ContactPage/>}/>
     <Route path="/delivery" element={<DeliveryPage/>}/>
     <Route path="/blog" element={<BlogPage/>}/>
+    <Route path="/blog/:slug" element={<BlogArticlePage/>}/>
     <Route path="/cart" element={<CartPage/>}/>
     <Route path="/checkout" element={<CheckoutPage/>}/>
     <Route path="/account" element={<AccountPage/>}/>

@@ -10,6 +10,7 @@ import {
   buildUpcomingDeliveries,
   createWaterSubscription,
   formatSubscriptionDate,
+  loadWaterSubscriptions,
   saveWaterSubscription,
 } from '../utils/waterSubscriptions';
 
@@ -27,24 +28,28 @@ const waterProduct = products.find(product => product.slug === 'aparan-water-18-
 
 export default function WaterSubscriptionPage(){
   const storedProfile = useMemo(() => loadStoredProfile(), []);
-  const initialType = storedProfile?.type === 'corporate' ? 'corporate' : 'personal';
+  const existingSubscription = useMemo(
+    () => loadWaterSubscriptions().find(item => item.status === 'active') || null,
+    []
+  );
+  const initialType = existingSubscription?.customerType || (storedProfile?.type === 'corporate' ? 'corporate' : 'personal');
 
   const [customerType,setCustomerType] = useState(initialType);
-  const [quantity,setQuantity] = useState(Math.max(2, waterProduct?.minQty || 2));
-  const [scheduleType,setScheduleType] = useState('monthly');
-  const [selectedWeekdays,setSelectedWeekdays] = useState([1]);
-  const [selectedMonthDays,setSelectedMonthDays] = useState([5,15,25]);
+  const [quantity,setQuantity] = useState(existingSubscription?.quantity || Math.max(2, waterProduct?.minQty || 2));
+  const [scheduleType,setScheduleType] = useState(existingSubscription?.schedule?.type || 'monthly');
+  const [selectedWeekdays,setSelectedWeekdays] = useState(existingSubscription?.schedule?.weekdays || [1]);
+  const [selectedMonthDays,setSelectedMonthDays] = useState(existingSubscription?.schedule?.monthDays || [5,15,25]);
   const [customer,setCustomer] = useState({
-    firstName:storedProfile?.firstName || '',
-    lastName:storedProfile?.lastName || '',
-    phone:storedProfile?.phone || '',
-    email:storedProfile?.email || '',
+    firstName:existingSubscription?.customer?.firstName || storedProfile?.firstName || '',
+    lastName:existingSubscription?.customer?.lastName || storedProfile?.lastName || '',
+    phone:existingSubscription?.customer?.phone || storedProfile?.phone || '',
+    email:existingSubscription?.customer?.email || storedProfile?.email || '',
   });
   const [organization,setOrganization] = useState({
-    name:storedProfile?.organization || '',
-    taxId:storedProfile?.taxId || '',
+    name:existingSubscription?.organization?.name || storedProfile?.organization || '',
+    taxId:existingSubscription?.organization?.taxId || storedProfile?.taxId || '',
   });
-  const [address,setAddress] = useState(storedProfile?.legalAddress || '');
+  const [address,setAddress] = useState(existingSubscription?.address || storedProfile?.legalAddress || '');
   const [submitted,setSubmitted] = useState(null);
   const [error,setError] = useState('');
 
@@ -89,6 +94,8 @@ export default function WaterSubscriptionPage(){
     }
 
     const subscription = createWaterSubscription({
+      id:existingSubscription?.id,
+      createdAt:existingSubscription?.createdAt,
       customerType,
       quantity,
       customer,
@@ -163,6 +170,13 @@ export default function WaterSubscriptionPage(){
         </section>
       ) : (
         <>
+          {existingSubscription && (
+            <div className="water-sub-existing">
+              <span><Icon name="refresh" size={16}/></span>
+              <div><strong>Ակտիվ գրաֆիկը բեռնված է</strong><small>Փոփոխությունները պահպանելիս նույն պարբերական առաքման գրաֆիկը կթարմացվի։</small></div>
+            </div>
+          )}
+
           <section className="water-sub-intro">
             <div>
               <span className="water-sub-kicker">Ինչպես է աշխատում</span>
@@ -339,7 +353,7 @@ export default function WaterSubscriptionPage(){
               {error && <div className="water-sub-error"><Icon name="info" size={15}/>{error}</div>}
 
               <button className="btn btn-primary water-sub-submit" type="submit">
-                Ակտիվացնել գրաֆիկը <Icon name="arrow" size={16}/>
+                {existingSubscription ? 'Պահպանել փոփոխությունները' : 'Ակտիվացնել գրաֆիկը'} <Icon name="arrow" size={16}/>
               </button>
 
               <div className="water-sub-summary-note">

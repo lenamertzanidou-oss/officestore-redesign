@@ -23,8 +23,24 @@ const weekdays = [
   { value:6, label:'Շբթ', full:'Շաբաթ' },
 ];
 
-const monthDays = Array.from({length:31},(_,index) => index+1);
+const calendarWeekdays = ['Երկ','Երք','Չրք','Հնգ','Ուրբ','Շբթ','Կիր'];
 const waterProduct = products.find(product => product.slug === 'aparan-water-18-9');
+
+const normalizeNoon = (date) => {
+  const next = new Date(date);
+  next.setHours(12,0,0,0);
+  return next;
+};
+
+const monthKey = (date) => date.getFullYear() * 12 + date.getMonth();
+
+const formatCalendarMonth = (date) => {
+  const value = new Intl.DateTimeFormat('hy-AM',{
+    month:'long',
+    year:'numeric'
+  }).format(date);
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
 
 export default function WaterSubscriptionPage(){
   const storedProfile = useMemo(() => loadStoredProfile(), []);
@@ -39,7 +55,11 @@ export default function WaterSubscriptionPage(){
   const [quantity,setQuantity] = useState(existingSubscription?.quantity || Math.max(2, waterProduct?.minQty || 2));
   const [scheduleType,setScheduleType] = useState(existingSubscription?.schedule?.type || 'monthly');
   const [selectedWeekdays,setSelectedWeekdays] = useState(existingSubscription?.schedule?.weekdays || [1]);
-  const [selectedMonthDays,setSelectedMonthDays] = useState(existingSubscription?.schedule?.monthDays || [5,15,25]);
+  const [selectedMonthDays,setSelectedMonthDays] = useState(existingSubscription?.schedule?.monthDays || []);
+  const today = useMemo(() => normalizeNoon(new Date()), []);
+  const [calendarMonth,setCalendarMonth] = useState(
+    () => new Date(today.getFullYear(), today.getMonth(), 1, 12,0,0,0)
+  );
   const [customer,setCustomer] = useState({
     firstName:existingSubscription?.customer?.firstName || storedProfile?.firstName || '',
     lastName:existingSubscription?.customer?.lastName || storedProfile?.lastName || '',
@@ -61,6 +81,44 @@ export default function WaterSubscriptionPage(){
   ), [scheduleType,selectedWeekdays,selectedMonthDays]);
 
   const upcoming = useMemo(() => buildUpcomingDeliveries(schedule), [schedule]);
+
+  const currentMonthKey = monthKey(today);
+  const visibleMonthKey = monthKey(calendarMonth);
+  const canGoPreviousMonth = visibleMonthKey > currentMonthKey;
+  const canGoNextMonth = visibleMonthKey < currentMonthKey + 11;
+
+  const calendarDays = useMemo(() => {
+    const year = calendarMonth.getFullYear();
+    const month = calendarMonth.getMonth();
+    const firstDay = new Date(year, month, 1, 12,0,0,0);
+    const daysInMonth = new Date(year, month + 1, 0, 12,0,0,0).getDate();
+    const leading = (firstDay.getDay() + 6) % 7;
+    const days = Array.from({length:leading}, () => null);
+
+    for (let day = 1; day <= daysInMonth; day += 1) {
+      const date = new Date(year, month, day, 12,0,0,0);
+      const isSunday = date.getDay() === 0;
+      const isPastOrToday = date <= today;
+      days.push({
+        day,
+        date,
+        isSunday,
+        isPastOrToday,
+        disabled:isSunday || isPastOrToday,
+      });
+    }
+
+    return days;
+  }, [calendarMonth,today]);
+
+  const changeCalendarMonth = (direction) => {
+    setCalendarMonth(current => {
+      const next = new Date(current.getFullYear(), current.getMonth() + direction, 1, 12,0,0,0);
+      const nextKey = monthKey(next);
+      if (nextKey < currentMonthKey || nextKey > currentMonthKey + 11) return current;
+      return next;
+    });
+  };
 
   const toggleWeekday = (day) => {
     setSelectedWeekdays(current => current.includes(day)
@@ -130,7 +188,7 @@ export default function WaterSubscriptionPage(){
       <div className="water-sub-hero" aria-hidden="true">
         <div className="water-sub-hero-card">
           <span><Icon name="calendar" size={18}/></span>
-          <div><small>Պարբերական գրաֆիկ</small><strong>5 · 15 · 25</strong></div>
+          <div><small>Պարբերական գրաֆիկ</small><strong>Ընտրեք հարմար օրերը</strong></div>
         </div>
         <div className="water-sub-hero-route"/>
         <div className="water-sub-hero-bottle"><Icon name="droplet" size={34}/></div>
@@ -236,21 +294,76 @@ export default function WaterSubscriptionPage(){
                 {scheduleType === 'monthly' ? (
                   <div className="water-sub-month-picker">
                     <div className="water-sub-picker-label">
-                      <strong>Նշեք ամսվա օրերը</strong>
-                      <span>Եթե ընտրված ամսաթիվը կիրակի է, առաքումը տեղափոխվում է երկուշաբթի։</span>
+                      <strong>Ընտրեք առաքման օրերը calendar-ից</strong>
+                      <span>Կիրակիները, այսօրվա օրը և անցած ամսաթվերը անհասանելի են։</span>
                     </div>
-                    <div className="water-sub-month-grid">
-                      {monthDays.map(day => (
+
+                    <div className="water-sub-calendar">
+                      <div className="water-sub-calendar-head">
                         <button
                           type="button"
-                          key={day}
-                          className={selectedMonthDays.includes(day) ? 'is-active' : ''}
-                          onClick={() => toggleMonthDay(day)}
-                          aria-pressed={selectedMonthDays.includes(day)}
+                          className="water-sub-calendar-nav"
+                          onClick={() => changeCalendarMonth(-1)}
+                          disabled={!canGoPreviousMonth}
+                          aria-label="Նախորդ ամիս"
                         >
-                          {day}
+                          <Icon name="chevron" size={16}/>
                         </button>
-                      ))}
+                        <div>
+                          <small>Առաքման ամիս</small>
+                          <strong>{formatCalendarMonth(calendarMonth)}</strong>
+                        </div>
+                        <button
+                          type="button"
+                          className="water-sub-calendar-nav is-next"
+                          onClick={() => changeCalendarMonth(1)}
+                          disabled={!canGoNextMonth}
+                          aria-label="Հաջորդ ամիս"
+                        >
+                          <Icon name="chevron" size={16}/>
+                        </button>
+                      </div>
+
+                      <div className="water-sub-calendar-weekdays" aria-hidden="true">
+                        {calendarWeekdays.map(day => <span key={day}>{day}</span>)}
+                      </div>
+
+                      <div className="water-sub-calendar-grid">
+                        {calendarDays.map((item,index) => item ? (
+                          <button
+                            type="button"
+                            key={`${calendarMonth.getFullYear()}-${calendarMonth.getMonth()}-${item.day}`}
+                            className={[
+                              selectedMonthDays.includes(item.day) && !item.disabled ? 'is-active' : '',
+                              item.isSunday ? 'is-sunday' : '',
+                              item.isPastOrToday ? 'is-unavailable' : ''
+                            ].filter(Boolean).join(' ')}
+                            onClick={() => !item.disabled && toggleMonthDay(item.day)}
+                            disabled={item.disabled}
+                            aria-pressed={selectedMonthDays.includes(item.day) && !item.disabled}
+                            aria-label={item.isSunday
+                              ? `${item.day}՝ կիրակի, անհասանելի`
+                              : item.isPastOrToday
+                                ? `${item.day}՝ անհասանելի`
+                                : `${item.day}՝ ընտրել առաքման համար`}
+                          >
+                            <span>{item.day}</span>
+                            {selectedMonthDays.includes(item.day) && !item.disabled && <Icon name="check" size={12}/>}
+                          </button>
+                        ) : <span className="water-sub-calendar-empty" key={`empty-${index}`}/>)}
+                      </div>
+
+                      <div className="water-sub-calendar-footer">
+                        <div className="water-sub-calendar-legend">
+                          <span><i className="is-selected"/> Ընտրված</span>
+                          <span><i className="is-disabled"/> Անհասանելի</span>
+                          <span><i className="is-sunday"/> Կիրակի</span>
+                        </div>
+                        <div className="water-sub-selected-days">
+                          <small>Ընտրված օրեր</small>
+                          <strong>{selectedMonthDays.length ? selectedMonthDays.join(', ') : 'Դեռ չեք ընտրել'}</strong>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ) : (

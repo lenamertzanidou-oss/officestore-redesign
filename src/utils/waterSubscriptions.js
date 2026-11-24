@@ -100,7 +100,9 @@ export function createWaterSubscription(input){
     organization:input.customerType === 'corporate' ? input.organization : null,
     address:input.address,
     schedule:input.schedule,
-    paymentMethod:input.customerType === 'corporate' ? 'bank_transfer' : 'cash',
+    paymentMethod:input.customerType === 'corporate' && input.paymentMethod === 'bank_transfer'
+      ? 'bank_transfer'
+      : 'cash',
     upcomingDeliveries,
     nextDeliveryDate:upcomingDeliveries[0] || null,
     createdAt:input.createdAt || new Date().toISOString(),

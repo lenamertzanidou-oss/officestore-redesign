@@ -71,6 +71,11 @@ export default function WaterSubscriptionPage(){
     taxId:existingSubscription?.organization?.taxId || storedProfile?.taxId || '',
   });
   const [address,setAddress] = useState(existingSubscription?.address || storedProfile?.legalAddress || '');
+  const [paymentMethod,setPaymentMethod] = useState(
+    existingSubscription?.paymentMethod === 'bank_transfer' && initialType === 'corporate'
+      ? 'bank_transfer'
+      : 'cash'
+  );
   const [submitted,setSubmitted] = useState(null);
   const [error,setError] = useState('');
 
@@ -161,6 +166,7 @@ export default function WaterSubscriptionPage(){
       organization,
       address,
       schedule,
+      paymentMethod,
     });
 
     saveWaterSubscription(subscription);
@@ -405,11 +411,19 @@ export default function WaterSubscriptionPage(){
                 </div>
 
                 <div className="water-sub-type-switch">
-                  <button type="button" className={customerType === 'personal' ? 'is-active' : ''} onClick={() => setCustomerType('personal')}>
+                  <button
+                    type="button"
+                    className={customerType === 'personal' ? 'is-active' : ''}
+                    onClick={() => { setCustomerType('personal'); setPaymentMethod('cash'); }}
+                  >
                     <Icon name="user" size={17}/><span><strong>Ֆիզիկական անձ</strong><small>Վճարում՝ կանխիկ</small></span>
                   </button>
-                  <button type="button" className={customerType === 'corporate' ? 'is-active' : ''} onClick={() => setCustomerType('corporate')}>
-                    <Icon name="building" size={17}/><span><strong>Իրավաբանական անձ</strong><small>Բանկային փոխանցում</small></span>
+                  <button
+                    type="button"
+                    className={customerType === 'corporate' ? 'is-active' : ''}
+                    onClick={() => setCustomerType('corporate')}
+                  >
+                    <Icon name="building" size={17}/><span><strong>Իրավաբանական անձ</strong><small>Կանխիկ կամ բանկային փոխանցում</small></span>
                   </button>
                 </div>
 
@@ -428,19 +442,50 @@ export default function WaterSubscriptionPage(){
 
               <section className="water-sub-section">
                 <div className="water-sub-section-head">
-                  <span><Icon name={customerType === 'corporate' ? 'banknote' : 'wallet'} size={18}/></span>
+                  <span><Icon name="wallet" size={18}/></span>
                   <div><small>Քայլ 4</small><h2>Վճարման եղանակ</h2></div>
                 </div>
 
-                <div className="water-sub-payment">
-                  <span><Icon name={customerType === 'corporate' ? 'banknote' : 'wallet'} size={18}/></span>
-                  <div>
-                    <small>{customerType === 'corporate' ? 'Իրավաբանական անձ' : 'Ֆիզիկական անձ'}</small>
-                    <strong>{customerType === 'corporate' ? 'Բանկային փոխանցում' : 'Կանխիկ վճարում'}</strong>
-                    <p>{customerType === 'corporate' ? 'Յուրաքանչյուր ավտոմատ պատվեր կստեղծվի բանկային փոխանցման վճարման եղանակով։' : 'Յուրաքանչյուր պլանավորված առաքման վճարումը նախատեսվում է կանխիկ։'}</p>
-                  </div>
-                  <Icon name="check" size={17}/>
+                <div className="water-sub-payment-options">
+                  <button
+                    type="button"
+                    className={paymentMethod === 'cash' ? 'water-sub-payment-option is-active' : 'water-sub-payment-option'}
+                    onClick={() => setPaymentMethod('cash')}
+                    aria-pressed={paymentMethod === 'cash'}
+                  >
+                    <span className="water-sub-payment-option-icon"><Icon name="wallet" size={18}/></span>
+                    <span className="water-sub-payment-option-copy">
+                      <small>Հասանելի բոլոր հաճախորդներին</small>
+                      <strong>Կանխիկ վճարում</strong>
+                      <span>Վճարումը կատարվում է յուրաքանչյուր պլանավորված առաքման համար։</span>
+                    </span>
+                    <span className="water-sub-payment-check"><Icon name="check" size={14}/></span>
+                  </button>
+
+                  {customerType === 'corporate' && (
+                    <button
+                      type="button"
+                      className={paymentMethod === 'bank_transfer' ? 'water-sub-payment-option is-active' : 'water-sub-payment-option'}
+                      onClick={() => setPaymentMethod('bank_transfer')}
+                      aria-pressed={paymentMethod === 'bank_transfer'}
+                    >
+                      <span className="water-sub-payment-option-icon"><Icon name="banknote" size={18}/></span>
+                      <span className="water-sub-payment-option-copy">
+                        <small>Միայն իրավաբանական անձանց համար</small>
+                        <strong>Բանկային փոխանցում</strong>
+                        <span>Պատվերը կպահպանվի բանկային փոխանցման վճարման եղանակով։</span>
+                      </span>
+                      <span className="water-sub-payment-check"><Icon name="check" size={14}/></span>
+                    </button>
+                  )}
                 </div>
+
+                {customerType !== 'corporate' && (
+                  <div className="water-sub-payment-hint">
+                    <Icon name="info" size={15}/>
+                    <span>Բանկային փոխանցումը հասանելի է միայն իրավաբանական անձի տվյալներով։</span>
+                  </div>
+                )}
               </section>
             </div>
 
@@ -457,7 +502,7 @@ export default function WaterSubscriptionPage(){
 
               <div className="water-sub-summary-row"><span>Մեկ առաքման արժեք</span><strong>{pricePerDelivery.toLocaleString('hy-AM')} ֏</strong></div>
               <div className="water-sub-summary-row"><span>Առաքում</span><strong className="is-free">0 ֏</strong></div>
-              <div className="water-sub-summary-row"><span>Վճարում</span><strong>{customerType === 'corporate' ? 'Բանկային փոխանցում' : 'Կանխիկ'}</strong></div>
+              <div className="water-sub-summary-row"><span>Վճարում</span><strong>{paymentMethod === 'bank_transfer' ? 'Բանկային փոխանցում' : 'Կանխիկ'}</strong></div>
               <div className="water-sub-summary-row"><span>Գրաֆիկ</span><strong>{scheduleType === 'monthly' ? `${selectedMonthDays.length} օր / ամիս` : `${selectedWeekdays.length} օր / շաբաթ`}</strong></div>
 
               <div className="water-sub-summary-next">

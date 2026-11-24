@@ -206,6 +206,30 @@ export default function WaterSubscriptionPage(){
     <main className="container water-subscription-page">
       <Breadcrumbs items={[{label:'Պարբերական ջրի առաքում'}]}/>
 
+      {!submitted && (
+        <nav className="water-sub-progress" aria-label="Պարբերական առաքման քայլեր">
+          <div className="is-active">
+            <span><Icon name="droplet" size={15}/></span>
+            <div><small>Քայլ 1</small><strong>Ջուր</strong></div>
+          </div>
+          <i/>
+          <div>
+            <span><Icon name="calendar" size={15}/></span>
+            <div><small>Քայլ 2</small><strong>Օրեր</strong></div>
+          </div>
+          <i/>
+          <div>
+            <span><Icon name="user" size={15}/></span>
+            <div><small>Քայլ 3</small><strong>Տվյալներ</strong></div>
+          </div>
+          <i/>
+          <div>
+            <span><Icon name="wallet" size={15}/></span>
+            <div><small>Քայլ 4</small><strong>Վճարում</strong></div>
+          </div>
+        </nav>
+      )}
+
       {submitted ? (
         <section className="water-sub-success">
           <div className="water-sub-success-icon"><Icon name="check" size={28}/></div>
@@ -258,7 +282,7 @@ export default function WaterSubscriptionPage(){
 
           <form className="water-sub-layout" onSubmit={submit}>
             <div className="water-sub-main">
-              <section className="water-sub-section">
+              <section className="water-sub-section water-sub-section--product">
                 <div className="water-sub-section-head">
                   <span><Icon name="droplet" size={18}/></span>
                   <div><small>Քայլ 1</small><h2>Ջուր և քանակ</h2></div>
@@ -280,7 +304,7 @@ export default function WaterSubscriptionPage(){
                 </div>
               </section>
 
-              <section className="water-sub-section">
+              <section className="water-sub-section water-sub-section--schedule">
                 <div className="water-sub-section-head">
                   <span><Icon name="calendar" size={18}/></span>
                   <div><small>Քայլ 2</small><h2>Ընտրեք առաքման գրաֆիկը</h2></div>
@@ -404,7 +428,7 @@ export default function WaterSubscriptionPage(){
                 </div>
               </section>
 
-              <section className="water-sub-section">
+              <section className="water-sub-section water-sub-section--customer">
                 <div className="water-sub-section-head">
                   <span><Icon name="user" size={18}/></span>
                   <div><small>Քայլ 3</small><h2>Հաճախորդ և հասցե</h2></div>
@@ -440,7 +464,7 @@ export default function WaterSubscriptionPage(){
                 </div>
               </section>
 
-              <section className="water-sub-section">
+              <section className="water-sub-section water-sub-section--payment">
                 <div className="water-sub-section-head">
                   <span><Icon name="wallet" size={18}/></span>
                   <div><small>Քայլ 4</small><h2>Վճարման եղանակ</h2></div>
@@ -508,6 +532,7 @@ export default function WaterSubscriptionPage(){
               <div className="water-sub-summary-next">
                 <span><Icon name="calendar" size={15}/></span>
                 <div><small>Հաջորդ հաշվարկված առաքում</small><strong>{upcoming[0] ? formatSubscriptionDate(upcoming[0]) : 'Ընտրեք օր'}</strong></div>
+                <b>Next</b>
               </div>
 
               {error && <div className="water-sub-error"><Icon name="info" size={15}/>{error}</div>}

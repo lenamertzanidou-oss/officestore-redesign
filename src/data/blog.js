@@ -1,4 +1,4 @@
-import { siteAssets } from './siteAssets';
+import { siteAssets } from './siteAssets.js';
 
 export const blogCategories = ['Բոլորը','Գրասենյակ','Ջուր','Սուրճ և թեյ','Գրենական','Հիգիենա','B2B'];
 

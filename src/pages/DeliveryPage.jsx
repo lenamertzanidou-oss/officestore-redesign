@@ -24,7 +24,24 @@ export default function DeliveryPage() {
       title="Առաքում՝ պարզ, հստակ և կանխատեսելի"
       text="Պատվերը ձևակերպեք մինչև ժամը 18:00-ը և ընտրեք հաջորդ հասանելի առաքման օրը։ Առաքում իրականացվում է երկուշաբթիից շաբաթ։"
       benefits={['Երկ–Շաբ առաքում','Հասցեով առաքում','18,9 լ ջրով՝ անվճար']}
-    />
+    >
+      <div className="delivery-hero-visual" aria-hidden="true">
+        <div className="delivery-hero-orbit delivery-hero-orbit--a"/>
+        <div className="delivery-hero-orbit delivery-hero-orbit--b"/>
+        <div className="delivery-hero-route"/>
+        <span className="delivery-hero-pin delivery-hero-pin--start"><Icon name="package" size={15}/></span>
+        <span className="delivery-hero-pin delivery-hero-pin--finish"><Icon name="location" size={15}/></span>
+        <div className="delivery-hero-truck"><Icon name="truck" size={25}/></div>
+        <div className="delivery-hero-status">
+          <span><Icon name="check" size={12}/></span>
+          <div><small>Պատվերը հաստատված է</small><strong>Առաքումը պլանավորված է</strong></div>
+        </div>
+        <div className="delivery-hero-date">
+          <span><Icon name="calendar" size={15}/></span>
+          <div><small>Առաքման օրեր</small><strong>Երկ–Շաբ</strong></div>
+        </div>
+      </div>
+    </PageHero>
 
     <div className="container delivery-page">
       <Breadcrumbs items={[{label:'Առաքում'}]}/>
@@ -40,17 +57,17 @@ export default function DeliveryPage() {
         </div>
 
         <div className="delivery-overview-stats" aria-label="Առաքման հիմնական պայմաններ">
-          <div className="delivery-stat">
-            <span className="delivery-stat-icon"><Icon name="truck" size={16}/></span>
-            <div><small>Ստանդարտ առաքում</small><strong>600 ֏</strong></div>
+          <div className="delivery-stat delivery-stat--featured">
+            <span className="delivery-stat-icon"><Icon name="truck" size={17}/></span>
+            <div><small>Ստանդարտ առաքում</small><strong>600 ֏</strong><span>Երևան և հասանելի ուղղություններ</span></div>
           </div>
           <div className="delivery-stat">
             <span className="delivery-stat-icon"><Icon name="package" size={16}/></span>
-            <div><small>18,9 լ ջրով</small><strong>0 ֏</strong></div>
+            <div><small>18,9 լ ջրով</small><strong>0 ֏</strong><span>Առաքման վճարը չի գանձվում</span></div>
           </div>
           <div className="delivery-stat">
             <span className="delivery-stat-icon"><Icon name="calendar" size={16}/></span>
-            <div><small>Առաքման օրեր</small><strong>Երկ–Շաբ</strong></div>
+            <div><small>Առաքման օրեր</small><strong>Երկ–Շաբ</strong><span>Կիրակի՝ հանգստյան օր</span></div>
           </div>
         </div>
       </section>
@@ -58,6 +75,7 @@ export default function DeliveryPage() {
       <div className="delivery-policy-strip">
         <span><Icon name="info" size={16}/></span>
         <p><strong>Կիրակի օրը առաքում չի իրականացվում։</strong> Մինչև 18:00-ը ձևակերպված պատվերի համար առաջարկվում է հաջորդ հասանելի առաքման օրը։</p>
+        <div className="delivery-cutoff-chip"><Icon name="clock" size={14}/><span>Cut-off՝ 18:00</span></div>
       </div>
 
       <section className="delivery-steps">
@@ -69,8 +87,8 @@ export default function DeliveryPage() {
           </div>
         </div>
 
-        <div className="steps-grid">
-          {steps.map(([num,title,text,icon]) => (
+        <div className="steps-grid delivery-timeline">
+          {steps.map(([num,title,text,icon], index) => (
             <article key={num}>
               <div className="delivery-step-top">
                 <span className="step-number">{num}</span>
@@ -78,6 +96,7 @@ export default function DeliveryPage() {
               </div>
               <h3>{title}</h3>
               <p>{text}</p>
+              {index < steps.length - 1 && <span className="delivery-step-connector" aria-hidden="true"><Icon name="arrow" size={13}/></span>}
             </article>
           ))}
         </div>
@@ -120,15 +139,17 @@ export default function DeliveryPage() {
       </section>
 
       <section className="delivery-cta">
-        <div className="delivery-cta-icon"><Icon name="cart" size={22}/></div>
+        <div className="delivery-cta-decor delivery-cta-decor--a"/>
+        <div className="delivery-cta-decor delivery-cta-decor--b"/>
+        <div className="delivery-cta-icon"><Icon name="truck" size={23}/></div>
         <div className="delivery-cta-copy">
           <span>Պատրա՞ստ եք պատվիրել</span>
-          <h2>Ընտրեք ապրանքները, առաքման օրը կընտրեք զամբյուղում</h2>
-          <p>Առաքման արժեքը և հասանելի օրը կտեսնեք մինչև պատվերը հաստատելը։</p>
+          <h2>Ընտրեք ապրանքները, իսկ առաքման օրը՝ զամբյուղում</h2>
+          <p>Մինչև հաստատելը կտեսնեք առաքման արժեքը, հասանելի օրը և պատվերի ամբողջ ամփոփումը։</p>
         </div>
         <div className="delivery-cta-actions">
           <Link className="btn btn-primary" to="/shop">Դիտել ապրանքները <Icon name="arrow" size={15}/></Link>
-          <Link className="delivery-contact-link" to="/contact">Հարց ունե՞ք</Link>
+          <Link className="delivery-contact-link" to="/contact">Կապ մեզ հետ</Link>
         </div>
       </section>
     </div>

@@ -32,6 +32,7 @@ npm.cmd run preview
 - About
 - Contact
 - Delivery + FAQ
+- Recurring 18.9L water delivery scheduling
 - SEO blog hub + individual article pages
 - Cart
 - Checkout
@@ -53,6 +54,9 @@ npm.cmd run preview
 - LocalStorage cart/wishlist persistence
 - Free-delivery rule for 18.9L Aparan water; otherwise 600 AMD demo delivery fee
 - Delivery scheduling supports Monday–Saturday; Sunday is excluded
+- Recurring water schedules support monthly dates or weekly weekdays
+- Recurring water payment rules: personal = cash; corporate = bank transfer
+- Recurring schedule data is persisted locally and shaped for future backend scheduler integration
 - Checkout payment method selection
 - Address delivery flow (pickup/self-collection removed)
 - Account login/register UI

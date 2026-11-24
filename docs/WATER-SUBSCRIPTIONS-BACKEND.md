@@ -10,7 +10,7 @@ This document defines the server-side requirements for the OfficeStore "Պարբ
 - Sunday is never a delivery day.
 - Monthly schedules that land on Sunday move to Monday.
 - Personal customers: cash only.
-- Corporate/legal-entity customers: bank transfer only.
+- Corporate/legal-entity customers: cash or bank transfer.
 - 18.9L water delivery fee: 0 AMD.
 
 ## Subscription payload
@@ -40,7 +40,7 @@ Frontend stores and will POST this shape:
 }
 ```
 
-Corporate subscriptions use:
+Corporate subscriptions may use either cash or bank transfer:
 
 ```json
 {
@@ -52,6 +52,10 @@ Corporate subscriptions use:
   "paymentMethod": "bank_transfer"
 }
 ```
+
+Allowed values:
+- personal customer: `cash`
+- corporate customer: `cash` or `bank_transfer`
 
 Weekly schedules use:
 

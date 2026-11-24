@@ -11,7 +11,7 @@ export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('Բոլորը');
 
   const visiblePosts = useMemo(
-    () => blogPosts.filter(post => !post.featured && (activeCategory === 'Բոլորը' || post.category === activeCategory)),
+    () => blogPosts.filter(post => activeCategory === 'Բոլորը' ? !post.featured : post.category === activeCategory),
     [activeCategory]
   );
 

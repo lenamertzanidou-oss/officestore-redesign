@@ -8,6 +8,7 @@ import ServicePage from './pages/ServicePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import DeliveryPage from './pages/DeliveryPage';
+import WaterSubscriptionPage from './pages/WaterSubscriptionPage';
 import BlogPage from './pages/BlogPage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import CartPage from './pages/CartPage';
@@ -28,6 +29,7 @@ export default function App() {
     <Route path="/about" element={<AboutPage/>}/>
     <Route path="/contact" element={<ContactPage/>}/>
     <Route path="/delivery" element={<DeliveryPage/>}/>
+    <Route path="/water-subscription" element={<WaterSubscriptionPage/>}/>
     <Route path="/blog" element={<BlogPage/>}/>
     <Route path="/blog/:slug" element={<BlogArticlePage/>}/>
     <Route path="/cart" element={<CartPage/>}/>

@@ -16,9 +16,10 @@ import AccountPage from './pages/AccountPage';
 import LegalPage from './pages/LegalPage';
 import DiscountsPage from './pages/DiscountsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
-  return <Layout><Routes>
+  return <Layout><ScrollToTop/><Routes>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/shop" element={<ShopPage/>}/>
     <Route path="/category/:slug" element={<CategoryPage/>}/>

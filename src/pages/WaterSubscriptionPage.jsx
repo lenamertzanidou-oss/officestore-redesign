@@ -32,6 +32,7 @@ export default function WaterSubscriptionPage(){
     () => loadWaterSubscriptions().find(item => item.status === 'active') || null,
     []
   );
+  const [currentSubscription,setCurrentSubscription] = useState(existingSubscription);
   const initialType = existingSubscription?.customerType || (storedProfile?.type === 'corporate' ? 'corporate' : 'personal');
 
   const [customerType,setCustomerType] = useState(initialType);
@@ -94,8 +95,8 @@ export default function WaterSubscriptionPage(){
     }
 
     const subscription = createWaterSubscription({
-      id:existingSubscription?.id,
-      createdAt:existingSubscription?.createdAt,
+      id:currentSubscription?.id,
+      createdAt:currentSubscription?.createdAt,
       customerType,
       quantity,
       customer,
@@ -105,6 +106,7 @@ export default function WaterSubscriptionPage(){
     });
 
     saveWaterSubscription(subscription);
+    setCurrentSubscription(subscription);
     setSubmitted(subscription);
   };
 
@@ -170,7 +172,7 @@ export default function WaterSubscriptionPage(){
         </section>
       ) : (
         <>
-          {existingSubscription && (
+          {currentSubscription && (
             <div className="water-sub-existing">
               <span><Icon name="refresh" size={16}/></span>
               <div><strong>Ակտիվ գրաֆիկը բեռնված է</strong><small>Փոփոխությունները պահպանելիս նույն պարբերական առաքման գրաֆիկը կթարմացվի։</small></div>
@@ -353,7 +355,7 @@ export default function WaterSubscriptionPage(){
               {error && <div className="water-sub-error"><Icon name="info" size={15}/>{error}</div>}
 
               <button className="btn btn-primary water-sub-submit" type="submit">
-                {existingSubscription ? 'Պահպանել փոփոխությունները' : 'Ակտիվացնել գրաֆիկը'} <Icon name="arrow" size={16}/>
+                {currentSubscription ? 'Պահպանել փոփոխությունները' : 'Ակտիվացնել գրաֆիկը'} <Icon name="arrow" size={16}/>
               </button>
 
               <div className="water-sub-summary-note">

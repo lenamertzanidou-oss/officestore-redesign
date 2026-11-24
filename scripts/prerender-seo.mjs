@@ -53,6 +53,14 @@ const writeSnapshot = async (route, seo) => {
 
 const blogDescription = 'OfficeStore բլոգ՝ գրասենյակային ապրանքների, ջրի, սուրճի, թղթի, հիգիենայի և կորպորատիվ գնումների գործնական ուղեցույցներով։';
 
+await writeSnapshot('/water-subscription', {
+  title:'Պարբերական ջրի առաքում | OfficeStore',
+  description:'Պլանավորեք Ապարան 18,9 լ ջրի պարբերական առաքումը՝ ընտրելով շաբաթվա կամ ամսվա ձեզ հարմար օրերը։',
+  canonical:`${baseUrl}/water-subscription/`,
+  image:'https://officestore.am/wp-content/uploads/2025/08/323-2.jpg',
+  type:'website'
+});
+
 await writeSnapshot('/blog', {
   title:'OfficeStore Բլոգ — Գրասենյակային գնումներ, ջուր, սուրճ և հիգիենա',
   description:blogDescription,
@@ -109,6 +117,7 @@ const staticRoutes = [
   '/about/',
   '/contact/',
   '/delivery/',
+  '/water-subscription/',
   '/blog/',
   '/discounts/',
   '/privacy/',

@@ -21,6 +21,7 @@ const categoryIconBySlug = {
 const nav = [
   ['/shop', 'Բոլոր ապրանքները'],
   ['/category/water', 'Ջուր'],
+  ['/water-subscription', 'Պարբերական ջուր'],
   ['/category/coffee', 'Սուրճ'],
   ['/category/stationery', 'Գրենական'],
   ['/category/household', 'Տնտեսական'],
@@ -135,6 +136,7 @@ export default function Layout({ children }) {
           <div className="footer-column">
             <h3>Օգնություն</h3>
             <Link to="/delivery">Առաքում և վճարում</Link>
+            <Link to="/water-subscription">Պարբերական ջրի առաքում</Link>
             <Link to="/services/dispenser-maintenance">Դիսպենսերի սպասարկում</Link>
             <Link to="/contact">Կապ մեզ հետ</Link>
             <Link to="/blog">Օգտակար նյութեր</Link>
@@ -211,6 +213,7 @@ export default function Layout({ children }) {
           <div className="drawer-footer">
             <div className="drawer-footer-links">
               <Link to="/delivery" onClick={() => setMenuOpen(false)}>Առաքում</Link>
+              <Link to="/water-subscription" onClick={() => setMenuOpen(false)}>Պարբերական ջուր</Link>
               <Link to="/contact" onClick={() => setMenuOpen(false)}>Կապ</Link>
               <Link to="/about" onClick={() => setMenuOpen(false)}>Մեր մասին</Link>
             </div>

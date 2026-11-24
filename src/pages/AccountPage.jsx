@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Common';
 import { Icon } from '../components/Icons';
 import { loadStoredProfile, saveStoredProfile } from '../utils/accountProfile';
+import { formatSubscriptionDate, loadWaterSubscriptions } from '../utils/waterSubscriptions';
 
 function GoogleMark() {
   return (
@@ -17,6 +18,7 @@ function GoogleMark() {
 
 function PersonalDashboard({ onLogout, profile }) {
   const name = profile?.firstName ? `, ${profile.firstName}` : '';
+  const waterSubscription = loadWaterSubscriptions().find(item => item.status === 'active');
 
   return (
     <div className="container account-dashboard">
@@ -60,10 +62,29 @@ function PersonalDashboard({ onLogout, profile }) {
             </div>
           </section>
 
+          {waterSubscription && (
+            <section className="account-water-subscription">
+              <div className="section-mini-head">
+                <div>
+                  <span className="corporate-section-kicker">Պարբերական ջուր</span>
+                  <h2>Ակտիվ առաքման գրաֆիկ</h2>
+                </div>
+                <span className="status-pill">Ակտիվ</span>
+              </div>
+              <div className="account-water-subscription-row">
+                <span><Icon name="droplet" size={18}/></span>
+                <div><small>Հաջորդ առաքում</small><strong>{formatSubscriptionDate(waterSubscription.nextDeliveryDate)}</strong></div>
+                <div><small>Քանակ</small><strong>{waterSubscription.quantity} տարա</strong></div>
+                <Link to="/water-subscription">Կառավարել <Icon name="arrow" size={14}/></Link>
+              </div>
+            </section>
+          )}
+
           <section className="quick-actions">
             <h2>Արագ գործողություններ</h2>
             <div>
               <Link to="/shop"><Icon name="search"/><span><strong>Գտնել ապրանք</strong><small>Որոնել ամբողջ կատալոգում</small></span><Icon name="arrow"/></Link>
+              <Link to="/water-subscription"><Icon name="refresh"/><span><strong>Պարբերական ջուր</strong><small>{waterSubscription ? 'Փոփոխել առաքման գրաֆիկը' : 'Ստեղծել առաքման գրաֆիկ'}</small></span><Icon name="arrow"/></Link>
               <Link to="/delivery"><Icon name="truck"/><span><strong>Առաքման պայմաններ</strong><small>Ժամկետներ և գներ</small></span><Icon name="arrow"/></Link>
             </div>
           </section>
@@ -75,6 +96,7 @@ function PersonalDashboard({ onLogout, profile }) {
 
 function CorporateDashboard({ onLogout, profile }) {
   const companyName = profile?.organization || 'Կորպորատիվ հաշիվ';
+  const waterSubscription = loadWaterSubscriptions().find(item => item.status === 'active' && item.customerType === 'corporate');
   const contactName = [profile?.firstName, profile?.lastName].filter(Boolean).join(' ') || 'Կոնտակտային անձ';
 
   return (
@@ -139,6 +161,7 @@ function CorporateDashboard({ onLogout, profile }) {
             <h2>Արագ գործողություններ</h2>
             <div>
               <Link to="/shop"><Icon name="search"/><span><strong>Նոր պատվեր</strong><small>Ընտրել ապրանքներ կատալոգից</small></span><Icon name="arrow"/></Link>
+              <Link to="/water-subscription"><Icon name="refresh"/><span><strong>Պարբերական ջուր</strong><small>{waterSubscription ? 'Փոփոխել ակտիվ գրաֆիկը' : 'Ստեղծել առաքման գրաֆիկ'}</small></span><Icon name="arrow"/></Link>
               <Link to="/delivery"><Icon name="truck"/><span><strong>Առաքման պայմաններ</strong><small>Ժամկետներ և գոտիներ</small></span><Icon name="arrow"/></Link>
               <Link to="/contact"><Icon name="phone"/><span><strong>Կապ մեզ հետ</strong><small>Կորպորատիվ հարցերի համար</small></span><Icon name="arrow"/></Link>
             </div>

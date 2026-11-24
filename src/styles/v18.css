@@ -961,6 +961,127 @@
   color:var(--sub-blue)!important;
 }
 
+.water-sub-payment-options{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:9px!important;
+}
+
+.water-sub-payment-option{
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:40px minmax(0,1fr) 24px!important;
+  align-items:center!important;
+  gap:11px!important;
+  padding:13px!important;
+  border:1px solid #E0E7EF!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  color:inherit!important;
+  text-align:left!important;
+  box-shadow:none!important;
+  transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease!important;
+}
+
+.water-sub-payment-option:hover{
+  border-color:#C7D6E8!important;
+  background:#FAFBFD!important;
+}
+
+.water-sub-payment-option.is-active{
+  border-color:#B9CDE5!important;
+  background:#F2F6FC!important;
+  box-shadow:0 5px 14px rgba(39,87,165,.05)!important;
+}
+
+.water-sub-payment-option-icon{
+  width:40px!important;
+  height:40px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:10px!important;
+  background:#F2F5F8!important;
+  color:#6F7B85!important;
+}
+
+.water-sub-payment-option.is-active .water-sub-payment-option-icon{
+  background:var(--sub-blue)!important;
+  color:#fff!important;
+}
+
+.water-sub-payment-option-copy{
+  min-width:0!important;
+}
+
+.water-sub-payment-option-copy small,
+.water-sub-payment-option-copy strong,
+.water-sub-payment-option-copy>span{
+  display:block!important;
+}
+
+.water-sub-payment-option-copy small{
+  color:#8A959D!important;
+  font-size:8.3px!important;
+  line-height:1.25!important;
+  font-weight:650!important;
+}
+
+.water-sub-payment-option-copy strong{
+  margin-top:2px!important;
+  color:var(--sub-text)!important;
+  font-size:11px!important;
+  line-height:1.3!important;
+  font-weight:750!important;
+}
+
+.water-sub-payment-option-copy>span{
+  margin-top:3px!important;
+  color:#7C8993!important;
+  font-size:8.9px!important;
+  line-height:1.45!important;
+}
+
+.water-sub-payment-option.is-active .water-sub-payment-option-copy strong{
+  color:var(--sub-blue-dark)!important;
+}
+
+.water-sub-payment-check{
+  width:22px!important;
+  height:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid #D7E0E9!important;
+  border-radius:50%!important;
+  background:#fff!important;
+  color:transparent!important;
+}
+
+.water-sub-payment-option.is-active .water-sub-payment-check{
+  border-color:var(--sub-blue)!important;
+  background:var(--sub-blue)!important;
+  color:#fff!important;
+}
+
+.water-sub-payment-hint{
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:7px!important;
+  margin-top:9px!important;
+  padding:9px 10px!important;
+  border:1px solid #E1E7EE!important;
+  border-radius:9px!important;
+  background:#FAFBFC!important;
+  color:#7D8992!important;
+  font-size:8.9px!important;
+  line-height:1.45!important;
+}
+
+.water-sub-payment-hint svg{
+  flex:0 0 auto!important;
+  margin-top:1px!important;
+  color:var(--sub-blue)!important;
+}
+
 /* summary */
 .water-sub-summary{
   position:sticky!important;
@@ -1371,7 +1492,8 @@
   }
 
   .water-sub-schedule-tabs,
-  .water-sub-type-switch{
+  .water-sub-type-switch,
+  .water-sub-payment-options{
     grid-template-columns:1fr!important;
   }
 

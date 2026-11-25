@@ -7,13 +7,7 @@ import { formatPrice } from '../data/catalog';
 import { useStore } from '../context/StoreContext';
 import { saveStoredProfile } from '../utils/accountProfile';
 
-const paymentMethods = [
-  ['cash','Կանխիկ','Վճարում ստանալիս'],
-  ['card','Բանկային քարտ','Visa · MasterCard'],
-  ['idram','Idram','Արագ վճարում'],
-  ['telcell','TelCell','Վճարում TelCell-ով'],
-  ['bank','Բանկային փոխանցում','Հարմար է կազմակերպությունների համար'],
-];
+import { paymentMethods } from '../data/paymentMethods';
 
 function PaymentMark({ id }) {
   const iconName = {

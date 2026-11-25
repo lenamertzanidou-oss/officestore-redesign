@@ -9,8 +9,8 @@ This document defines the server-side requirements for the OfficeStore "Պարբ
 - Delivery days: Monday–Saturday.
 - Sunday is never a delivery day.
 - Monthly schedules that land on Sunday move to Monday.
-- Personal customers: cash only.
-- Corporate/legal-entity customers: cash or bank transfer.
+- Personal customers: cash, online card, Idram or TelCell.
+- Corporate/legal-entity customers: bank transfer only.
 - 18.9L water delivery fee: 0 AMD.
 
 ## Subscription payload
@@ -40,7 +40,7 @@ Frontend stores and will POST this shape:
 }
 ```
 
-Corporate subscriptions may use either cash or bank transfer:
+Corporate subscriptions use bank transfer only:
 
 ```json
 {
@@ -54,8 +54,10 @@ Corporate subscriptions may use either cash or bank transfer:
 ```
 
 Allowed values:
-- personal customer: `cash`
-- corporate customer: `cash` or `bank_transfer`
+- personal customer: `cash`, `card`, `idram` or `telcell`
+- corporate customer: `bank_transfer` only
+
+Online payment values represent preferences only. No automatic charge is performed by the frontend; production payments require provider integration and an authorized per-order payment or recurring mandate.
 
 Weekly schedules use:
 
@@ -144,7 +146,7 @@ The React application already provides:
 - schedule UI
 - Sunday exclusion/shift behavior
 - customer type rules
-- cash vs bank-transfer rules
+- payment eligibility by customer type
 - upcoming-delivery calculation
 - local persistence
 - update-in-place behavior

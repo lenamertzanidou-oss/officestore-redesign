@@ -1,3 +1,5 @@
+import { normalizeRecurringPayment } from '../data/paymentMethods.js';
+
 export const WATER_SUBSCRIPTIONS_KEY = 'os-water-subscriptions';
 
 const cloneNoon = (date) => {
@@ -100,9 +102,7 @@ export function createWaterSubscription(input){
     organization:input.customerType === 'corporate' ? input.organization : null,
     address:input.address,
     schedule:input.schedule,
-    paymentMethod:input.customerType === 'corporate' && input.paymentMethod === 'bank_transfer'
-      ? 'bank_transfer'
-      : 'cash',
+    paymentMethod:normalizeRecurringPayment(input.customerType,input.paymentMethod),
     upcomingDeliveries,
     nextDeliveryDate:upcomingDeliveries[0] || null,
     createdAt:input.createdAt || new Date().toISOString(),

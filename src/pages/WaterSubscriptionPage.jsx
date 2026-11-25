@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs, PageHero } from '../components/Common';
 import { Icon } from '../components/Icons';
-import ProductVisual from '../components/ProductVisual';
+import { siteAssets } from '../data/siteAssets';
+import { normalizeRecurringPayment, recurringPaymentOptions, recurringPaymentLabel } from '../data/paymentMethods';
 import PageSeo from '../components/PageSeo';
 import { products } from '../data/catalog';
 import { loadStoredProfile } from '../utils/accountProfile';
@@ -71,11 +72,15 @@ export default function WaterSubscriptionPage(){
     taxId:existingSubscription?.organization?.taxId || storedProfile?.taxId || '',
   });
   const [address,setAddress] = useState(existingSubscription?.address || storedProfile?.legalAddress || '');
-  const [paymentMethod,setPaymentMethod] = useState(
-    existingSubscription?.paymentMethod === 'bank_transfer' && initialType === 'corporate'
-      ? 'bank_transfer'
-      : 'cash'
+  const [paymentMethod,setPaymentMethod] = useState(() =>
+    normalizeRecurringPayment(initialType,existingSubscription?.paymentMethod)
   );
+  const [waterImageFailed,setWaterImageFailed] = useState(false);
+  const availablePaymentOptions = recurringPaymentOptions(customerType);
+  const changeCustomerType = (type) => {
+    setCustomerType(type);
+    setPaymentMethod(current => normalizeRecurringPayment(type,current));
+  };
   const [submitted,setSubmitted] = useState(null);
   const [error,setError] = useState('');
 
@@ -239,7 +244,7 @@ export default function WaterSubscriptionPage(){
 
           <div className="water-sub-success-grid">
             <div><small>Քանակ</small><strong>{submitted.quantity} × 18,9 լ</strong></div>
-            <div><small>Վճարում</small><strong>{submitted.paymentMethod === 'cash' ? 'Կանխիկ' : 'Բանկային փոխանցում'}</strong></div>
+            <div><small>Վճարում</small><strong>{recurringPaymentLabel(submitted.customerType,submitted.paymentMethod)}</strong></div>
             <div><small>Հաջորդ առաքում</small><strong>{formatSubscriptionDate(submitted.nextDeliveryDate)}</strong></div>
           </div>
 
@@ -289,7 +294,11 @@ export default function WaterSubscriptionPage(){
                 </div>
 
                 <div className="water-sub-product">
-                  <ProductVisual type="water" size="card" alt="Ապարան Ջուր 18,9 լ"/>
+                  <div className="water-sub-product-image">
+                    {waterImageFailed
+                      ? <Icon name="droplet" size={34}/>
+                      : <img src={siteAssets.category.water} alt="" onError={() => setWaterImageFailed(true)}/>}
+                  </div>
                   <div className="water-sub-product-copy">
                     <span>Պարբերական առաքման ապրանք</span>
                     <h3>{waterProduct?.name || 'Ապարան Ջուր 18,9լ'}</h3>
@@ -438,16 +447,16 @@ export default function WaterSubscriptionPage(){
                   <button
                     type="button"
                     className={customerType === 'personal' ? 'is-active' : ''}
-                    onClick={() => { setCustomerType('personal'); setPaymentMethod('cash'); }}
+                    onClick={() => changeCustomerType('personal')}
                   >
-                    <Icon name="user" size={17}/><span><strong>Ֆիզիկական անձ</strong><small>Վճարում՝ կանխիկ</small></span>
+                    <Icon name="user" size={17}/><span><strong>Ֆիզիկական անձ</strong><small>Կանխիկ կամ առցանց վճարում</small></span>
                   </button>
                   <button
                     type="button"
                     className={customerType === 'corporate' ? 'is-active' : ''}
-                    onClick={() => setCustomerType('corporate')}
+                    onClick={() => changeCustomerType('corporate')}
                   >
-                    <Icon name="building" size={17}/><span><strong>Իրավաբանական անձ</strong><small>Կանխիկ կամ բանկային փոխանցում</small></span>
+                    <Icon name="building" size={17}/><span><strong>Իրավաբանական անձ</strong><small>Միայն բանկային փոխանցում</small></span>
                   </button>
                 </div>
 
@@ -470,46 +479,37 @@ export default function WaterSubscriptionPage(){
                   <div><small>Քայլ 4</small><h2>Վճարման եղանակ</h2></div>
                 </div>
 
-                <div className="water-sub-payment-options">
-                  <button
-                    type="button"
-                    className={paymentMethod === 'cash' ? 'water-sub-payment-option is-active' : 'water-sub-payment-option'}
-                    onClick={() => setPaymentMethod('cash')}
-                    aria-pressed={paymentMethod === 'cash'}
-                  >
-                    <span className="water-sub-payment-option-icon"><Icon name="wallet" size={18}/></span>
-                    <span className="water-sub-payment-option-copy">
-                      <small>Հասանելի բոլոր հաճախորդներին</small>
-                      <strong>Կանխիկ վճարում</strong>
-                      <span>Վճարումը կատարվում է յուրաքանչյուր պլանավորված առաքման համար։</span>
-                    </span>
-                    <span className="water-sub-payment-check"><Icon name="check" size={14}/></span>
-                  </button>
-
-                  {customerType === 'corporate' && (
+                <div className={customerType === 'corporate' ? 'water-sub-payment-options is-single' : 'water-sub-payment-options'} role="group" aria-label="Վճարման եղանակ">
+                  {availablePaymentOptions.map(option => (
                     <button
+                      key={option.id}
                       type="button"
-                      className={paymentMethod === 'bank_transfer' ? 'water-sub-payment-option is-active' : 'water-sub-payment-option'}
-                      onClick={() => setPaymentMethod('bank_transfer')}
-                      aria-pressed={paymentMethod === 'bank_transfer'}
+                      className={'water-sub-payment-option water-sub-payment-option--' + option.id + (paymentMethod === option.id ? ' is-active' : '')}
+                      onClick={() => setPaymentMethod(option.id)}
+                      aria-pressed={paymentMethod === option.id}
                     >
-                      <span className="water-sub-payment-option-icon"><Icon name="banknote" size={18}/></span>
+                      <span className="water-sub-payment-option-icon">
+                        {option.id === 'idram' || option.id === 'telcell'
+                          ? <img src={siteAssets.payments[option.id]} alt="" onError={event => { event.currentTarget.hidden = true; }}/>
+                          : <Icon name={option.icon} size={20}/>}
+                      </span>
                       <span className="water-sub-payment-option-copy">
-                        <small>Միայն իրավաբանական անձանց համար</small>
-                        <strong>Բանկային փոխանցում</strong>
-                        <span>Պատվերը կպահպանվի բանկային փոխանցման վճարման եղանակով։</span>
+                        <strong>{option.id === 'bank_transfer' ? 'Բանկային փոխանցում իրավաբանական անձանց համար' : option.label}</strong>
+                        <span>{option.description}</span>
                       </span>
                       <span className="water-sub-payment-check"><Icon name="check" size={14}/></span>
                     </button>
-                  )}
+                  ))}
                 </div>
 
-                {customerType !== 'corporate' && (
-                  <div className="water-sub-payment-hint">
-                    <Icon name="info" size={15}/>
-                    <span>Բանկային փոխանցումը հասանելի է միայն իրավաբանական անձի տվյալներով։</span>
-                  </div>
-                )}
+                <div className="water-sub-payment-hint" role="note">
+                  <Icon name="info" size={15}/>
+                  <span>{customerType === 'corporate'
+                    ? 'Իրավաբանական անձանց համար հասանելի է միայն բանկային փոխանցումը։'
+                    : ['card','idram','telcell'].includes(paymentMethod)
+                      ? 'Առցանց վճարման եղանակը պահպանվում է գրաֆիկում։ Ավտոմատ գանձում չի կատարվում․ վճարային համակարգի միացումը դեռ անհրաժեշտ է։'
+                      : 'Բանկային փոխանցումը հասանելի է միայն իրավաբանական անձանց համար։'}</span>
+                </div>
               </section>
             </div>
 
@@ -526,7 +526,7 @@ export default function WaterSubscriptionPage(){
 
               <div className="water-sub-summary-row"><span>Մեկ առաքման արժեք</span><strong>{pricePerDelivery.toLocaleString('hy-AM')} ֏</strong></div>
               <div className="water-sub-summary-row"><span>Առաքում</span><strong className="is-free">0 ֏</strong></div>
-              <div className="water-sub-summary-row"><span>Վճարում</span><strong>{paymentMethod === 'bank_transfer' ? 'Բանկային փոխանցում' : 'Կանխիկ'}</strong></div>
+              <div className="water-sub-summary-row"><span>Վճարում</span><strong>{recurringPaymentLabel(customerType,paymentMethod)}</strong></div>
               <div className="water-sub-summary-row"><span>Գրաֆիկ</span><strong>{scheduleType === 'monthly' ? `${selectedMonthDays.length} օր / ամիս` : `${selectedWeekdays.length} օր / շաբաթ`}</strong></div>
 
               <div className="water-sub-summary-next">

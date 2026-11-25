@@ -55,7 +55,7 @@ npm.cmd run preview
 - Free-delivery rule for 18.9L Aparan water; otherwise 600 AMD demo delivery fee
 - Delivery scheduling supports Monday–Saturday; Sunday is excluded
 - Recurring water schedules support monthly dates or weekly weekdays
-- Recurring water payment rules: personal = cash; corporate = bank transfer
+- Recurring water payment rules: personal = cash, card, Idram or TelCell; corporate = bank transfer only
 - Recurring schedule data is persisted locally and shaped for future backend scheduler integration
 - Checkout payment method selection
 - Address delivery flow (pickup/self-collection removed)

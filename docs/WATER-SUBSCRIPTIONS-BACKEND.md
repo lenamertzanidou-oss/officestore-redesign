@@ -59,18 +59,7 @@ Allowed values:
 
 Online payment values represent preferences only. No automatic charge is performed by the frontend; production payments require provider integration and an authorized per-order payment or recurring mandate.
 
-Weekly schedules use:
-
-```json
-{
-  "schedule": {
-    "type": "weekly",
-    "weekdays": [1, 4]
-  }
-}
-```
-
-Weekdays follow JavaScript convention: 1=Monday ... 6=Saturday.
+New and edited subscriptions use monthly dates only. Legacy weekly schedules remain readable for compatibility; customers must explicitly select monthly dates and save before replacing an existing weekly schedule.
 
 ## Recommended API
 

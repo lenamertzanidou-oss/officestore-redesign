@@ -1118,7 +1118,7 @@
   box-shadow:0 5px 14px rgba(39,87,165,.05)!important;
 }
 
-.water-sub-payment-option:nth-child(2).is-active{
+.water-sub-payment-option--bank_transfer.is-active{
   border-color:#A7D9DE!important;
   background:var(--sub-aqua-soft-2)!important;
   box-shadow:0 5px 14px rgba(34,175,193,.07)!important;
@@ -1139,7 +1139,7 @@
   color:#fff!important;
 }
 
-.water-sub-payment-option:nth-child(2).is-active .water-sub-payment-option-icon{
+.water-sub-payment-option--bank_transfer.is-active .water-sub-payment-option-icon{
   background:var(--sub-aqua)!important;
 }
 
@@ -1196,7 +1196,7 @@
   color:#fff!important;
 }
 
-.water-sub-payment-option:nth-child(2).is-active .water-sub-payment-check{
+.water-sub-payment-option--bank_transfer.is-active .water-sub-payment-check{
   border-color:var(--sub-aqua)!important;
   background:var(--sub-aqua)!important;
 }
@@ -1752,5 +1752,129 @@
   .water-sub-calendar-grid button{
     border-radius:8px!important;
     font-size:9px!important;
+  }
+}
+
+
+/* Compact water product and complete payment choices — scoped to subscription. */
+.water-subscription-page .water-sub-section--product{
+  padding:clamp(14px,2vw,20px)!important;
+}
+.water-subscription-page .water-sub-product{
+  grid-template-columns:88px minmax(0,1fr) auto!important;
+  gap:16px!important;
+  padding:12px!important;
+  background:linear-gradient(110deg,#E8F8FA,#F6FCFC)!important;
+}
+.water-sub-product-image{
+  width:88px;
+  height:92px;
+  display:grid;
+  place-items:center;
+  border:1px solid #D2E7EB;
+  border-radius:12px;
+  background:#fff;
+  color:#176F83;
+  overflow:hidden;
+}
+.water-sub-product-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:6px;
+}
+.water-subscription-page .water-sub-product-copy>span{
+  font-size:11px!important;
+  color:#176F83!important;
+}
+.water-subscription-page .water-sub-product-copy h3{
+  font-size:16px!important;
+  margin:3px 0 5px!important;
+}
+.water-subscription-page .water-sub-product-copy p{
+  font-size:12px!important;
+  line-height:1.5!important;
+  color:#4B6571!important;
+}
+.water-subscription-page .water-sub-product-copy>strong{
+  margin-top:7px!important;
+  font-size:15px!important;
+}
+.water-subscription-page .water-sub-qty{
+  justify-self:end!important;
+  grid-template-columns:40px 38px 40px!important;
+}
+.water-subscription-page .water-sub-qty button{
+  width:40px!important;
+  height:44px!important;
+}
+.water-subscription-page .water-sub-qty strong{
+  font-size:15px!important;
+}
+.water-sub-payment-options.is-single{
+  grid-template-columns:minmax(0,1fr)!important;
+}
+.water-subscription-page .water-sub-payment-option{
+  grid-template-columns:46px minmax(0,1fr) 22px!important;
+  gap:12px!important;
+  padding:14px!important;
+  min-height:90px!important;
+}
+.water-subscription-page .water-sub-payment-option-icon{
+  width:46px!important;
+  height:46px!important;
+}
+.water-subscription-page .water-sub-payment-option-icon:has(img){
+  background:#fff!important;
+  border:1px solid #DCE5EE!important;
+}
+.water-sub-payment-option-icon img{
+  display:block;
+  width:100%;
+  max-height:35px;
+  padding:4px;
+  object-fit:contain;
+}
+.water-subscription-page .water-sub-payment-option-copy strong{
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+.water-subscription-page .water-sub-payment-option-copy>span{
+  font-size:11px!important;
+  color:#586A78!important;
+  line-height:1.5!important;
+}
+.water-subscription-page .water-sub-payment-option.is-active{
+  border-color:#2757A5!important;
+}
+.water-subscription-page .water-sub-payment-option--bank_transfer.is-active{
+  border-color:#16899A!important;
+}
+.water-subscription-page .water-sub-payment-hint{
+  color:#78511A!important;
+  font-size:11px!important;
+  line-height:1.6!important;
+}
+.water-subscription-page .water-sub-payment-option:focus-visible,
+.water-subscription-page .water-sub-qty button:focus-visible{
+  outline:2px solid #2757A5!important;
+  outline-offset:2px!important;
+}
+@media(max-width:600px){
+  .water-subscription-page .water-sub-product{
+    grid-template-columns:70px minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  .water-sub-product-image{
+    width:70px;
+    height:80px;
+  }
+  .water-subscription-page .water-sub-qty{
+    grid-column:2!important;
+    justify-self:start!important;
+  }
+  .water-subscription-page .water-sub-payment-options{
+    grid-template-columns:minmax(0,1fr)!important;
   }
 }

@@ -55,7 +55,7 @@ const blogDescription = 'OfficeStore բլոգ՝ գրասենյակային ապ�
 
 await writeSnapshot('/water-subscription', {
   title:'Պարբերական ջրի առաքում | OfficeStore',
-  description:'Պլանավորեք Ապարան 18,9 լ ջրի պարբերական առաքումը՝ ընտրելով շաբաթվա կամ ամսվա ձեզ հարմար օրերը։',
+  description:'Պլանավորեք Ապարան 18,9 լ ջրի պարբերական առաքումը՝ ընտրելով ամսվա ձեզ հարմար օրերը։',
   canonical:`${baseUrl}/water-subscription/`,
   image:'https://officestore.am/wp-content/uploads/2025/08/323-2.jpg',
   type:'website'
